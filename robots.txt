@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://burrell001-max.github.io/yesnowheel/sitemap.xml
+Sitemap: https://burrell001-max.github.io/YesNoWheel/sitemap.xml

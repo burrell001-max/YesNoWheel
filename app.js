@@ -24,7 +24,7 @@
 
   var STORE = 'yesnowheel:v1';
   var LANGKEY = 'yesnowheel:lang';
-  var BASE_URL = 'https://burrell001-max.github.io/yesnowheel/';
+  var BASE_URL = 'https://burrell001-max.github.io/YesNoWheel/';
   var FONT = '"Segoe UI", Roboto, "Noto Sans", "Noto Sans JP", "Noto Sans KR", "Noto Sans SC", "Noto Sans Arabic", Tahoma, sans-serif';
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

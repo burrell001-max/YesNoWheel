@@ -3,7 +3,7 @@
 A free **Yes or No wheel** and **custom random picker wheel** that runs entirely in the browser.
 Static HTML/CSS/vanilla JS, no backend, no build step, ready for GitHub Pages.
 
-Live site (after deploying): https://burrell001-max.github.io/yesnowheel/
+Live site (after deploying): https://burrell001-max.github.io/YesNoWheel/
 
 ## Features
 
@@ -46,7 +46,7 @@ python3 -m http.server 8000
 
 ### Using a different username or domain
 
-The URL `https://burrell001-max.github.io/yesnowheel/` appears in `index.html` (canonical, hreflang, Open Graph, JSON-LD), `robots.txt`, `sitemap.xml` and `BASE_URL` in `app.js`. Find and replace it with your own address.
+The URL `https://burrell001-max.github.io/YesNoWheel/` appears in `index.html` (canonical, hreflang, Open Graph, JSON-LD), `robots.txt`, `sitemap.xml` and `BASE_URL` in `app.js`. Find and replace it with your own address.
 
 ## Adding a language
 
