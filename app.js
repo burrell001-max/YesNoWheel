@@ -29,7 +29,7 @@
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var PALETTES = {
-    vibrant: ['#ef4444', '#f97316', '#eab308', '#22c55e', '#06b6d4', '#3b82f6', '#8b5cf6', '#ec4899'],
+    vibrant: ['#7a4dff', '#ffc82e', '#ff6a55', '#47d6a4', '#4aa8ff', '#ff9ec4'],
     pastel: ['#fca5a5', '#fdba74', '#fde68a', '#bbf7d0', '#a5f3fc', '#bfdbfe', '#ddd6fe', '#fbcfe8'],
     neon: ['#ff2d95', '#ff9500', '#f5ff00', '#39ff14', '#00f0ff', '#3d5afe', '#b026ff', '#ff3131'],
     mono: ['#111827', '#374151', '#6b7280', '#9ca3af', '#d1d5db', '#4b5563', '#1f2937', '#e5e7eb']
@@ -64,7 +64,7 @@
         duration: 5, speed: 5, idle: true, tick: true, victory: true, confetti: true,
         theme: dark ? 'dark' : 'light', palette: 'vibrant',
         custom: ['#e11d48', '#f59e0b', '#10b981', '#0ea5e9', '#6366f1', '#d946ef'],
-        pageBg: '', centerText: '', centerColor: '#4f46e5'
+        pageBg: '', centerText: '', centerColor: '#1d1633'
       }
     };
   }
@@ -367,8 +367,8 @@
         ctx.fillStyle = sl.color;
         ctx.fill();
         if (s.length > 1) {
-          ctx.lineWidth = Math.max(1, R * 0.006);
-          ctx.strokeStyle = 'rgba(255,255,255,.55)';
+          ctx.lineWidth = Math.max(2, R * 0.012);
+          ctx.strokeStyle = '#1d1633';
           ctx.stroke();
         }
       }
@@ -431,8 +431,8 @@
     ctx.fillStyle = state.s.centerColor;
     ctx.fill();
     ctx.shadowColor = 'transparent';
-    ctx.lineWidth = R * 0.02;
-    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = R * 0.028;
+    ctx.strokeStyle = '#1d1633';
     ctx.stroke();
     var label = state.s.centerText || t('spin');
     var fs = cr * 0.52;
@@ -459,10 +459,10 @@
     ctx.lineTo(R * 0.055, -R * 0.02);
     ctx.lineTo(0, R * 0.15);
     ctx.closePath();
-    ctx.fillStyle = '#ef4444';
+    ctx.fillStyle = '#ff6a55';
     ctx.fill();
-    ctx.lineWidth = R * 0.012;
-    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = R * 0.018;
+    ctx.strokeStyle = '#1d1633';
     ctx.stroke();
     ctx.beginPath();
     ctx.arc(0, -R * 0.01, R * 0.035, 0, TAU);
@@ -796,7 +796,7 @@
     var cp = $('#customPalette');
     cp.hidden = s.palette !== 'custom';
     cp.innerHTML = s.custom.map(function (c, i) { return '<input type="color" data-i="' + i + '" value="' + c + '">'; }).join('');
-    $('#setPageBg').value = s.pageBg || '#f1f5f9';
+    $('#setPageBg').value = s.pageBg || '#fff4dc';
     $('#setCenterText').value = s.centerText;
     $('#setCenterColor').value = s.centerColor;
     var sd = $('#setDesc');
@@ -1275,7 +1275,7 @@
       changed();
     });
     $('#setPageBg').addEventListener('input', function (e) { state.s.pageBg = e.target.value; save(); applyTheme(); });
-    $('#btnResetBg').addEventListener('click', function () { state.s.pageBg = ''; save(); applyTheme(); $('#setPageBg').value = '#f1f5f9'; });
+    $('#btnResetBg').addEventListener('click', function () { state.s.pageBg = ''; save(); applyTheme(); $('#setPageBg').value = '#fff4dc'; });
     $('#setCenterText').addEventListener('input', function (e) { state.s.centerText = e.target.value.slice(0, 12); save(); dirty = true; });
     $('#setCenterColor').addEventListener('input', function (e) { state.s.centerColor = e.target.value; save(); dirty = true; });
     $('#btnCopyLink').addEventListener('click', function () { updateShare(); copyText($('#shareLink').value); });
