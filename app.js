@@ -64,7 +64,7 @@
         duration: 5, speed: 5, idle: true, tick: true, victory: true, confetti: true,
         theme: dark ? 'dark' : 'light', palette: 'vibrant',
         custom: ['#e11d48', '#f59e0b', '#10b981', '#0ea5e9', '#6366f1', '#d946ef'],
-        pageBg: '', centerText: '', centerColor: '#1d1633'
+        pageBg: '', centerText: '', centerColor: '#222222'
       }
     };
   }
@@ -340,12 +340,12 @@
 
     // rim
     ctx.save();
-    ctx.shadowColor = 'rgba(0,0,0,.35)';
-    ctx.shadowBlur = R * 0.06;
-    ctx.shadowOffsetY = R * 0.02;
+    ctx.shadowColor = 'rgba(0,0,0,.28)';
+    ctx.shadowBlur = R * 0.05;
+    ctx.shadowOffsetY = R * 0.015;
     ctx.beginPath();
-    ctx.arc(cx, cy, R * 1.035, 0, TAU);
-    ctx.fillStyle = '#1e293b';
+    ctx.arc(cx, cy, R, 0, TAU);
+    ctx.fillStyle = '#ffffff';
     ctx.fill();
     ctx.restore();
 
@@ -366,11 +366,9 @@
         ctx.closePath();
         ctx.fillStyle = sl.color;
         ctx.fill();
-        if (s.length > 1) {
-          ctx.lineWidth = Math.max(2, R * 0.012);
-          ctx.strokeStyle = '#1d1633';
-          ctx.stroke();
-        }
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = sl.color;
+        ctx.stroke();
       }
 
       var mystery = state.mode === 'custom' && state.mysteryWheel;
@@ -381,7 +379,7 @@
         ctx.translate(cx, cy);
         ctx.rotate(rot + sl.start + sl.ang / 2);
         var outer = R * 0.93, inner = R * 0.22;
-        var fs = Math.max(9 * dpr, Math.min(R * 0.11, sl.ang * R * 0.32));
+        var fs = Math.max(9 * dpr, Math.min(R * 0.15, sl.ang * R * 0.38));
         if (mystery) fs *= 1.4;
         var right = outer;
         var im = getImg(sl.img);
@@ -395,24 +393,12 @@
           ctx.restore();
           right = outer - ir * 2 - R * 0.02;
         }
-        ctx.font = '600 ' + fs + 'px ' + FONT;
+        ctx.font = '500 ' + fs + 'px ' + FONT;
         ctx.textAlign = 'right';
         ctx.textBaseline = 'middle';
         ctx.fillStyle = lum(sl.color) > 0.55 ? '#111827' : '#ffffff';
-        ctx.fillText(fitText(mystery ? '?' : sl.label, right - inner), right, 0);
+        ctx.fillText(fitText(mystery ? '?' : (state.mode === 'custom' ? sl.label : sl.label.toUpperCase()), right - inner), right, 0);
         ctx.restore();
-      }
-
-      // pegs on the rim
-      for (i = 0; i < s.length; i++) {
-        var a = rot + s[i].start;
-        ctx.beginPath();
-        ctx.arc(cx + Math.cos(a) * R, cy + Math.sin(a) * R, R * 0.02, 0, TAU);
-        ctx.fillStyle = '#f8fafc';
-        ctx.fill();
-        ctx.lineWidth = Math.max(1, R * 0.004);
-        ctx.strokeStyle = '#94a3b8';
-        ctx.stroke();
       }
     }
 
@@ -421,23 +407,32 @@
   }
 
   function drawCenter(cx, cy, R) {
-    var cr = R * 0.16;
+    var cr = R * 0.15, d = cr * 1.75, phi = Math.acos(cr / d);
     ctx.save();
-    ctx.globalAlpha = spinning ? 0.8 : 1;
-    ctx.shadowColor = 'rgba(0,0,0,.4)';
-    ctx.shadowBlur = R * 0.05;
+    ctx.globalAlpha = spinning ? 0.85 : 1;
+    ctx.translate(cx, cy);
+    ctx.rotate(-flap * 0.55);
+    ctx.shadowColor = 'rgba(0,0,0,.35)';
+    ctx.shadowBlur = R * 0.04;
+    ctx.shadowOffsetY = R * 0.01;
     ctx.beginPath();
-    ctx.arc(cx, cy, cr, 0, TAU);
+    ctx.moveTo(0, -d);
+    ctx.lineTo(cr * Math.cos(-Math.PI / 2 + phi), cr * Math.sin(-Math.PI / 2 + phi));
+    ctx.arc(0, 0, cr, -Math.PI / 2 + phi, 1.5 * Math.PI - phi, false);
+    ctx.closePath();
     ctx.fillStyle = state.s.centerColor;
+    ctx.strokeStyle = state.s.centerColor;
+    ctx.lineJoin = 'round';
+    ctx.lineWidth = R * 0.03;
     ctx.fill();
-    ctx.shadowColor = 'transparent';
-    ctx.lineWidth = R * 0.028;
-    ctx.strokeStyle = '#1d1633';
     ctx.stroke();
-    var label = state.s.centerText || t('spin');
-    var fs = cr * 0.52;
+    ctx.restore();
+    ctx.save();
+    ctx.globalAlpha = spinning ? 0.85 : 1;
+    var label = state.s.centerText || t('spin').toUpperCase();
+    var fs = cr * 0.42;
     ctx.font = '800 ' + fs + 'px ' + FONT;
-    while (ctx.measureText(label).width > cr * 1.55 && fs > 6 * dpr) {
+    while (ctx.measureText(label).width > cr * 1.6 && fs > 6 * dpr) {
       fs -= 1;
       ctx.font = '800 ' + fs + 'px ' + FONT;
     }
@@ -448,28 +443,7 @@
     ctx.restore();
   }
 
-  function drawPointer(cx, cy, R) {
-    ctx.save();
-    ctx.translate(cx, cy - R - R * 0.03);
-    ctx.rotate(-flap * 0.55);
-    ctx.shadowColor = 'rgba(0,0,0,.4)';
-    ctx.shadowBlur = R * 0.03;
-    ctx.beginPath();
-    ctx.moveTo(-R * 0.055, -R * 0.02);
-    ctx.lineTo(R * 0.055, -R * 0.02);
-    ctx.lineTo(0, R * 0.15);
-    ctx.closePath();
-    ctx.fillStyle = '#ff6a55';
-    ctx.fill();
-    ctx.lineWidth = R * 0.018;
-    ctx.strokeStyle = '#1d1633';
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.arc(0, -R * 0.01, R * 0.035, 0, TAU);
-    ctx.fillStyle = '#f8fafc';
-    ctx.fill();
-    ctx.restore();
-  }
+  function drawPointer() { /* the pointer is now the teardrop above the hub (see drawCenter) */ }
 
   function indexAt() {
     var s = slices();

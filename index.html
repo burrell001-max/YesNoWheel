@@ -1,43 +1,327 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Blog | YesNoWheel</title>
-<meta name="description" content="Practical guides on plants, games, food, family and decision-making from YesNoWheel.">
-<link rel="canonical" href="https://burrell001-max.github.io/yesnowheel/blog/">
-<meta name="theme-color" content="#7a4dff">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css"><link rel="stylesheet" href="../blog/blog.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Yes or No Wheel - Random Decision &amp; Custom Picker Wheel | YesNoWheel</title>
+  <meta name="description" content="Spin the Yes or No wheel for a random decision, or build a custom picker wheel with your own names, weights and images. Free, no sign-up, works offline in 10 languages.">
+  <meta name="keywords" content="yes or no wheel, yes no wheel, yes no picker wheel, random decision wheel, spin the wheel, custom picker wheel, random name picker, decision maker, wheel of names, raffle wheel">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#7a4dff">
+  <link rel="canonical" href="https://burrell001-max.github.io/yesnowheel/">
+
+  <link rel="alternate" hreflang="en" href="https://burrell001-max.github.io/yesnowheel/?lang=en">
+  <link rel="alternate" hreflang="es" href="https://burrell001-max.github.io/yesnowheel/?lang=es">
+  <link rel="alternate" hreflang="fr" href="https://burrell001-max.github.io/yesnowheel/?lang=fr">
+  <link rel="alternate" hreflang="de" href="https://burrell001-max.github.io/yesnowheel/?lang=de">
+  <link rel="alternate" hreflang="pt" href="https://burrell001-max.github.io/yesnowheel/?lang=pt">
+  <link rel="alternate" hreflang="it" href="https://burrell001-max.github.io/yesnowheel/?lang=it">
+  <link rel="alternate" hreflang="ja" href="https://burrell001-max.github.io/yesnowheel/?lang=ja">
+  <link rel="alternate" hreflang="ko" href="https://burrell001-max.github.io/yesnowheel/?lang=ko">
+  <link rel="alternate" hreflang="zh" href="https://burrell001-max.github.io/yesnowheel/?lang=zh">
+  <link rel="alternate" hreflang="ar" href="https://burrell001-max.github.io/yesnowheel/?lang=ar">
+  <link rel="alternate" hreflang="x-default" href="https://burrell001-max.github.io/yesnowheel/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="YesNoWheel">
+  <meta property="og:title" content="Yes or No Wheel - Random Decision &amp; Custom Picker Wheel | YesNoWheel">
+  <meta property="og:description" content="Spin the Yes or No wheel for a random decision, or build a custom picker wheel with your own names, weights and images. Free, no sign-up, works offline in 10 languages.">
+  <meta property="og:url" content="https://burrell001-max.github.io/yesnowheel/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Yes or No Wheel - Random Decision &amp; Custom Picker Wheel | YesNoWheel">
+  <meta name="twitter:description" content="Spin the Yes or No wheel for a random decision, or build a custom picker wheel with your own names, weights and images. Free, no sign-up, works offline in 10 languages.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "YesNoWheel",
+    "url": "https://burrell001-max.github.io/yesnowheel/",
+    "description": "Yes or No wheel and custom random picker wheel with weights, images, elimination and accumulation modes. Free, works offline, 10 languages.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript and HTML5 canvas",
+    "inLanguage": ["en", "es", "fr", "de", "pt", "it", "ja", "ko", "zh", "ar"],
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%234f46e5'/%3E%3Cpath d='M32 32V2a30 30 0 0 1 30 30z' fill='%2310b981'/%3E%3Cpath d='M32 32H2A30 30 0 0 1 32 2z' fill='%23f59e0b'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+   {"@type":"Question","name":"Is the Yes or No wheel random?","acceptedAnswer":{"@type":"Answer","text":"Yes. Each spin picks its result at random, then the wheel animates to that slice."}},
+   {"@type":"Question","name":"Can I spin more than once for the same question?","acceptedAnswer":{"@type":"Answer","text":"Yes. Choose your rule first, such as accepting the first spin or best of three."}},
+   {"@type":"Question","name":"Should I use it for important decisions?","acceptedAnswer":{"@type":"Answer","text":"No. It is meant for fun, low-stakes choices."}}]}
+  </script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="topbar"><a class="brand" href="../"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#7a4dff"/><path d="M32 32V2a30 30 0 0 1 30 30z" fill="#47d6a4"/><path d="M32 32H2A30 30 0 0 1 32 2z" fill="#ffc82e"/><path d="M32 32l21 21A30 30 0 0 1 32 62z" fill="#ff6a55"/><circle cx="32" cy="32" r="30" fill="none" stroke="#1d1633" stroke-width="4"/><circle cx="32" cy="32" r="7" fill="#fff" stroke="#1d1633" stroke-width="3"/></svg><span>YesNoWheel</span></a>
-<nav class="topnav" aria-label="Main"><a class="nav-btn" href="../">Wheel</a><a class="nav-btn" href="../tools/">Tools</a><a class="nav-btn share" href="../blog/">Blog</a></nav></header>
-<main class="blog"><h1>Blog</h1><p class="blog-lede">Ideas for making choices, filling a free evening and living a little better.</p>
-<article class="post-card"><a class="thumb-art" href="best-air-purifying-indoor-plants/" style="--c:#47d6a4" aria-hidden="true" tabindex="-1"><span>🪴</span></a>
-<div class="post-body"><h2><a href="best-air-purifying-indoor-plants/">What Are the Best Air-Purifying Indoor Plants for Your Home?</a></h2><p class="meta">Last updated: November 14, 2026</p><p>Plants do clean tiny amounts of air, but the real payoff is easier than that: they are good company. Here are five tough ones worth buying.</p><a class="btn primary" href="best-air-purifying-indoor-plants/">Read more</a></div></article>
-<article class="post-card"><a class="thumb-art" href="educational-board-games-worth-playing/" style="--c:#ffc82e" aria-hidden="true" tabindex="-1"><span>🎲</span></a>
-<div class="post-body"><h2><a href="educational-board-games-worth-playing/">Which Board Games Teach Something While You Play?</a></h2><p class="meta">Last updated: November 10, 2026</p><p>Great board games sneak in real skills like planning, negotiation and vocabulary. These six are fun first and useful second.</p><a class="btn primary" href="educational-board-games-worth-playing/">Read more</a></div></article>
-<article class="post-card"><a class="thumb-art" href="things-to-do-when-bored-at-home/" style="--c:#ff6a55" aria-hidden="true" tabindex="-1"><span>🏠</span></a>
-<div class="post-body"><h2><a href="things-to-do-when-bored-at-home/">Bored at Home? 25 Ideas Sorted by How Much Time You Have</a></h2><p class="meta">Last updated: November 6, 2026</p><p>Skip the endless scrolling. Here are quick, medium and long ideas, plus a trick for choosing one without overthinking.</p><a class="btn primary" href="things-to-do-when-bored-at-home/">Read more</a></div></article>
-<article class="post-card"><a class="thumb-art" href="fun-indoor-gardening-with-family/" style="--c:#7a4dff" aria-hidden="true" tabindex="-1"><span>🧑‍🌾</span></a>
-<div class="post-body"><h2><a href="fun-indoor-gardening-with-family/">How to Start Indoor Gardening With Your Family</a></h2><p class="meta">Last updated: November 2, 2026</p><p>You do not need a yard. A sunny windowsill, a few cups and some seeds are enough to grow something together.</p><a class="btn primary" href="fun-indoor-gardening-with-family/">Read more</a></div></article>
-<article class="post-card"><a class="thumb-art" href="what-is-holistic-health/" style="--c:#ffc82e" aria-hidden="true" tabindex="-1"><span>🧘</span></a>
-<div class="post-body"><h2><a href="what-is-holistic-health/">What Is Holistic Health, and Why Does It Matter?</a></h2><p class="meta">Last updated: October 28, 2026</p><p>Holistic health looks at the whole person, not just a symptom. Here is what that means in daily life.</p><a class="btn primary" href="what-is-holistic-health/">Read more</a></div></article>
-<article class="post-card"><a class="thumb-art" href="types-of-keto-diet-and-how-to-start/" style="--c:#47d6a4" aria-hidden="true" tabindex="-1"><span>🥑</span></a>
-<div class="post-body"><h2><a href="types-of-keto-diet-and-how-to-start/">Types of Keto Diet and How to Get Started Safely</a></h2><p class="meta">Last updated: October 22, 2026</p><p>Keto is a very low-carb, high-fat way of eating. Here are the main versions and what to consider before you begin.</p><a class="btn primary" href="types-of-keto-diet-and-how-to-start/">Read more</a></div></article>
-<article class="post-card"><a class="thumb-art" href="best-parenting-styles/" style="--c:#ff6a55" aria-hidden="true" tabindex="-1"><span>👨‍👩‍👧</span></a>
-<div class="post-body"><h2><a href="best-parenting-styles/">What Are the Four Parenting Styles?</a></h2><p class="meta">Last updated: October 17, 2026</p><p>Psychologists describe four parenting styles. Knowing them helps you spot habits worth keeping and ones worth changing.</p><a class="btn primary" href="best-parenting-styles/">Read more</a></div></article>
-<article class="post-card"><a class="thumb-art" href="is-plant-based-meat-better/" style="--c:#7a4dff" aria-hidden="true" tabindex="-1"><span>🌿</span></a>
-<div class="post-body"><h2><a href="is-plant-based-meat-better/">Is Plant-Based Meat Better for You and the Planet?</a></h2><p class="meta">Last updated: October 12, 2026</p><p>Plant-based meat has a lighter footprint than beef, but the health picture depends on the product. Here is what to check.</p><a class="btn primary" href="is-plant-based-meat-better/">Read more</a></div></article>
-<article class="post-card"><a class="thumb-art" href="what-to-cook-for-guests/" style="--c:#ffc82e" aria-hidden="true" tabindex="-1"><span>🍝</span></a>
-<div class="post-body"><h2><a href="what-to-cook-for-guests/">What to Cook for Guests When You Can&#x27;t Decide</a></h2><p class="meta">Last updated: October 7, 2026</p><p>Guests arrive in two hours and you have no plan. Narrow it down, then let a wheel make the final call.</p><a class="btn primary" href="what-to-cook-for-guests/">Read more</a></div></article>
-<article class="post-card"><a class="thumb-art" href="what-should-i-eat/" style="--c:#47d6a4" aria-hidden="true" tabindex="-1"><span>🍜</span></a>
-<div class="post-body"><h2><a href="what-should-i-eat/">How to Solve the &quot;What Should I Eat?&quot; Problem</a></h2><p class="meta">Last updated: October 2, 2026</p><p>You are hungry, nothing sounds good and every option feels wrong. Try this simple routine instead.</p><a class="btn primary" href="what-should-i-eat/">Read more</a></div></article>
-<div class="ad-slot" aria-label="Advertisement">Ad slot</div></main>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="YesNoWheel">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#7a4dff"/><path d="M32 32V2a30 30 0 0 1 30 30z" fill="#47d6a4"/><path d="M32 32H2A30 30 0 0 1 32 2z" fill="#ffc82e"/><path d="M32 32l21 21A30 30 0 0 1 32 62z" fill="#ff6a55"/><circle cx="32" cy="32" r="30" fill="none" stroke="#1d1633" stroke-width="4"/><circle cx="32" cy="32" r="7" fill="#fff" stroke="#1d1633" stroke-width="3"/></svg>
+      <span>YesNoWheel</span>
+    </a>
+    <nav class="topnav" aria-label="Main">
+      <div class="seg mode-switch" role="tablist">
+        <button type="button" role="tab" data-mode="yesno" data-i18n="yesnoMode"></button>
+        <button type="button" role="tab" data-mode="custom" data-i18n="customMode"></button>
+      </div>
+      <button id="btnSettings" class="nav-btn" type="button" data-i18n-title="settings"><span aria-hidden="true">⚙</span> <span data-i18n="settings"></span></button>
+      <button id="btnShare" class="nav-btn share" type="button"><span aria-hidden="true">⤴</span> <span data-i18n="share"></span></button>
+      <a class="nav-btn" href="tools/"><span aria-hidden="true">✦</span> Tools</a>
+      <a class="nav-btn" href="blog/">Blog</a>
+      <select id="langSelect" class="select" data-i18n-title="language"></select>
+      <button id="btnFullscreen" class="icon-btn" type="button" data-i18n-title="fullscreen">⛶</button>
+    </nav>
+  </header>
+  <div class="banner">
+    <div class="banner-text">
+      <div class="banner-title">Yes or No Wheel</div>
+      <div class="banner-tag">Spin it, trust it, move on.</div>
+      <input id="titleInput" class="title-input" type="text" maxlength="80" data-i18n-ph="wheelTitlePh" data-i18n-title="wheelTitlePh" autocomplete="off">
+    </div>
+    <div class="banner-ad" aria-label="Advertisement">Ad slot 728x90</div>
+  </div>
+
+  <main class="layout">
+    <section class="stage" id="wheelArea">
+      <h1 id="stageTitle" class="stage-title"></h1>
+      <p id="stageDesc" class="stage-desc" hidden></p>
+      <div class="wheel-wrap" id="wheelWrap">
+        <canvas id="wheel" tabindex="0" role="button" data-i18n-title="spin"></canvas>
+      </div>
+      <button id="spinBtn" class="btn primary big" type="button" data-i18n="spin"></button>
+      <div id="tally" class="tally" hidden>
+        <span class="tally-label" data-i18n="tally"></span>
+        <span id="tallyItems" class="tally-items"></span>
+        <button id="btnResetTally" class="btn ghost small" type="button" data-i18n="resetTally"></button>
+      </div>
+      <p class="hint" data-i18n="shortcuts"></p>
+      <button id="exitPresent" class="exit-present" type="button" data-i18n-title="exitFullscreen">✕</button>
+    </section>
+
+    <aside class="panel">
+      <div class="tabs" role="tablist">
+        <button type="button" role="tab" class="tab active" data-tab="inputs" data-i18n="tabInputs"></button>
+        <button type="button" role="tab" class="tab" data-tab="results" data-i18n="tabResults"></button>
+      </div>
+
+      <div id="paneInputs">
+        <!-- Yes / No controls -->
+        <div id="ynPanel">
+          <div class="field">
+            <div class="seg">
+              <button type="button" data-three="0" data-i18n="opt2"></button>
+              <button type="button" data-three="1" data-i18n="opt3"></button>
+            </div>
+          </div>
+          <div class="field inline">
+            <label for="setsSelect" data-i18n="sets"></label>
+            <select id="setsSelect" class="select">
+              <option value="1">1×</option><option value="2">2×</option><option value="3">3×</option><option value="4">4×</option><option value="5">5×</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Custom wheel controls -->
+        <div id="customPanel" hidden>
+          <div class="field">
+            <div class="seg">
+              <button type="button" data-view="list" data-i18n="listView"></button>
+              <button type="button" data-view="text" data-i18n="textView"></button>
+            </div>
+          </div>
+
+          <div class="toolbar">
+            <button id="btnShuffle" class="btn small" type="button" data-i18n="shuffle"></button>
+            <button id="btnSort" class="btn small" type="button" data-i18n="sortAZ"></button>
+            <button id="btnDelEmpty" class="btn small" type="button" data-i18n="delEmpty"></button>
+            <button id="btnClear" class="btn small danger" type="button" data-i18n="clearAll"></button>
+            <button id="btnImport" class="btn small" type="button" data-i18n="importFile"></button>
+            <button id="btnExportCsv" class="btn small" type="button" data-i18n="exportCSV"></button>
+            <button id="btnExportJson" class="btn small" type="button" data-i18n="exportJSON"></button>
+            <button id="btnRestore" class="btn small" type="button" hidden></button>
+            <input id="fileInput" type="file" accept=".csv,.txt,.json,text/csv,text/plain,application/json" hidden>
+          </div>
+
+          <div class="checks">
+            <label class="check"><input id="chkMysteryWheel" type="checkbox"> <span data-i18n="mysteryWheel"></span></label>
+            <label class="check"><input id="chkMysteryResult" type="checkbox"> <span data-i18n="mysteryResult"></span></label>
+          </div>
+
+          <fieldset class="actions">
+            <legend data-i18n="actionMode"></legend>
+            <label class="check"><input type="radio" name="action" value="normal"> <span data-i18n="normal"></span></label>
+            <label class="check"><input type="radio" name="action" value="elimination"> <span data-i18n="elimination"></span></label>
+            <label class="check"><input type="radio" name="action" value="accumulation"> <span data-i18n="accumulation"></span></label>
+          </fieldset>
+
+          <div id="listView">
+            <input id="searchInput" class="input" type="search" data-i18n-ph="search" data-i18n-title="search" autocomplete="off">
+            <ul id="entryList" class="entry-list"></ul>
+            <button id="btnAdd" class="btn primary small" type="button" data-i18n="addEntry"></button>
+          </div>
+          <div id="textView" hidden>
+            <textarea id="entryText" class="textarea" rows="12" spellcheck="false" data-i18n-ph="textPh"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div id="paneResults" hidden>
+        <div id="leaderboardBox" hidden>
+          <h2 class="h2" data-i18n="leaderboard"></h2>
+          <ol id="leaderboardList" class="leaderboard"></ol>
+        </div>
+        <h2 class="h2" data-i18n="history"></h2>
+        <ul id="historyList" class="history"></ul>
+        <div class="toolbar">
+          <button id="btnExportHistory" class="btn small" type="button" data-i18n="exportCSV"></button>
+          <button id="btnClearHistory" class="btn small danger" type="button" data-i18n="clearHistory"></button>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+<div class="ad-slot" aria-label="Advertisement">Ad slot: paste your AdSense unit here</div>
+
+<div class="guide" lang="en">
+  <section><h2>1. What Is the Yes or No Wheel?</h2>
+    <p>It is a wheel with Yes and No slices. Spin it and it lands on one, giving you a random answer. Nothing to install, no account to make. Open the page and spin.</p>
+    <p>Switch to Yes, No or Maybe when "not yet" is an acceptable answer too.</p></section>
+  <hr>
+  <section><h2>2. How to Use the Wheel</h2>
+    <p>Think of a question with a yes or no answer. Press Spin, click the wheel, or hit the space bar. The pointer shows the winning slice and a pop-up shows the answer.</p>
+    <p>The running scoreboard counts every result, and the Results tab keeps a history of your spins.</p></section>
+  <hr>
+  <section><h2>3. Yes / No vs. Yes / No / Maybe</h2>
+    <p>Yes / No gives a firm answer. Yes / No / Maybe adds a middle result, which suits choices where waiting is fair, like "Should I decide tomorrow?" You can also spin up to five sets at once to see a tally.</p></section>
+  <hr>
+  <section><h2>4. Build Your Own Wheel</h2>
+    <p>Open Custom Wheel to enter your own names or options. Give each entry a weight, a color or an image, then spin to pick one. Use Elimination to remove each winner, or Accumulation to keep a leaderboard.</p>
+    <p>You can import a list from CSV, TXT or JSON, and share your wheel with a link or embed it on another page.</p></section>
+  <hr>
+  <section><h2>5. When to Use It</h2>
+    <p>The wheel works best for small choices where both answers are fine:</p>
+    <ul class="pills"><li>Eat out tonight?</li><li>Go to the gym?</li><li>One more episode?</li><li>Try something new?</li><li>Start the game?</li></ul>
+    <h3>Classrooms and teams</h3><p>Decide whether to run another round, give a group a second chance, or add a bonus challenge.</p>
+    <h3>Party games</h3><p>Spin to decide whether a player takes the dare, answers the question, or passes the turn.</p></section>
+  <hr>
+  <section><h2>6. Get a Better Answer</h2>
+    <h3>Ask one clear question</h3><p>"Should I cook dinner tonight?" works better than "What should I do tonight?" Both Yes and No need to be real answers.</p>
+    <h3>Set your rule first</h3><p>Decide before you spin: take the first result, or go best of three. This stops you from spinning until you hear what you wanted.</p>
+    <h3>Notice your reaction</h3><p>If the wheel says No and you feel disappointed, you already know what you wanted.</p>
+    <h3>Keep it low-stakes</h3><p>Do not use a random result for health, safety, money or legal decisions. Use reliable information and a professional for those.</p></section>
+  <hr>
+  <section><h2>7. Tell Us What You Think</h2>
+    <p>Found a bug or have an idea? <a href="contact/">Send us a message</a> and we will look at it.</p></section>
+  <hr>
+  <section><h2>8. Frequently Asked Questions</h2>
+    <details><summary>Is the Yes or No wheel random?</summary><p>Yes. Each spin picks its result at random, then the wheel animates to that slice.</p></details>
+    <details><summary>Can I spin more than once for the same question?</summary><p>You can spin as often as you like. For a fairer decision, choose your rule first, such as accepting the first spin or best of three.</p></details>
+    <details><summary>Should I use it for important decisions?</summary><p>No. It is meant for fun and low-stakes choices. Rely on good information and professional advice for serious matters.</p></details>
+    <details><summary>Does it work offline, and is my data private?</summary><p>Once the page has loaded it runs in your browser. Your lists, settings and history stay on your device.</p></details>
+    <details><summary>Does it cost anything?</summary><p>No. The wheel is free and needs no account.</p></details>
+  </section>
+</div>
+
 <footer class="sitefoot"><div class="cols">
-<div><b>YesNoWheel</b>&copy; 2026</div>
-<div><b>Explore</b><a href="../tools/">Tools</a><a href="../blog/">Blog</a><a href="../about/">About</a></div>
-<div><b>Help</b><a href="../contact/">Feedback &amp; Contact</a></div>
-<div><b>Legal</b><a href="../privacy/">Privacy Policy</a><a href="../terms/">Terms and Conditions</a><a href="../cookies/">Cookie Policy</a></div>
+  <div><b>YesNoWheel</b>&copy; 2026</div>
+  <div><b>Explore</b><a href="tools/">Tools</a><a href="blog/">Blog</a><a href="about/">About</a></div>
+  <div><b>Help</b><a href="contact/">Feedback &amp; Contact</a></div>
+  <div><b>Legal</b><a href="privacy/">Privacy Policy</a><a href="terms/">Terms and Conditions</a><a href="cookies/">Cookie Policy</a></div>
 </div></footer>
-</body></html>
+
+  <!-- Settings drawer -->
+  <div id="scrim" class="scrim" hidden></div>
+  <aside id="drawer" class="drawer" aria-hidden="true" aria-labelledby="drawerTitle">
+    <div class="drawer-head">
+      <h2 id="drawerTitle" data-i18n="settings"></h2>
+      <button id="btnCloseDrawer" class="icon-btn" type="button" data-i18n-title="close">✕</button>
+    </div>
+    <div class="drawer-body">
+      <section class="group">
+        <h3 data-i18n="setSpin"></h3>
+        <label class="slider"><span data-i18n="duration"></span><output id="durVal"></output>
+          <input id="setDuration" type="range" min="1" max="15" step="1"></label>
+        <label class="slider"><span data-i18n="speed"></span><output id="speedVal"></output>
+          <input id="setSpeed" type="range" min="1" max="10" step="1"></label>
+        <label class="check"><input id="setIdle" type="checkbox"> <span data-i18n="idle"></span></label>
+      </section>
+
+      <section class="group">
+        <h3 data-i18n="setEffects"></h3>
+        <label class="check"><input id="setTick" type="checkbox"> <span data-i18n="tick"></span></label>
+        <label class="check"><input id="setVictory" type="checkbox"> <span data-i18n="victory"></span></label>
+        <label class="check"><input id="setConfetti" type="checkbox"> <span data-i18n="confetti"></span></label>
+        <label class="check"><input id="setDark" type="checkbox"> <span data-i18n="dark"></span></label>
+      </section>
+
+      <section class="group">
+        <h3 data-i18n="setStyle"></h3>
+        <label class="field"><span data-i18n="palette"></span>
+          <select id="setPalette" class="select">
+            <option value="vibrant" data-i18n="vibrant"></option>
+            <option value="pastel" data-i18n="pastel"></option>
+            <option value="neon" data-i18n="neon"></option>
+            <option value="mono" data-i18n="mono"></option>
+            <option value="custom" data-i18n="custom"></option>
+          </select>
+        </label>
+        <div id="customPalette" class="palette-row" hidden></div>
+        <div class="field inline"><span data-i18n="pageBg"></span>
+          <span class="row-gap"><input id="setPageBg" type="color" value="#f1f5f9"><button id="btnResetBg" class="btn ghost small" type="button" data-i18n="resetColor"></button></span>
+        </div>
+        <label class="field"><span data-i18n="centerText"></span>
+          <input id="setCenterText" class="input" type="text" maxlength="12" autocomplete="off"></label>
+        <div class="field inline"><span data-i18n="centerColor"></span>
+          <input id="setCenterColor" type="color" value="#4f46e5"></div>
+        <label class="field"><span data-i18n="wheelTitle"></span>
+          <input id="setTitle" class="input" type="text" maxlength="80" data-i18n-ph="wheelTitlePh" autocomplete="off"></label>
+        <label class="field"><span data-i18n="wheelDesc"></span>
+          <textarea id="setDesc" class="textarea" rows="3" maxlength="300" data-i18n-ph="descPh"></textarea></label>
+      </section>
+
+      <section class="group">
+        <h3 data-i18n="share"></h3>
+        <input id="shareLink" class="input mono" type="text" readonly>
+        <button id="btnCopyLink" class="btn small" type="button" data-i18n="copyLink"></button>
+        <textarea id="embedCode" class="textarea mono" rows="4" readonly></textarea>
+        <button id="btnCopyEmbed" class="btn small" type="button" data-i18n="copyEmbed"></button>
+      </section>
+
+      <section class="group">
+        <button id="btnResetAll" class="btn danger" type="button" data-i18n="resetAll"></button>
+      </section>
+    </div>
+  </aside>
+
+  <!-- Result modal -->
+  <div id="resultModal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="resultKicker">
+    <div class="modal-card">
+      <p id="resultKicker" class="modal-kicker" data-i18n="winnerIs"></p>
+      <div id="resultBody" class="result-text"></div>
+      <p id="resultMeta" class="result-meta"></p>
+      <div id="resultActions" class="modal-actions"></div>
+    </div>
+  </div>
+
+  <canvas id="confetti" aria-hidden="true"></canvas>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <noscript>
+    <p style="padding:24px;text-align:center">YesNoWheel is a free Yes or No decision wheel and custom random picker wheel. Please enable JavaScript to spin the wheel.</p>
+  </noscript>
+
+  <script src="i18n.js"></script>
+  <script src="app.js"></script>
+  <script>
+    document.getElementById('btnShare').addEventListener('click', function () {
+      document.getElementById('btnSettings').click();
+      setTimeout(function () { var s = document.getElementById('shareLink'); if (s) s.scrollIntoView({ block: 'center' }); }, 300);
+    });
+  </script>
+</body>
+</html>
