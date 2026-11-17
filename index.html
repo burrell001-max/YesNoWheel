@@ -49,7 +49,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%234f46e5'/%3E%3Cpath d='M32 32V2a30 30 0 0 1 30 30z' fill='%2310b981'/%3E%3Cpath d='M32 32H2A30 30 0 0 1 32 2z' fill='%23f59e0b'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23fff'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Jost:wght@500;700&display=swap" rel="stylesheet">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
    {"@type":"Question","name":"Is the Yes or No wheel random?","acceptedAnswer":{"@type":"Answer","text":"Yes. Each spin picks its result at random, then the wheel animates to that slice."}},
@@ -90,6 +90,14 @@
     <section class="stage" id="wheelArea">
       <h1 id="stageTitle" class="stage-title"></h1>
       <p id="stageDesc" class="stage-desc" hidden></p>
+      <div class="fab-col top">
+        <button id="fabEdit" class="fab dark" type="button" title="Edit entries" aria-label="Edit entries">✎</button>
+        <button id="fabResults" class="fab" type="button" title="Results" aria-label="Results">🏆</button>
+      </div>
+      <div class="fab-col bottom">
+        <button id="fabSound" class="fab" type="button" title="Sound" aria-label="Sound">🔊</button>
+        <button id="fabFull" class="fab" type="button" title="Full screen" aria-label="Full screen">⛶</button>
+      </div>
       <div class="wheel-wrap" id="wheelWrap">
         <canvas id="wheel" tabindex="0" role="button" data-i18n-title="spin"></canvas>
       </div>
@@ -322,6 +330,20 @@
       document.getElementById('btnSettings').click();
       setTimeout(function () { var s = document.getElementById('shareLink'); if (s) s.scrollIntoView({ block: 'center' }); }, 300);
     });
+    (function () {
+      function $(i) { return document.getElementById(i); }
+      $('fabEdit').onclick = function () { document.querySelector('[data-tab="inputs"]').click(); $('paneInputs').scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+      $('fabResults').onclick = function () { document.querySelector('[data-tab="results"]').click(); $('paneResults').scrollIntoView({ behavior: 'smooth', block: 'start' }); };
+      $('fabFull').onclick = function () { $('btnFullscreen').click(); };
+      function soundOn() { return $('setTick').checked || $('setVictory').checked; }
+      function sync() { $('fabSound').textContent = soundOn() ? '🔊' : '🔇'; }
+      $('fabSound').onclick = function () {
+        var v = !soundOn();
+        ['setTick', 'setVictory'].forEach(function (id) { var c = $(id); c.checked = v; c.dispatchEvent(new Event('change', { bubbles: true })); });
+        sync();
+      };
+      sync();
+    })();
   </script>
 </body>
 </html>

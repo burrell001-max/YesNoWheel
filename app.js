@@ -25,11 +25,11 @@
   var STORE = 'yesnowheel:v1';
   var LANGKEY = 'yesnowheel:lang';
   var BASE_URL = 'https://burrell001-max.github.io/YesNoWheel/';
-  var FONT = '"Segoe UI", Roboto, "Noto Sans", "Noto Sans JP", "Noto Sans KR", "Noto Sans SC", "Noto Sans Arabic", Tahoma, sans-serif';
+  var FONT = '"Jost", "Segoe UI", Roboto, "Noto Sans", "Noto Sans JP", "Noto Sans KR", "Noto Sans SC", "Noto Sans Arabic", Tahoma, sans-serif';
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var PALETTES = {
-    vibrant: ['#7a4dff', '#ffc82e', '#ff6a55', '#47d6a4', '#4aa8ff', '#ff9ec4'],
+    vibrant: ['#f9b61e', '#fdee96', '#2d5a0a', '#aeaa3a'],
     pastel: ['#fca5a5', '#fdba74', '#fde68a', '#bbf7d0', '#a5f3fc', '#bfdbfe', '#ddd6fe', '#fbcfe8'],
     neon: ['#ff2d95', '#ff9500', '#f5ff00', '#39ff14', '#00f0ff', '#3d5afe', '#b026ff', '#ff3131'],
     mono: ['#111827', '#374151', '#6b7280', '#9ca3af', '#d1d5db', '#4b5563', '#1f2937', '#e5e7eb']

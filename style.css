@@ -275,3 +275,18 @@ body.present .guide, body.present .sitefoot, body.present .ad-slot, body.embed .
 .banner-ad { flex: 0 1 728px; min-height: 90px; display: grid; place-items: center; border: 3px dashed #fff4dc; border-radius: 12px; font-size: .9rem; opacity: .85; width: 100%; max-width: 728px; }
 body.present .banner, body.embed .banner { display: none !important; }
 @media (max-width: 900px) { .topnav { margin-inline-start: 0; } .banner-ad { flex-basis: 100%; max-width: none; } }
+
+/* ---------- Wheel stage like Picker Wheel: sage backdrop, round floating buttons ---------- */
+.stage { position: relative; background: #d9e0d4; }
+[data-theme="dark"] .stage { background: #2b3a2a; }
+.stage-title, .stage-desc, .hint, .tally-label { color: #1d1633; }
+[data-theme="dark"] .stage-title, [data-theme="dark"] .stage-desc, [data-theme="dark"] .hint, [data-theme="dark"] .tally-label { color: #fff4dc; }
+.fab-col { position: absolute; right: 12px; display: flex; flex-direction: column; gap: 10px; z-index: 3; }
+.fab-col.top { top: 12px; } .fab-col.bottom { bottom: 12px; }
+.fab { width: 46px; height: 46px; display: grid; place-items: center; padding: 0; border: 0; border-radius: 12px; background: #fff; color: #1d1633; font-size: 1.25rem; box-shadow: 0 2px 6px rgba(0,0,0,.25); }
+.fab-col.bottom .fab { border-radius: 50%; width: 52px; height: 52px; }
+.fab:hover { background: var(--sun); }
+.fab.dark { background: #333; color: #fff; }
+.fab.dark:hover { background: var(--primary); }
+body.present .fab-col, body.embed .fab-col { display: none; }
+@media (max-width: 560px) { .fab { width: 40px; height: 40px; } .fab-col.bottom .fab { width: 44px; height: 44px; } }
