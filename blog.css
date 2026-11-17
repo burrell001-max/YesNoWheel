@@ -1,0 +1,26 @@
+.blog{max-width:980px;margin:0 auto;padding:28px clamp(12px,3vw,28px) 20px}
+.blog h1{font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin:0 0 8px}
+.blog-lede{margin:0 0 28px;max-width:60ch}
+.post-card{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:24px;align-items:stretch;margin-bottom:28px;border:3px solid var(--border);border-radius:22px;background:var(--card);box-shadow:var(--shadow);overflow:hidden}
+.post-card:nth-of-type(even){grid-template-columns:minmax(0,6fr) minmax(0,5fr)}
+.post-card:nth-of-type(even) .thumb-art{order:2}
+.thumb-art,.hero-art{display:grid;place-items:center;background:var(--c);min-height:220px;text-decoration:none;background-image:radial-gradient(circle at 20% 20%,rgba(255,255,255,.35) 0 18%,transparent 19%),radial-gradient(circle at 85% 85%,rgba(29,22,51,.14) 0 22%,transparent 23%)}
+.thumb-art span,.hero-art span{font-size:clamp(4rem,12vw,6.5rem);filter:drop-shadow(4px 4px 0 rgba(29,22,51,.35))}
+.thumb-art:hover{background-color:var(--sun)}
+.post-body{padding:22px 24px 24px 0}
+.post-card:nth-of-type(even) .post-body{padding:22px 0 24px 24px}
+.post-body h2{font-size:clamp(1.3rem,2.6vw,1.8rem);line-height:1.2;margin:0 0 6px;letter-spacing:-.01em}
+.post-body h2 a{color:var(--text);text-decoration:none}.post-body h2 a:hover{background:var(--sun);color:var(--ink)}
+.meta{font-style:italic;color:var(--muted);margin:0 0 10px}
+.btn{text-decoration:none;display:inline-block}
+.article{max-width:760px}
+.crumb{font-size:.9rem;color:var(--muted);margin:0 0 14px}
+.hero-art{border:3px solid var(--border);border-radius:22px;box-shadow:var(--shadow);min-height:200px;margin-bottom:24px}
+.lead{font-size:1.2rem;line-height:1.6}
+.article h2{font-size:1.5rem;margin:30px 0 6px;letter-spacing:-.01em}
+.article p{line-height:1.75;margin:0 0 14px}
+.cta{margin:36px 0 18px;padding:20px 22px;border:3px solid var(--border);border-radius:18px;background:var(--mint);color:var(--ink);box-shadow:var(--shadow)}
+.cta p{margin:4px 0 14px}
+.next{margin-top:20px}
+.next a{color:var(--text)}
+@media(max-width:760px){.post-card,.post-card:nth-of-type(even){grid-template-columns:1fr}.post-card:nth-of-type(even) .thumb-art{order:0}.post-body,.post-card:nth-of-type(even) .post-body{padding:0 20px 22px}.thumb-art{min-height:160px}}
