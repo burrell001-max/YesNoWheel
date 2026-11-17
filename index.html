@@ -1,165 +1,188 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr" data-theme="light">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Yes or No Wheel - Spin for a Random Yes, No or Maybe | YesNoWheel</title>
-<meta name="description" content="Spin the free Yes or No wheel to settle small decisions. Switch to Yes, No or Maybe, keep score across spins, and review your results. No sign-up needed.">
-<link rel="canonical" href="https://burrell001-max.github.io/yesnowheel/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
-<style>
-:root{--cream:#fff4dc;--paper:#fffaf0;--ink:#1d1633;--violet:#7a4dff;--coral:#ff6a55;--sun:#ffc82e;--mint:#47d6a4;--line:3px solid var(--ink)}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--cream);color:var(--ink);font:400 1.06rem/1.7 "Bricolage Grotesque",system-ui,sans-serif}
-a{color:var(--ink);text-decoration-thickness:2px;text-underline-offset:3px}
-a:hover{background:var(--sun)}
-:focus-visible{outline:4px solid var(--violet);outline-offset:3px}
-.wrap{max-width:980px;margin:0 auto;padding:0 20px}
-header{border-bottom:var(--line);background:var(--paper)}
-header .wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding-top:14px;padding-bottom:14px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.3rem;text-decoration:none}
-.brand:hover{background:none}
-nav{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
-nav a{padding:4px 12px;border:var(--line);border-radius:999px;text-decoration:none;font-weight:600;background:var(--paper)}
-nav a:hover,nav a[aria-current]{background:var(--sun)}
-h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.1;font-weight:800;margin:36px 0 10px;letter-spacing:-.02em}
-.lede{max-width:62ch;margin:0 0 26px}
-/* widget */
-.frame{border:var(--line);border-radius:22px;background:var(--paper);box-shadow:8px 8px 0 var(--ink);overflow:hidden}
-.frame:fullscreen{border-radius:0;box-shadow:none;display:flex;flex-direction:column}
-.frame:fullscreen .stage{flex:1}
-.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;background:var(--violet);color:#fff;border-bottom:var(--line)}
-.bar b{font-size:1.2rem;font-weight:800}
-.bar small{display:block;opacity:.9;font-size:.85rem;line-height:1.2}
-.seg{display:flex;border:var(--line);border-radius:999px;overflow:hidden;background:var(--paper)}
-.seg button{border:0;background:none;padding:5px 14px;font:600 .9rem inherit;font-family:inherit;color:var(--ink);cursor:pointer}
-.seg button[aria-pressed=true]{background:var(--sun)}
-.stage{display:grid;grid-template-columns:150px 1fr 150px;gap:10px;padding:18px;align-items:start;position:relative}
-.score{display:flex;flex-direction:column;gap:10px}
-.tile{border:var(--line);border-radius:14px;padding:6px 10px;text-align:center;line-height:1.1}
-.tile output{display:block;font-size:2.4rem;font-weight:800}
-.tile span{font-weight:600;font-size:.85rem}
-.t-yes{background:var(--mint)}.t-no{background:var(--coral);color:#fff}.t-maybe{background:var(--sun)}
-.reset{border:var(--line);background:var(--paper);border-radius:999px;font:600 .85rem inherit;font-family:inherit;padding:3px 10px;cursor:pointer}
-.wheelbox{position:relative;width:100%;max-width:520px;margin:0 auto;aspect-ratio:1}
-canvas{width:100%;height:100%;display:block;cursor:pointer}
-.pointer{position:absolute;left:50%;top:-6px;width:0;height:0;transform:translateX(-50%);border-left:16px solid transparent;border-right:16px solid transparent;border-top:34px solid var(--ink);z-index:2}
-.spin{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:92px;height:92px;border-radius:50%;border:var(--line);background:var(--ink);color:#fff;font:800 1.15rem inherit;font-family:inherit;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.25)}
-.spin:hover{background:var(--violet)}
-.spin:disabled{cursor:wait;background:#554b78}
-.tools{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
-.ib{width:46px;height:46px;border-radius:50%;border:var(--line);background:var(--paper);font-size:1.3rem;cursor:pointer}
-.ib:hover{background:var(--sun)}
-.ib[aria-pressed=true]{background:var(--sun)}
-.result{margin:0 18px 18px;border:var(--line);border-radius:14px;padding:10px 16px;text-align:center;font-weight:800;font-size:1.4rem;min-height:3.4rem;background:var(--cream)}
-.result.yes{background:var(--mint)}.result.no{background:var(--coral);color:#fff}.result.maybe{background:var(--sun)}
-.panel{margin:0 18px 18px;border:var(--line);border-radius:14px;background:var(--cream);padding:12px 16px}
-.panel h2{font-size:1.1rem;margin:0 0 6px}
-.panel ol{margin:0;padding-left:1.4em;max-height:180px;overflow:auto}
-.panel .none{margin:0}
-/* guide */
-main section{margin-top:44px}
-h2.n{font-size:clamp(1.5rem,3.5vw,2.1rem);line-height:1.2;font-weight:800;margin:0 0 12px;letter-spacing:-.01em}
-h3{font-size:1.25rem;margin:26px 0 4px}
-main p{max-width:68ch;margin:0 0 14px}
-ul.pill{list-style:none;padding:0;margin:0 0 14px;display:flex;flex-wrap:wrap;gap:8px}
-ul.pill li{border:var(--line);border-radius:999px;padding:2px 14px;background:var(--paper)}
-ul.pill li:nth-child(4n+1){background:var(--mint)}ul.pill li:nth-child(4n+2){background:var(--sun)}ul.pill li:nth-child(4n+3){background:#d9ccff}ul.pill li:nth-child(4n){background:#ffc2b8}
-hr.div{border:0;height:30px;margin:44px 0 0;background:linear-gradient(var(--ink),var(--ink)) center/100% 3px no-repeat;position:relative}
-hr.div::after{content:"";position:absolute;left:50%;top:50%;width:30px;height:30px;margin:-15px 0 0 -15px;border:var(--line);border-radius:50%;background:conic-gradient(var(--violet) 0 25%,var(--sun) 0 50%,var(--coral) 0 75%,var(--mint) 0)}
-details{border:var(--line);border-radius:14px;background:var(--paper);margin-bottom:10px}
-summary{cursor:pointer;padding:10px 16px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
-summary::after{content:"+";font-weight:800}
-details[open] summary::after{content:"\2212"}
-details p{padding:0 16px;margin:0 0 12px}
-details[open] summary{border-bottom:var(--line);margin-bottom:10px;background:var(--sun);border-radius:11px 11px 0 0}
-.ad{margin:36px auto 0;min-height:90px;border:3px dashed var(--ink);border-radius:14px;display:grid;place-items:center;font-size:.9rem;opacity:.6}
-footer{margin-top:64px;border-top:var(--line);background:var(--ink);color:var(--cream)}
-footer .wrap{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:24px;padding-top:34px;padding-bottom:34px}
-footer a{color:var(--cream);display:block;margin-bottom:6px}
-footer a:hover{background:var(--violet)}
-footer b{display:block;margin-bottom:6px;color:var(--sun)}
-@media(max-width:760px){.stage{grid-template-columns:1fr}.score{flex-direction:row;justify-content:center;order:2}.tools{flex-direction:row;justify-content:center;order:3}.tile{flex:1;max-width:120px}footer .wrap{grid-template-columns:1fr 1fr}nav{margin-left:0}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Yes or No Wheel - Random Decision &amp; Custom Picker Wheel | YesNoWheel</title>
+  <meta name="description" content="Spin the Yes or No wheel for a random decision, or build a custom picker wheel with your own names, weights and images. Free, no sign-up, works offline in 10 languages.">
+  <meta name="keywords" content="yes or no wheel, yes no wheel, yes no picker wheel, random decision wheel, spin the wheel, custom picker wheel, random name picker, decision maker, wheel of names, raffle wheel">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#7a4dff">
+  <link rel="canonical" href="https://burrell001-max.github.io/yesnowheel/">
+
+  <link rel="alternate" hreflang="en" href="https://burrell001-max.github.io/yesnowheel/?lang=en">
+  <link rel="alternate" hreflang="es" href="https://burrell001-max.github.io/yesnowheel/?lang=es">
+  <link rel="alternate" hreflang="fr" href="https://burrell001-max.github.io/yesnowheel/?lang=fr">
+  <link rel="alternate" hreflang="de" href="https://burrell001-max.github.io/yesnowheel/?lang=de">
+  <link rel="alternate" hreflang="pt" href="https://burrell001-max.github.io/yesnowheel/?lang=pt">
+  <link rel="alternate" hreflang="it" href="https://burrell001-max.github.io/yesnowheel/?lang=it">
+  <link rel="alternate" hreflang="ja" href="https://burrell001-max.github.io/yesnowheel/?lang=ja">
+  <link rel="alternate" hreflang="ko" href="https://burrell001-max.github.io/yesnowheel/?lang=ko">
+  <link rel="alternate" hreflang="zh" href="https://burrell001-max.github.io/yesnowheel/?lang=zh">
+  <link rel="alternate" hreflang="ar" href="https://burrell001-max.github.io/yesnowheel/?lang=ar">
+  <link rel="alternate" hreflang="x-default" href="https://burrell001-max.github.io/yesnowheel/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="YesNoWheel">
+  <meta property="og:title" content="Yes or No Wheel - Random Decision &amp; Custom Picker Wheel | YesNoWheel">
+  <meta property="og:description" content="Spin the Yes or No wheel for a random decision, or build a custom picker wheel with your own names, weights and images. Free, no sign-up, works offline in 10 languages.">
+  <meta property="og:url" content="https://burrell001-max.github.io/yesnowheel/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Yes or No Wheel - Random Decision &amp; Custom Picker Wheel | YesNoWheel">
+  <meta name="twitter:description" content="Spin the Yes or No wheel for a random decision, or build a custom picker wheel with your own names, weights and images. Free, no sign-up, works offline in 10 languages.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "YesNoWheel",
+    "url": "https://burrell001-max.github.io/yesnowheel/",
+    "description": "Yes or No wheel and custom random picker wheel with weights, images, elimination and accumulation modes. Free, works offline, 10 languages.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript and HTML5 canvas",
+    "inLanguage": ["en", "es", "fr", "de", "pt", "it", "ja", "ko", "zh", "ar"],
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%234f46e5'/%3E%3Cpath d='M32 32V2a30 30 0 0 1 30 30z' fill='%2310b981'/%3E%3Cpath d='M32 32H2A30 30 0 0 1 32 2z' fill='%23f59e0b'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+   {"@type":"Question","name":"Is the Yes or No wheel random?","acceptedAnswer":{"@type":"Answer","text":"Yes. Each spin picks its result at random, then the wheel animates to that slice."}},
+   {"@type":"Question","name":"Can I spin more than once for the same question?","acceptedAnswer":{"@type":"Answer","text":"Yes. Choose your rule first, such as accepting the first spin or best of three."}},
+   {"@type":"Question","name":"Should I use it for important decisions?","acceptedAnswer":{"@type":"Answer","text":"No. It is meant for fun, low-stakes choices."}}]}
+  </script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header><div class="wrap">
-  <a class="brand" href="./"><svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="#ffc82e" stroke="#1d1633" stroke-width="5"/><path d="M32 32V3a29 29 0 0 1 29 29z" fill="#7a4dff"/><path d="M32 32v29a29 29 0 0 1-29-29z" fill="#47d6a4"/><path d="M32 32H3A29 29 0 0 1 32 3z" fill="#ff6a55"/><circle cx="32" cy="32" r="29" fill="none" stroke="#1d1633" stroke-width="5"/></svg>YesNoWheel</a>
-  <nav aria-label="Main"><a href="./" aria-current="page">Yes or No</a><a href="tools/">Tools</a><a href="blog/">Blog</a><a href="contact/">Contact</a></nav>
-</div></header>
-
-<div class="wrap">
-<h1>Yes or No Wheel</h1>
-<p class="lede">Can't decide? Ask one clear question, spin the wheel, and go with the answer. Free, instant, and no sign-up.</p>
-
-<div class="frame" id="frame">
-  <div class="bar"><div><b>Yes No Wheel</b><small>Let the wheel decide</small></div>
-    <div class="seg" role="group" aria-label="Wheel mode"><button id="m2" aria-pressed="true">Yes / No</button><button id="m3" aria-pressed="false">Yes / No / Maybe</button></div></div>
-  <div class="stage">
-    <div class="score" aria-label="Scoreboard">
-      <div class="tile t-yes"><output id="cYes">0</output><span>Yes</span></div>
-      <div class="tile t-no"><output id="cNo">0</output><span>No</span></div>
-      <div class="tile t-maybe" id="tMaybe" hidden><output id="cMaybe">0</output><span>Maybe</span></div>
-      <button class="reset" id="reset">Reset score</button>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="YesNoWheel">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#7a4dff"/><path d="M32 32V2a30 30 0 0 1 30 30z" fill="#47d6a4"/><path d="M32 32H2A30 30 0 0 1 32 2z" fill="#ffc82e"/><path d="M32 32l21 21A30 30 0 0 1 32 62z" fill="#ff6a55"/><circle cx="32" cy="32" r="30" fill="none" stroke="#1d1633" stroke-width="4"/><circle cx="32" cy="32" r="7" fill="#fff" stroke="#1d1633" stroke-width="3"/></svg>
+      <span>YesNoWheel</span>
+    </a>
+    <nav class="topnav" aria-label="Main">
+      <div class="seg mode-switch" role="tablist">
+        <button type="button" role="tab" data-mode="yesno" data-i18n="yesnoMode"></button>
+        <button type="button" role="tab" data-mode="custom" data-i18n="customMode"></button>
+      </div>
+      <button id="btnSettings" class="nav-btn" type="button" data-i18n-title="settings"><span aria-hidden="true">⚙</span> <span data-i18n="settings"></span></button>
+      <button id="btnShare" class="nav-btn share" type="button"><span aria-hidden="true">⤴</span> <span data-i18n="share"></span></button>
+      <a class="nav-btn" href="tools/"><span aria-hidden="true">✦</span> Tools</a>
+      <select id="langSelect" class="select" data-i18n-title="language"></select>
+      <button id="btnFullscreen" class="icon-btn" type="button" data-i18n-title="fullscreen">⛶</button>
+    </nav>
+  </header>
+  <div class="banner">
+    <div class="banner-text">
+      <div class="banner-title">Yes or No Wheel</div>
+      <div class="banner-tag">Spin it, trust it, move on.</div>
+      <input id="titleInput" class="title-input" type="text" maxlength="80" data-i18n-ph="wheelTitlePh" data-i18n-title="wheelTitlePh" autocomplete="off">
     </div>
-    <div class="wheelbox"><div class="pointer"></div><canvas id="wheel" width="1040" height="1040" role="img" aria-label="Yes or No wheel"></canvas><button class="spin" id="spin">Spin</button></div>
-    <div class="tools">
-      <button class="ib" id="bHist" aria-pressed="false" title="Show results" aria-label="Show results">🏆</button>
-      <button class="ib" id="bSnd" aria-pressed="true" title="Sound on" aria-label="Sound">🔊</button>
-      <button class="ib" id="bFull" title="Full screen" aria-label="Full screen">⛶</button>
-    </div>
+    <div class="banner-ad" aria-label="Advertisement">Ad slot 728x90</div>
   </div>
-  <div class="result" id="result" role="status" aria-live="polite">Press Spin to get an answer</div>
-  <div class="panel" id="panel" hidden><h2>All results</h2><ol id="hist"></ol><p class="none" id="none">No spins yet.</p></div>
-</div>
 
-<div class="ad" aria-label="Advertisement">Ad slot (paste your AdSense unit here)</div>
+  <main class="layout">
+    <section class="stage" id="wheelArea">
+      <h1 id="stageTitle" class="stage-title"></h1>
+      <p id="stageDesc" class="stage-desc" hidden></p>
+      <div class="wheel-wrap" id="wheelWrap">
+        <canvas id="wheel" tabindex="0" role="button" data-i18n-title="spin"></canvas>
+      </div>
+      <button id="spinBtn" class="btn primary big" type="button" data-i18n="spin"></button>
+      <div id="tally" class="tally" hidden>
+        <span class="tally-label" data-i18n="tally"></span>
+        <span id="tallyItems" class="tally-items"></span>
+        <button id="btnResetTally" class="btn ghost small" type="button" data-i18n="resetTally"></button>
+      </div>
+      <p class="hint" data-i18n="shortcuts"></p>
+      <button id="exitPresent" class="exit-present" type="button" data-i18n-title="exitFullscreen">✕</button>
+    </section>
 
-<main>
-<section id="what"><h2 class="n">1. What Is the Yes or No Wheel?</h2>
-<p>It's a wheel with Yes and No slices. You spin it, it lands on one, and you get a random answer. Nothing to install and nothing to create. Open the page and spin.</p>
-<p>Switch to Yes / No / Maybe when "not yet" is an acceptable answer too.</p></section>
-<hr class="div">
-<section id="how"><h2 class="n">2. How to Use the Wheel</h2>
-<p>Think of a question that has a yes or no answer. Press the Spin button in the middle of the wheel, or click the wheel itself. The pointer at the top shows the winning slice, and the answer appears under the wheel.</p>
-<p>The scoreboard on the left counts every result. Press Reset score to start from zero.</p></section>
-<hr class="div">
-<section id="modes"><h2 class="n">3. Yes / No vs. Yes / No / Maybe</h2>
-<p>Yes / No gives you a firm answer. Yes / No / Maybe adds a middle result, which suits choices where waiting is fair, like "Should I decide tomorrow?"</p></section>
-<hr class="div">
-<section id="results"><h2 class="n">4. Scores and Results</h2>
-<p>Tap the trophy to see every answer from this visit, newest first. The wheel keeps the list only in your browser and clears it when you close the page.</p></section>
-<hr class="div">
-<section id="when"><h2 class="n">5. When to Use It</h2>
-<p>The wheel works best for small choices where both answers are fine:</p>
-<ul class="pill"><li>Eat out tonight?</li><li>Go to the gym?</li><li>One more episode?</li><li>Try something new?</li><li>Start the group game?</li></ul>
-<h3>Classrooms and teams</h3><p>Use it to decide whether to run another round, give a group a second chance, or add a bonus challenge.</p>
-<h3>Party games</h3><p>Spin to decide whether a player takes the dare, answers the question, or passes the turn.</p></section>
-<hr class="div">
-<section id="tips"><h2 class="n">6. Get a Better Answer</h2>
-<h3>Ask one clear question</h3><p>"Should I cook dinner tonight?" works better than "What should I do tonight?" Both Yes and No need to be real answers.</p>
-<h3>Set your rule first</h3><p>Decide before you spin: take the first result, or go best of three. This stops you from spinning until you hear what you wanted.</p>
-<h3>Notice your reaction</h3><p>If the wheel says No and you feel disappointed, you already know what you wanted.</p>
-<h3>Keep it low-stakes</h3><p>Don't use a random result for health, safety, money or legal decisions. Use reliable information and a professional for those.</p></section>
-<hr class="div">
-<section id="more"><h2 class="n">7. Need More Than Yes or No?</h2>
-<p>Try our <a href="tools/">other tools</a> to build a wheel with your own names or options, or flip a coin if two outcomes are all you need.</p></section>
-<hr class="div">
-<section id="feedback"><h2 class="n">8. Tell Us What You Think</h2>
-<p>Found a bug or have an idea? <a href="contact/">Send us a message</a> and we'll look at it.</p></section>
-<hr class="div">
-<section id="faq"><h2 class="n">9. Frequently Asked Questions</h2>
-<details><summary>Is the Yes or No wheel random?</summary><p>Yes. Each spin picks its result at random with your browser's secure random generator, then the wheel animates to that slice.</p></details>
-<details><summary>Can I spin more than once for the same question?</summary><p>You can spin as often as you like. For a fairer decision, choose your rule first, such as accepting the first spin or best of three.</p></details>
-<details><summary>What's the difference between Yes / No and Yes / No / Maybe?</summary><p>Yes / No gives a firm answer. Yes / No / Maybe adds a neutral result for choices that can wait.</p></details>
-<details><summary>Should I use it for important decisions?</summary><p>No. It's meant for fun and low-stakes choices. Rely on good information and professional advice for serious matters.</p></details>
-<details><summary>Does it cost anything?</summary><p>No. The wheel is free and doesn't need an account.</p></details>
-</section>
-</main>
+    <aside class="panel">
+      <div class="tabs" role="tablist">
+        <button type="button" role="tab" class="tab active" data-tab="inputs" data-i18n="tabInputs"></button>
+        <button type="button" role="tab" class="tab" data-tab="results" data-i18n="tabResults"></button>
+      </div>
+
+      <div id="paneInputs">
+        <!-- Yes / No controls -->
+        <div id="ynPanel">
+          <div class="field">
+            <div class="seg">
+              <button type="button" data-three="0" data-i18n="opt2"></button>
+              <button type="button" data-three="1" data-i18n="opt3"></button>
+            </div>
+          </div>
+          <div class="field inline">
+            <label for="setsSelect" data-i18n="sets"></label>
+            <select id="setsSelect" class="select">
+              <option value="1">1×</option><option value="2">2×</option><option value="3">3×</option><option value="4">4×</option><option value="5">5×</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Custom wheel controls -->
+        <div id="customPanel" hidden>
+          <div class="field">
+            <div class="seg">
+              <button type="button" data-view="list" data-i18n="listView"></button>
+              <button type="button" data-view="text" data-i18n="textView"></button>
+            </div>
+          </div>
+
+          <div class="toolbar">
+            <button id="btnShuffle" class="btn small" type="button" data-i18n="shuffle"></button>
+            <button id="btnSort" class="btn small" type="button" data-i18n="sortAZ"></button>
+            <button id="btnDelEmpty" class="btn small" type="button" data-i18n="delEmpty"></button>
+            <button id="btnClear" class="btn small danger" type="button" data-i18n="clearAll"></button>
+            <button id="btnImport" class="btn small" type="button" data-i18n="importFile"></button>
+            <button id="btnExportCsv" class="btn small" type="button" data-i18n="exportCSV"></button>
+            <button id="btnExportJson" class="btn small" type="button" data-i18n="exportJSON"></button>
+            <button id="btnRestore" class="btn small" type="button" hidden></button>
+            <input id="fileInput" type="file" accept=".csv,.txt,.json,text/csv,text/plain,application/json" hidden>
+          </div>
+
+          <div class="checks">
+            <label class="check"><input id="chkMysteryWheel" type="checkbox"> <span data-i18n="mysteryWheel"></span></label>
+            <label class="check"><input id="chkMysteryResult" type="checkbox"> <span data-i18n="mysteryResult"></span></label>
+          </div>
+
+          <fieldset class="actions">
+            <legend data-i18n="actionMode"></legend>
+            <label class="check"><input type="radio" name="action" value="normal"> <span data-i18n="normal"></span></label>
+            <label class="check"><input type="radio" name="action" value="elimination"> <span data-i18n="elimination"></span></label>
+            <label class="check"><input type="radio" name="action" value="accumulation"> <span data-i18n="accumulation"></span></label>
+          </fieldset>
+
+          <div id="listView">
+            <input id="searchInput" class="input" type="search" data-i18n-ph="search" data-i18n-title="search" autocomplete="off">
+            <ul id="entryList" class="entry-list"></ul>
+            <button id="btnAdd" class="btn primary small" type="button" data-i18n="addEntry"></button>
+          </div>
+          <div id="textView" hidden>
+            <textarea id="entryText" class="textarea" rows="12" spellcheck="false" data-i18n-ph="textPh"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div id="paneResults" hidden>
+        <div id="leaderboardBox" hidden>
+          <h2 class="h2" data-i18n="leaderboard"></h2>
+          <ol id="leaderboardList" class="leaderboard"></ol>
+        </div>
+        <h2 class="h2" data-i18n="history"></h2>
+        <ul id="historyList" class="history"></ul>
+        <div class="toolbar">
+          <button id="btnExportHistory" class="btn small" type="button" data-i18n="exportCSV"></button>
+          <button id="btnClearHistory" class="btn small danger" type="button" data-i18n="clearHistory"></button>
+        </div>
+      </div>
+    </aside>
+  </main>
 
 <div class="ad-slot" aria-label="Advertisement">Ad slot: paste your AdSense unit here</div>
 
@@ -209,64 +232,95 @@ footer b{display:block;margin-bottom:6px;color:var(--sun)}
   <div><b>Help</b><a href="contact/">Feedback &amp; Contact</a></div>
   <div><b>Legal</b><a href="privacy/">Privacy Policy</a><a href="terms/">Terms and Conditions</a><a href="cookies/">Cookie Policy</a></div>
 </div></footer>
-</div>
 
-<footer><div class="wrap">
-  <div><b>YesNoWheel</b>&copy; 2026</div>
-  <div><b>Explore</b><a href="tools/">Tools</a><a href="blog/">Blog</a><a href="about/">About</a></div>
-  <div><b>Help</b><a href="contact/">Feedback &amp; Contact</a></div>
-  <div><b>Legal</b><a href="privacy/">Privacy Policy</a><a href="terms/">Terms and Conditions</a><a href="cookies/">Cookie Policy</a></div>
-</div></footer>
+  <!-- Settings drawer -->
+  <div id="scrim" class="scrim" hidden></div>
+  <aside id="drawer" class="drawer" aria-hidden="true" aria-labelledby="drawerTitle">
+    <div class="drawer-head">
+      <h2 id="drawerTitle" data-i18n="settings"></h2>
+      <button id="btnCloseDrawer" class="icon-btn" type="button" data-i18n-title="close">✕</button>
+    </div>
+    <div class="drawer-body">
+      <section class="group">
+        <h3 data-i18n="setSpin"></h3>
+        <label class="slider"><span data-i18n="duration"></span><output id="durVal"></output>
+          <input id="setDuration" type="range" min="1" max="15" step="1"></label>
+        <label class="slider"><span data-i18n="speed"></span><output id="speedVal"></output>
+          <input id="setSpeed" type="range" min="1" max="10" step="1"></label>
+        <label class="check"><input id="setIdle" type="checkbox"> <span data-i18n="idle"></span></label>
+      </section>
 
-<script>
-(function(){
-var $=function(i){return document.getElementById(i)};
-var cv=$('wheel'),ctx=cv.getContext('2d'),S=cv.width,C=S/2,R=C-14;
-var COL=['#7a4dff','#ffc82e','#ff6a55','#47d6a4'],INK='#1d1633';
-var mode=2,rot=0,busy=false,snd=true,counts={Yes:0,No:0,Maybe:0},hist=[],ac=null;
-function labels(){var a=[],n=mode===2?8:9,seq=mode===2?['Yes','No']:['Yes','No','Maybe'];for(var i=0;i<n;i++)a.push(seq[i%seq.length]);return a}
-function draw(){
-  var L=labels(),n=L.length,seg=2*Math.PI/n;ctx.clearRect(0,0,S,S);ctx.save();ctx.translate(C,C);ctx.rotate(rot);
-  for(var i=0;i<n;i++){
-    var a0=i*seg-Math.PI/2-seg/2+seg/2-seg/2;
-    ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,R,i*seg,(i+1)*seg);ctx.closePath();
-    var c=L[i]==='Yes'?(i%4===0?COL[3]:COL[0]):L[i]==='No'?(i%4===1?COL[2]:COL[1]):COL[1];
-    if(mode===3)c=[COL[3],COL[2],COL[1]][i%3];
-    ctx.fillStyle=c;ctx.fill();ctx.lineWidth=6;ctx.strokeStyle=INK;ctx.stroke();
-    ctx.save();ctx.rotate(i*seg+seg/2);ctx.textAlign='right';ctx.textBaseline='middle';
-    ctx.fillStyle=(c===COL[2])?'#fff':INK;ctx.font='800 64px "Bricolage Grotesque",system-ui,sans-serif';ctx.fillText(L[i].toUpperCase()==='MAYBE'?'Maybe':L[i],R-34,0);ctx.restore();
-  }
-  ctx.restore();ctx.beginPath();ctx.arc(C,C,R,0,7);ctx.lineWidth=12;ctx.strokeStyle=INK;ctx.stroke();
-}
-function rnd(n){var a=new Uint32Array(1);crypto.getRandomValues(a);return a[0]/4294967296*n}
-function beep(f,d,v){if(!snd)return;try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();var o=ac.createOscillator(),g=ac.createGain();o.frequency.value=f;o.type='triangle';g.gain.value=v||.05;o.connect(g);g.connect(ac.destination);o.start();g.gain.exponentialRampToValueAtTime(.0001,ac.currentTime+d);o.stop(ac.currentTime+d)}catch(e){}}
-function spin(){
-  if(busy)return;busy=true;$('spin').disabled=true;var L=labels(),n=L.length,seg=2*Math.PI/n,TAU=2*Math.PI;
-  var i=Math.floor(rnd(n)),jit=(rnd(1)-.5)*seg*.7;
-  // pointer sits at top (-90deg): slice centre must land at 3*PI/2
-  var want=((1.5*Math.PI-(i+.5)*seg-jit)%TAU+TAU)%TAU;
-  var start=rot,cur=((start%TAU)+TAU)%TAU,delta=((want-cur)%TAU+TAU)%TAU+TAU*(5+Math.floor(rnd(3)));
-  var dur=4800,t0=null,lastTick=-1;
-  $('result').className='result';$('result').textContent='Spinning...';
-  function f(t){if(t0===null)t0=t;var p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,4);rot=start+delta*e;draw();
-    var tk=Math.floor((rot%TAU)/seg);if(tk!==lastTick){lastTick=tk;beep(520,.05,.03)}
-    if(p<1)requestAnimationFrame(f);else done(L[i])}
-  requestAnimationFrame(f);
-}
-function done(r){
-  busy=false;$('spin').disabled=false;counts[r]++;hist.unshift(r);
-  $('c'+r).textContent=counts[r];var el=$('result');el.textContent=r==='Maybe'?'Maybe':r+'!';el.className='result '+r.toLowerCase();
-  beep(r==='No'?220:r==='Yes'?660:440,.35,.08);
-  var li=document.createElement('li');li.textContent=r;$('hist').insertBefore(li,$('hist').firstChild);$('none').hidden=true;
-}
-function setMode(m){if(busy)return;mode=m;$('m2').setAttribute('aria-pressed',m===2);$('m3').setAttribute('aria-pressed',m===3);$('tMaybe').hidden=m!==3;draw()}
-$('spin').onclick=spin;cv.onclick=spin;$('m2').onclick=function(){setMode(2)};$('m3').onclick=function(){setMode(3)};
-$('reset').onclick=function(){counts={Yes:0,No:0,Maybe:0};hist=[];['Yes','No','Maybe'].forEach(function(k){$('c'+k).textContent=0});$('hist').innerHTML='';$('none').hidden=false;$('result').className='result';$('result').textContent='Press Spin to get an answer'};
-$('bHist').onclick=function(){var p=$('panel');p.hidden=!p.hidden;this.setAttribute('aria-pressed',!p.hidden)};
-$('bSnd').onclick=function(){snd=!snd;this.setAttribute('aria-pressed',snd);this.textContent=snd?'🔊':'🔇'};
-$('bFull').onclick=function(){var f=$('frame');if(document.fullscreenElement)document.exitFullscreen();else if(f.requestFullscreen)f.requestFullscreen()};
-rot=0;draw();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(draw);
-})();
-</script>
+      <section class="group">
+        <h3 data-i18n="setEffects"></h3>
+        <label class="check"><input id="setTick" type="checkbox"> <span data-i18n="tick"></span></label>
+        <label class="check"><input id="setVictory" type="checkbox"> <span data-i18n="victory"></span></label>
+        <label class="check"><input id="setConfetti" type="checkbox"> <span data-i18n="confetti"></span></label>
+        <label class="check"><input id="setDark" type="checkbox"> <span data-i18n="dark"></span></label>
+      </section>
+
+      <section class="group">
+        <h3 data-i18n="setStyle"></h3>
+        <label class="field"><span data-i18n="palette"></span>
+          <select id="setPalette" class="select">
+            <option value="vibrant" data-i18n="vibrant"></option>
+            <option value="pastel" data-i18n="pastel"></option>
+            <option value="neon" data-i18n="neon"></option>
+            <option value="mono" data-i18n="mono"></option>
+            <option value="custom" data-i18n="custom"></option>
+          </select>
+        </label>
+        <div id="customPalette" class="palette-row" hidden></div>
+        <div class="field inline"><span data-i18n="pageBg"></span>
+          <span class="row-gap"><input id="setPageBg" type="color" value="#f1f5f9"><button id="btnResetBg" class="btn ghost small" type="button" data-i18n="resetColor"></button></span>
+        </div>
+        <label class="field"><span data-i18n="centerText"></span>
+          <input id="setCenterText" class="input" type="text" maxlength="12" autocomplete="off"></label>
+        <div class="field inline"><span data-i18n="centerColor"></span>
+          <input id="setCenterColor" type="color" value="#4f46e5"></div>
+        <label class="field"><span data-i18n="wheelTitle"></span>
+          <input id="setTitle" class="input" type="text" maxlength="80" data-i18n-ph="wheelTitlePh" autocomplete="off"></label>
+        <label class="field"><span data-i18n="wheelDesc"></span>
+          <textarea id="setDesc" class="textarea" rows="3" maxlength="300" data-i18n-ph="descPh"></textarea></label>
+      </section>
+
+      <section class="group">
+        <h3 data-i18n="share"></h3>
+        <input id="shareLink" class="input mono" type="text" readonly>
+        <button id="btnCopyLink" class="btn small" type="button" data-i18n="copyLink"></button>
+        <textarea id="embedCode" class="textarea mono" rows="4" readonly></textarea>
+        <button id="btnCopyEmbed" class="btn small" type="button" data-i18n="copyEmbed"></button>
+      </section>
+
+      <section class="group">
+        <button id="btnResetAll" class="btn danger" type="button" data-i18n="resetAll"></button>
+      </section>
+    </div>
+  </aside>
+
+  <!-- Result modal -->
+  <div id="resultModal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="resultKicker">
+    <div class="modal-card">
+      <p id="resultKicker" class="modal-kicker" data-i18n="winnerIs"></p>
+      <div id="resultBody" class="result-text"></div>
+      <p id="resultMeta" class="result-meta"></p>
+      <div id="resultActions" class="modal-actions"></div>
+    </div>
+  </div>
+
+  <canvas id="confetti" aria-hidden="true"></canvas>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <noscript>
+    <p style="padding:24px;text-align:center">YesNoWheel is a free Yes or No decision wheel and custom random picker wheel. Please enable JavaScript to spin the wheel.</p>
+  </noscript>
+
+  <script src="i18n.js"></script>
+  <script src="app.js"></script>
+  <script>
+    document.getElementById('btnShare').addEventListener('click', function () {
+      document.getElementById('btnSettings').click();
+      setTimeout(function () { var s = document.getElementById('shareLink'); if (s) s.scrollIntoView({ block: 'center' }); }, 300);
+    });
+  </script>
 </body>
 </html>
