@@ -644,7 +644,7 @@
 
   /* -------------------------------------------------------------- rendering */
   function updateTitleUI() {
-    var title = state.title || (state.mode === 'yesno' ? t('yesnoMode') : t('customMode'));
+    var title = state.title || (state.mode === 'yesno' ? (lang === 'en' ? t('h1yesno') : t('yesnoMode')) : t('customMode'));
     $('#stageTitle').textContent = title;
     var d = $('#stageDesc');
     d.textContent = state.desc;
