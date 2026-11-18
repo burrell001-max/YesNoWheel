@@ -290,3 +290,13 @@ body.present .banner, body.embed .banner { display: none !important; }
 .fab.dark:hover { background: var(--primary); }
 body.present .fab-col, body.embed .fab-col { display: none; }
 @media (max-width: 560px) { .fab { width: 40px; height: 40px; } .fab-col.bottom .fab { width: 44px; height: 44px; } }
+
+/* ---------- Wheel-first home: full-width sage stage, big wheel, floating buttons ---------- */
+body:not(.present):not(.embed) .layout { display: block; max-width: none; padding: 0 0 40px; }
+body:not(.present):not(.embed) .stage { border: 0; border-radius: 0; box-shadow: none; width: 100%; padding: 22px 0 26px; justify-content: center; border-bottom: 3px solid var(--border); }
+body:not(.present):not(.embed) .wheel-wrap { width: min(94vw, clamp(300px, calc(100vh - 250px), 820px)); }
+body:not(.present):not(.embed) #spinBtn, body:not(.present):not(.embed) .stage .hint, body:not(.present):not(.embed) .stage-desc { display: none; }
+body:not(.present):not(.embed) .stage-title { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+body:not(.present):not(.embed) .tally { position: absolute; left: 16px; top: 14px; justify-content: flex-start; max-width: 46%; z-index: 3; }
+body:not(.present):not(.embed) .fab-col { right: 16px; }
+body:not(.present):not(.embed) .layout > .panel { width: calc(100% - 24px); max-width: 820px; margin: 28px auto 0; }

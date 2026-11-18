@@ -56,7 +56,7 @@
     var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     return {
       mode: 'yesno', view: 'list',
-      yn: { three: false, sets: 1, tally: { yes: 0, no: 0, maybe: 0 } },
+      yn: { three: false, sets: 4, tally: { yes: 0, no: 0, maybe: 0 } },
       entries: ['Pizza', 'Burgers', 'Sushi', 'Tacos', 'Salad', 'Pasta'].map(function (t) { return mkEntry({ text: t }); }),
       action: 'normal', mysteryWheel: false, mysteryResult: false,
       title: '', desc: '', history: [], wins: {},
