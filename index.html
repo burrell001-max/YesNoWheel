@@ -54,10 +54,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Jost:wght@500;700&display=swap" rel="stylesheet">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-   {"@type":"Question","name":"Is the Yes or No wheel random?","acceptedAnswer":{"@type":"Answer","text":"Yes. Each spin picks its result at random, then the wheel animates to that slice."}},
-   {"@type":"Question","name":"Can I spin more than once for the same question?","acceptedAnswer":{"@type":"Answer","text":"Yes. Choose your rule first, such as accepting the first spin or best of three."}},
-   {"@type":"Question","name":"Should I use it for important decisions?","acceptedAnswer":{"@type":"Answer","text":"No. It is meant for fun, low-stakes choices."}}]}
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is the Yes or No wheel random?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Each spin picks its result at random using your browser's secure random number generator, then the wheel animates to that slice. The animation does not influence the outcome."}}, {"@type": "Question", "name": "Can I spin more than once for the same question?", "acceptedAnswer": {"@type": "Answer", "text": "You can spin as often as you like. For a fairer decision, choose your rule first, such as accepting the first spin or going best of three."}}, {"@type": "Question", "name": "Can I make some options more likely than others?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, on the Custom Wheel. Give an entry a higher weight and it takes a larger share of the wheel and wins more often."}}, {"@type": "Question", "name": "Can I use my own names or a list from a file?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Type or paste entries, or import a CSV, TXT or JSON file. You can also add a color or image to each entry."}}, {"@type": "Question", "name": "Should I use it for important decisions?", "acceptedAnswer": {"@type": "Answer", "text": "No. It is meant for fun and low-stakes choices. Rely on good information and professional advice for serious matters."}}, {"@type": "Question", "name": "Does it work offline, and is my data private?", "acceptedAnswer": {"@type": "Answer", "text": "Once the page has loaded it runs in your browser. Your lists, settings and history stay on your device."}}, {"@type": "Question", "name": "Does it cost anything?", "acceptedAnswer": {"@type": "Answer", "text": "No. The wheel is free and needs no account."}}]}
   </script>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -93,7 +90,7 @@
 
   <main class="layout">
     <section class="stage" id="wheelArea">
-      <h1 id="stageTitle" class="stage-title"></h1>
+      <h1 id="stageTitle" class="stage-title">Yes or No Wheel</h1>
       <p id="stageDesc" class="stage-desc" hidden></p>
       <div class="fab-col top">
         <button id="fabEdit" class="fab dark" type="button" title="Edit entries" aria-label="Edit entries">✎</button>
@@ -199,43 +196,66 @@
   </main>
 
 <div class="guide" lang="en">
-  <section><h2>1. What Is the Yes or No Wheel?</h2>
-    <p>It is a wheel with Yes and No slices. Spin it and it lands on one, giving you a random answer. Nothing to install, no account to make. Open the page and spin.</p>
-    <p>Switch to Yes, No or Maybe when "not yet" is an acceptable answer too.</p></section>
+  <section><h2>A Free Yes or No Wheel With Fair Odds and No Sign-Up</h2>
+    <p>This is a Yes or No wheel you can spin in one click, plus a full custom picker wheel for names, tasks, prizes or anything else you need to choose between. Everything runs in your browser, so there is nothing to install and no account to create.</p>
+    <p>Use the Yes/No Wheel tab for a quick answer, or switch to Custom Wheel to build your own list. The sections below explain how each part works, so you know what you are getting before you spin.</p></section>
   <hr>
-  <section><h2>2. How to Use the Wheel</h2>
-    <p>Think of a question with a yes or no answer. Press Spin, click the wheel, or hit the space bar. The pointer shows the winning slice and a pop-up shows the answer.</p>
-    <p>The running scoreboard counts every result, and the Results tab keeps a history of your spins.</p></section>
+  <section><h2>How the Spin Is Decided</h2>
+    <p>Each spin picks its result first, then animates the wheel so it lands on that slice. The pick uses your browser's built-in random number generator (<code>crypto.getRandomValues</code>), which is designed for unpredictable output, and falls back to a standard random function only if your browser does not support it. Spin speed, spin length and the physics of the pointer are visual only. They do not change which slice wins.</p>
+    <p>On the Yes/No wheel every slice has the same chance. On a custom wheel, an entry with a weight of 2 is twice as likely to win as an entry with a weight of 1, so you can make a wheel where some choices are deliberately more likely than others.</p></section>
   <hr>
-  <section><h2>3. Yes / No vs. Yes / No / Maybe</h2>
-    <p>Yes / No gives a firm answer. Yes / No / Maybe adds a middle result, which suits choices where waiting is fair, like "Should I decide tomorrow?" You can also spin up to five sets at once to see a tally.</p></section>
+  <section><h2>Yes/No, Yes/No/Maybe and Repeated Spins</h2>
+    <p>The default wheel gives a firm Yes or No. Turn on the third option and it becomes Yes, No or Maybe, which fits questions where "not yet" is a fair answer, such as "Should I decide tomorrow?"</p>
+    <p>You can also spin up to five wheels at once. This is useful when you want a tally instead of a single result, for example asking the same question five times and going with the majority. A running scoreboard counts every result, and the Results tab keeps a history you can export as CSV.</p></section>
   <hr>
-  <section><h2>4. Build Your Own Wheel</h2>
-    <p>Open Custom Wheel to enter your own names or options. Give each entry a weight, a color or an image, then spin to pick one. Use Elimination to remove each winner, or Accumulation to keep a leaderboard.</p>
-    <p>You can import a list from CSV, TXT or JSON, and share your wheel with a link or embed it on another page.</p></section>
+  <section><h2>Build a Custom Picker Wheel</h2>
+    <p>Open the Custom Wheel tab to enter your own entries. You can type them one at a time or paste a whole list in text view, using one entry per line, or a weight and a name separated by a comma. Each entry can have its own color, image and weight, and you can hide, duplicate, delete or drag entries into a new order.</p>
+    <ul>
+      <li><b>Import and export:</b> load a list from a CSV, TXT or JSON file, and export your list or spin history when you are done.</li>
+      <li><b>Elimination mode:</b> remove each winner after it is picked, so everyone gets a turn exactly once. This suits seating, presentation order and chore rotations.</li>
+      <li><b>Accumulation mode:</b> keep a live leaderboard of how often each entry has won.</li>
+      <li><b>Mystery options:</b> hide the entry names on the wheel, or hide the result until you reveal it, to add suspense for a group.</li>
+      <li><b>Shuffle, sort and search</b> help keep long lists manageable.</li>
+    </ul></section>
   <hr>
-  <section><h2>5. When to Use It</h2>
-    <p>The wheel works best for small choices where both answers are fine:</p>
+  <section><h2>Settings and Presenting to a Group</h2>
+    <p>Open Settings to change how long the wheel spins (1 to 15 seconds), how fast it starts, whether it idles slowly while waiting, and whether it plays tick and victory sounds or confetti. You can switch between light and dark themes, choose a color palette, and edit the wheel's title and description.</p>
+    <p>Fullscreen presentation mode removes the surrounding page, which works well on a classroom projector or a shared screen. Press Space or Enter to spin and Esc to leave fullscreen.</p></section>
+  <hr>
+  <section><h2>Share or Embed Your Wheel</h2>
+    <p>Use the Share button to copy a link that contains your wheel. The list is stored in the link itself, so anyone who opens it sees the same wheel without needing an account. If you run a website or a class page, you can also copy an iframe snippet and embed the wheel directly.</p></section>
+  <hr>
+  <section><h2>Ten Languages</h2>
+    <p>The wheel is available in English, Spanish, French, German, Portuguese, Italian, Japanese, Korean, Chinese and Arabic, with right-to-left layout for Arabic. It picks a language from your browser, remembers your choice, and you can switch at any time from the menu or by adding <code>?lang=</code> and a language code to the address.</p></section>
+  <hr>
+  <section><h2>Privacy: What Stays on Your Device</h2>
+    <p>Your lists, settings and spin history are saved in your own browser and are not sent to a server, and the wheel keeps working offline once the page has loaded. See the <a href="privacy.html">Privacy Policy</a> and <a href="cookies.html">Cookie Policy</a> for details about analytics and cookies on this site.</p></section>
+  <hr>
+  <section><h2>Good Uses for a Yes or No Wheel</h2>
+    <p>The wheel works best for small choices where either answer is fine:</p>
     <ul class="pills"><li>Eat out tonight?</li><li>Go to the gym?</li><li>One more episode?</li><li>Try something new?</li><li>Start the game?</li></ul>
-    <h3>Classrooms and teams</h3><p>Decide whether to run another round, give a group a second chance, or add a bonus challenge.</p>
-    <h3>Party games</h3><p>Spin to decide whether a player takes the dare, answers the question, or passes the turn.</p></section>
+    <h3>Classrooms and teams</h3><p>Pick who answers next, decide whether to run another round, or choose a presentation order with Elimination mode so nobody is picked twice.</p>
+    <h3>Party games and streams</h3><p>Spin to decide whether a player takes the dare, answers the question or passes the turn. Use Mystery mode to build suspense for the audience.</p>
+    <h3>Breaking a tie</h3><p>When two options are close and you honestly cannot choose, a spin ends the debate. Pay attention to how you feel about the result, because your reaction is often useful information.</p></section>
   <hr>
-  <section><h2>6. Get a Better Answer</h2>
-    <h3>Ask one clear question</h3><p>"Should I cook dinner tonight?" works better than "What should I do tonight?" Both Yes and No need to be real answers.</p>
-    <h3>Set your rule first</h3><p>Decide before you spin: take the first result, or go best of three. This stops you from spinning until you hear what you wanted.</p>
-    <h3>Notice your reaction</h3><p>If the wheel says No and you feel disappointed, you already know what you wanted.</p>
-    <h3>Keep it low-stakes</h3><p>Do not use a random result for health, safety, money or legal decisions. Use reliable information and a professional for those.</p></section>
+  <section><h2>Tips for a Better Answer</h2>
+    <h3>Ask one clear question</h3><p>"Should I cook dinner tonight?" works better than "What should I do tonight?" Both Yes and No need to be real, acceptable answers.</p>
+    <h3>Set your rule before you spin</h3><p>Decide in advance whether the first result is final or whether you will go best of three. Without a rule, it is easy to keep spinning until you hear what you wanted.</p>
+    <h3>Notice your reaction</h3><p>If the wheel says No and you feel disappointed, you have learned what you wanted. You can follow the wheel or follow that feeling.</p>
+    <h3>Keep it low-stakes</h3><p>Do not use a random result for health, safety, money or legal decisions. Use reliable information and a qualified professional for those.</p></section>
   <hr>
-  <section><h2>7. Tell Us What You Think</h2>
-    <p>Found a bug or have an idea? <a href="contact.html">Send us a message</a> and we will look at it.</p></section>
-  <hr>
-  <section><h2>8. Frequently Asked Questions</h2>
-    <details><summary>Is the Yes or No wheel random?</summary><p>Yes. Each spin picks its result at random, then the wheel animates to that slice.</p></details>
-    <details><summary>Can I spin more than once for the same question?</summary><p>You can spin as often as you like. For a fairer decision, choose your rule first, such as accepting the first spin or best of three.</p></details>
+  <section><h2>Frequently Asked Questions</h2>
+    <details><summary>Is the Yes or No wheel random?</summary><p>Yes. Each spin picks its result at random using your browser's secure random number generator, then the wheel animates to that slice. The animation does not influence the outcome.</p></details>
+    <details><summary>Can I spin more than once for the same question?</summary><p>You can spin as often as you like. For a fairer decision, choose your rule first, such as accepting the first spin or going best of three.</p></details>
+    <details><summary>Can I make some options more likely than others?</summary><p>Yes, on the Custom Wheel. Give an entry a higher weight and it takes a larger share of the wheel and wins more often.</p></details>
+    <details><summary>Can I use my own names or a list from a file?</summary><p>Yes. Type or paste entries, or import a CSV, TXT or JSON file. You can also add a color or image to each entry.</p></details>
     <details><summary>Should I use it for important decisions?</summary><p>No. It is meant for fun and low-stakes choices. Rely on good information and professional advice for serious matters.</p></details>
     <details><summary>Does it work offline, and is my data private?</summary><p>Once the page has loaded it runs in your browser. Your lists, settings and history stay on your device.</p></details>
     <details><summary>Does it cost anything?</summary><p>No. The wheel is free and needs no account.</p></details>
   </section>
+  <hr>
+  <section><h2>Tell Us What You Think</h2>
+    <p>Found a bug or have an idea? <a href="contact.html">Send us a message</a> and we will look at it.</p></section>
 </div>
 
 <footer class="sitefoot"><div class="cols">
