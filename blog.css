@@ -30,3 +30,10 @@
 .tool:hover{background:var(--card);transform:translate(-2px,-2px)}
 .tool-bar{display:block;height:46px;background:var(--c);border-bottom:3px solid var(--border);margin-bottom:8px}
 .tool b{font-size:1.2rem;padding:0 18px}.tool span:last-child{padding:0 18px;line-height:1.5}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:26px}
+.tcard{display:block;padding:14px 14px 22px;text-align:center;border:3px solid var(--border);border-radius:24px;background:#fff;color:var(--ink);text-decoration:none;box-shadow:var(--shadow);transition:transform .1s}
+.tcard:hover{transform:translate(-3px,-3px);background:#fff}
+.tthumb{background:#d9e0d4;border-radius:14px;padding:6px}
+.tthumb svg{display:block;width:100%;height:auto}
+.tcard h2{font-size:1.4rem;line-height:1.2;margin:16px 6px 6px}
+.tcard p{margin:0 8px;line-height:1.5}

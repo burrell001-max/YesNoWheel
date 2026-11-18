@@ -351,5 +351,40 @@
       sync();
     })();
   </script>
+
+  <script>
+    (function () {
+      var S = function (s) { return s.split(','); };
+      var P = {
+        'truth-or-dare': { t: 'Truth or Dare', e: ['Truth: What is your most embarrassing moment?', 'Truth: What talent do you have that nobody knows about?', 'Truth: What is the last lie you told?', 'Truth: What is your biggest fear?', 'Truth: What is the weirdest food you have eaten?', 'Truth: Who was your first crush?', 'Truth: What is your most-used app?', 'Truth: What is the silliest thing you are afraid of?', 'Dare: Do your best impression of a celebrity', 'Dare: Sing the chorus of your favorite song', 'Dare: Speak in an accent until your next turn', 'Dare: Do 10 jumping jacks', 'Dare: Dance for 20 seconds without music', 'Dare: Tell a joke with a straight face', 'Dare: Balance a spoon on your nose', 'Dare: Talk like a pirate for two rounds'] },
+        nfl: { t: 'NFL Picker Wheel', e: S('Cardinals,Falcons,Ravens,Bills,Panthers,Bears,Bengals,Browns,Cowboys,Broncos,Lions,Packers,Texans,Colts,Jaguars,Chiefs,Raiders,Chargers,Rams,Dolphins,Vikings,Patriots,Saints,Giants,Jets,Eagles,Steelers,49ers,Seahawks,Buccaneers,Titans,Commanders') },
+        nba: { t: 'NBA Picker Wheel', e: S('Hawks,Celtics,Nets,Hornets,Bulls,Cavaliers,Mavericks,Nuggets,Pistons,Warriors,Rockets,Pacers,Clippers,Lakers,Grizzlies,Heat,Bucks,Timberwolves,Pelicans,Knicks,Thunder,Magic,76ers,Suns,Trail Blazers,Kings,Spurs,Raptors,Jazz,Wizards') },
+        mlb: { t: 'MLB Picker Wheel', e: S('Diamondbacks,Braves,Orioles,Red Sox,Cubs,White Sox,Reds,Guardians,Rockies,Tigers,Astros,Royals,Angels,Dodgers,Marlins,Brewers,Twins,Mets,Yankees,Athletics,Phillies,Pirates,Padres,Giants,Mariners,Cardinals,Rays,Rangers,Blue Jays,Nationals') },
+        states: { t: 'State Picker Wheel', e: S('Alabama,Alaska,Arizona,Arkansas,California,Colorado,Connecticut,Delaware,Florida,Georgia,Hawaii,Idaho,Illinois,Indiana,Iowa,Kansas,Kentucky,Louisiana,Maine,Maryland,Massachusetts,Michigan,Minnesota,Mississippi,Missouri,Montana,Nebraska,Nevada,New Hampshire,New Jersey,New Mexico,New York,North Carolina,North Dakota,Ohio,Oklahoma,Oregon,Pennsylvania,Rhode Island,South Carolina,South Dakota,Tennessee,Texas,Utah,Vermont,Virginia,Washington,West Virginia,Wisconsin,Wyoming') },
+        colors: { t: 'Color Picker Wheel', e: S('Red,Orange,Yellow,Green,Teal,Blue,Indigo,Purple,Pink,Brown,Black,White,Gray,Gold,Turquoise,Maroon') },
+        letters: { t: 'Letter Picker Wheel', e: S('A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z') },
+        numbers: { t: 'Number Picker Wheel', e: S('1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20') },
+        dates: { t: 'Date Picker Wheel', e: function () { var a = [], d = new Date(); for (var i = 0; i < 14; i++) { var x = new Date(d.getFullYear(), d.getMonth(), d.getDate() + i); a.push(x.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' })); } return a; } },
+        image: { t: 'Image Picker Wheel' }
+      };
+      function run() {
+        var k = (location.hash || '').slice(1);
+        if (!k) return;
+        var m = document.querySelector('[data-mode="' + (k === 'yesno' ? 'yesno' : 'custom') + '"]');
+        if (m) m.click();
+        var p = P[k];
+        if (!p) return;
+        if (p.e) {
+          var t = document.getElementById('entryText');
+          t.value = (typeof p.e === 'function' ? p.e() : p.e).join('\n');
+          t.dispatchEvent(new Event('input', { bubbles: true }));
+        }
+        var ti = document.getElementById('titleInput');
+        ti.value = p.t; ti.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+      window.addEventListener('load', run);
+      window.addEventListener('hashchange', run);
+    })();
+  </script>
 </body>
 </html>
