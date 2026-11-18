@@ -369,7 +369,7 @@
         image: { t: 'Image Picker Wheel' }
       };
       function run() {
-        var k = (location.hash || '').slice(1);
+        var k = (location.hash || '').slice(1) || 'yesno';
         if (!k) return;
         var m = document.querySelector('[data-mode="' + (k === 'yesno' ? 'yesno' : 'custom') + '"]');
         if (m) m.click();
