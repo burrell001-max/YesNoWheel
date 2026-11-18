@@ -195,12 +195,16 @@
     var de = document.documentElement;
     de.lang = lang;
     de.dir = I.isRtl(lang) ? 'rtl' : 'ltr';
-    document.title = t('title');
-    setMeta('meta[name="description"]', t('desc'));
-    setMeta('meta[property="og:title"]', t('title'));
-    setMeta('meta[property="og:description"]', t('desc'));
-    setMeta('meta[name="twitter:title"]', t('title'));
-    setMeta('meta[name="twitter:description"]', t('desc'));
+    /* Only the home page uses the translated title and description. Tool pages keep
+       the title and description written in their own HTML. */
+    if (/(^|\/)(index\.html)?$/.test(location.pathname)) {
+      document.title = t('title');
+      setMeta('meta[name="description"]', t('desc'));
+      setMeta('meta[property="og:title"]', t('title'));
+      setMeta('meta[property="og:description"]', t('desc'));
+      setMeta('meta[name="twitter:title"]', t('title'));
+      setMeta('meta[name="twitter:description"]', t('desc'));
+    }
     $$('[data-i18n]').forEach(function (el) { el.textContent = t(el.dataset.i18n); });
     $$('[data-i18n-ph]').forEach(function (el) { el.placeholder = t(el.dataset.i18nPh); });
     $$('[data-i18n-title]').forEach(function (el) {
@@ -836,6 +840,8 @@
       return e;
     });
     changed();
+    /* Keep the editable list in step when entries are set from outside the list view (tool presets). */
+    if (state.view !== 'text') renderList();
   }
 
   /* --------------------------------------------------------- import/export */
