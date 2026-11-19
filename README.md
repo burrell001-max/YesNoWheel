@@ -3,7 +3,7 @@
 A free **Yes or No wheel** and **custom random picker wheel** that runs entirely in the browser.
 Static HTML/CSS/vanilla JS, no backend, no build step, ready for GitHub Pages.
 
-Live site (after deploying): https://burrell001-max.github.io/YesNoWheel/
+Live site (after deploying): https://yesnowheel.xyz/
 
 ## Features
 
@@ -42,11 +42,11 @@ python3 -m http.server 8000
 1. Create a repository named `yesnowheel` and push all files to the `main` branch.
 2. In the repo go to **Settings > Pages**, and under **Build and deployment** set **Source** to **GitHub Actions**.
 3. Push to `main` (or run the workflow from the **Actions** tab). `.github/workflows/deploy.yml` publishes the site.
-4. Open `https://<your-username>.github.io/yesnowheel/`.
+4. Open `https://yesnowheel.xyz/`.
 
 ### Using a different username or domain
 
-The URL `https://burrell001-max.github.io/YesNoWheel/` appears in `index.html` (canonical, hreflang, Open Graph, JSON-LD), `robots.txt`, `sitemap.xml` and `BASE_URL` in `app.js`. Find and replace it with your own address.
+The URL `https://yesnowheel.xyz/` appears in `index.html` (canonical, hreflang, Open Graph, JSON-LD), `robots.txt`, `sitemap.xml` and `BASE_URL` in `app.js`. Find and replace it with your own address.
 
 ## Adding a language
 
