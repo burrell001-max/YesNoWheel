@@ -17,9 +17,9 @@
 
   var T = {
     en: {
-      title: 'Free Yes or No Wheel – Random Decision Maker Spinner | YesNoWheel',
-      h1yesno: 'Free Yes or No Wheel – Decision Maker Spinner',
-      desc: 'Spin the free Yes or No wheel for an instant 50/50 decision. A random decision maker spinner with custom wheels, weights and images. No sign-up, 10 languages.',
+      title: 'Yes or No Wheel – Free Random Yes or No Generator | YesNoWheel',
+      h1yesno: 'Yes or No Wheel – Free Yes No Generator & Decision Spinner',
+      desc: 'Spin the free Yes or No wheel, a random yes or no generator and yes no picker wheel for instant 50/50 decisions. Add Maybe or build a custom spinner. No sign-up.',
       yesnoMode: 'Yes/No Wheel', customMode: 'Custom Wheel', settings: 'Settings', fullscreen: 'Fullscreen', exitFullscreen: 'Exit fullscreen', language: 'Language', wheelTitlePh: 'Wheel title',
       spin: 'SPIN', yes: 'Yes', no: 'No', maybe: 'Maybe', opt2: 'Yes / No', opt3: 'Yes / No / Maybe', sets: 'Number of sets', tally: 'Scoreboard', resetTally: 'Reset scoreboard',
       listView: 'List', textView: 'Text', addEntry: 'Add entry', entryPh: 'Enter an option', textPh: 'One entry per line.\nUse "weight, text" to set a weight, e.g. 3, Pizza', search: 'Search entries', shuffle: 'Shuffle', sortAZ: 'Sort A–Z', delEmpty: 'Delete empty', clearAll: 'Clear all', importFile: 'Import CSV/TXT', exportCSV: 'Export CSV', exportJSON: 'Export JSON', restoreHidden: 'Restore hidden',
