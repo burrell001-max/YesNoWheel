@@ -24,7 +24,7 @@
 
   var STORE = 'yesnowheel:v1';
   var LANGKEY = 'yesnowheel:lang';
-  var BASE_URL = 'https://yesnowheel.xyz/';
+  var BASE_URL = 'https://burrell001-max.github.io/YesNoWheel/';
   var FONT = '"Jost", "Segoe UI", Roboto, "Noto Sans", "Noto Sans JP", "Noto Sans KR", "Noto Sans SC", "Noto Sans Arabic", Tahoma, sans-serif';
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -195,16 +195,12 @@
     var de = document.documentElement;
     de.lang = lang;
     de.dir = I.isRtl(lang) ? 'rtl' : 'ltr';
-    /* Only the home page uses the translated title and description. Tool pages keep
-       the title and description written in their own HTML. */
-    if (/(^|\/)(index\.html)?$/.test(location.pathname)) {
-      document.title = t('title');
-      setMeta('meta[name="description"]', t('desc'));
-      setMeta('meta[property="og:title"]', t('title'));
-      setMeta('meta[property="og:description"]', t('desc'));
-      setMeta('meta[name="twitter:title"]', t('title'));
-      setMeta('meta[name="twitter:description"]', t('desc'));
-    }
+    document.title = t('title');
+    setMeta('meta[name="description"]', t('desc'));
+    setMeta('meta[property="og:title"]', t('title'));
+    setMeta('meta[property="og:description"]', t('desc'));
+    setMeta('meta[name="twitter:title"]', t('title'));
+    setMeta('meta[name="twitter:description"]', t('desc'));
     $$('[data-i18n]').forEach(function (el) { el.textContent = t(el.dataset.i18n); });
     $$('[data-i18n-ph]').forEach(function (el) { el.placeholder = t(el.dataset.i18nPh); });
     $$('[data-i18n-title]').forEach(function (el) {
@@ -648,7 +644,7 @@
 
   /* -------------------------------------------------------------- rendering */
   function updateTitleUI() {
-    var title = state.title || (state.mode === 'yesno' ? (lang === 'en' ? t('h1yesno') : t('yesnoMode')) : t('customMode'));
+    var title = state.title || (state.mode === 'yesno' ? t('yesnoMode') : t('customMode'));
     $('#stageTitle').textContent = title;
     var d = $('#stageDesc');
     d.textContent = state.desc;
@@ -840,8 +836,6 @@
       return e;
     });
     changed();
-    /* Keep the editable list in step when entries are set from outside the list view (tool presets). */
-    if (state.view !== 'text') renderList();
   }
 
   /* --------------------------------------------------------- import/export */
