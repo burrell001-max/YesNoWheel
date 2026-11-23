@@ -372,6 +372,21 @@ body.present .fab-col, body.embed .fab-col { display: none; }
   #ynw-cc button { padding: 7px 10px; }
 }
 
+/* ---------- Narrow portrait phones: keep the header from eating the fold ---- */
+/* At 360px the bar stacked into five rows (254px) and pushed the hub past the
+   fold. Tighten the type and spacing so the same items pack into fewer rows;
+   every nav item stays visible. */
+@media (max-width: 480px) {
+  .topbar { padding: 6px 10px; gap: 6px 8px; }
+  .brand { font-size: 1.2rem; gap: 6px; }
+  .brand svg { width: 28px; height: 28px; }
+  .topnav { gap: 4px 6px; }
+  .nav-btn { padding: 5px 9px; font-size: .88rem; gap: 5px; }
+  .seg button { padding: 5px 10px; font-size: .84rem; }
+  #langSelect { max-width: 96px; padding: 4px 6px; font-size: .88rem; }
+  .icon-btn { width: 34px; height: 34px; font-size: 1rem; }
+}
+
 /* ---------- Short viewports: keep the wheel and its hub on screen ---------- */
 /* A landscape phone has no height left once the topbar and the marketing strip
    are stacked, which pushed the SPIN hub below the fold. Drop the strip and

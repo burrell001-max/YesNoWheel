@@ -825,7 +825,10 @@
     });
     $('#ynPanel').hidden = state.mode !== 'yesno';
     $('#customPanel').hidden = state.mode !== 'custom';
+    /* Showing or hiding the scoreboard changes the row the buttons must clear. */
+    var wasHidden = $('#tally').hidden;
     $('#tally').hidden = state.mode !== 'yesno';
+    if ($('#tally').hidden !== wasHidden) resize();
     updateTitleUI();
   }
 
