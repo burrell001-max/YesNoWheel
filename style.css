@@ -385,10 +385,17 @@ body.present .fab-col, body.embed .fab-col { display: none; }
   .nav-btn { padding: 4px 6px; font-size: .8rem; }
   .seg button { padding: 4px 7px; font-size: .78rem; }
   #langSelect { max-width: 84px; padding: 4px 6px; }
+  /* Settings keeps its aria-label; dropping the word lets the bar stay one row. */
+  #btnSettings span[data-i18n] { display: none; }
   .title-input { display: none; }
   .layout { padding-top: 4px; padding-bottom: 4px; }
   .stage { padding: 6px 10px 8px; border-radius: 14px; }
   .stage-title { font-size: 1rem; margin: 0; }
   .stage-desc, .hint { display: none; }
   .wheel-wrap { width: min(100%, calc(100dvh - 104px), 520px); }
+}
+/* The narrowest landscape phones still wrapped the topbar onto a second row,
+   which pushed the wheel past the fold again. */
+@media (max-height: 560px) and (max-width: 620px) {
+  .brand { display: none; }
 }
