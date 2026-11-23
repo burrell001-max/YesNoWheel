@@ -864,6 +864,9 @@
     $('#tallyItems').innerHTML = keys.map(function (k) {
       return '<span class="chip ' + k + '"><span>' + esc(t(k)) + '</span><b>' + (state.yn.tally[k] || 0) + '</b></span>';
     }).join('');
+    /* A wider total makes the row wider, and it is centred: keep the end of it
+       clear of the fullscreen button sitting over the stage's lower right. */
+    fitTallyGutter();
   }
 
   function renderCustomPanel() {

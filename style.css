@@ -436,6 +436,24 @@ body.present .fab-col, body.embed .fab-col { display: none; }
   .stage { padding: 12px 10px 14px; gap: 8px; }
   .stage-title { font-size: 1.05rem; margin: 0; }
   .stage-desc, .hint { display: none; }
+  /* The scoreboard wraps onto two rows on a 310px stage: heading, chips, and the
+     reset button. That second row is height the wheel can use, and the chips
+     name themselves, so on a phone the heading goes, the chips tighten, and
+     reset keeps its words for screen readers but shows the circular arrow it
+     already means. One 30px row instead of 81px, and the wheel takes the rest. */
+  .tally { flex-wrap: nowrap; gap: 5px; }
+  .tally-label { display: none; }
+  .tally-items { flex-wrap: nowrap; gap: 4px; }
+  .tally .chip { padding: 3px 7px; gap: 4px; font-size: .78rem; border-width: 2px; }
+  .tally .chip b { font-size: .86rem; }
+  /* The words stay in the button, so its accessible name is unchanged; only the
+     glyph is drawn, as a mask so it takes the theme's ink colour. */
+  .tally .btn.small { padding: 4px 7px; font-size: 0; border-width: 2px; }
+  .tally .btn.small::before {
+    content: ""; display: block; width: 14px; height: 14px; background-color: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='1 4 1 10 7 10'/%3E%3Cpath d='M3.51 15a9 9 0 1 0 2.13-9.36L1 10'/%3E%3C/svg%3E") center / 14px 14px no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='1 4 1 10 7 10'/%3E%3Cpath d='M3.51 15a9 9 0 1 0 2.13-9.36L1 10'/%3E%3C/svg%3E") center / 14px 14px no-repeat;
+  }
   /* Without JS the wheel still gets a height-derived size. */
-  .wheel-wrap { width: min(100%, calc(100dvh - 405px), 560px); }
+  .wheel-wrap { width: min(100%, calc(100dvh - 355px), 560px); }
 }
