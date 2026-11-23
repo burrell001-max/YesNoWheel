@@ -352,3 +352,22 @@ body.present .fab-col, body.embed .fab-col { display: none; }
   .stage-title, .stage-desc, [data-theme="dark"] .stage-title, [data-theme="dark"] .stage-desc { color: #000; }
   .wheel-wrap { width: 150mm; margin: 0 auto; }
 }
+
+/* ---------- Keep the consent dialog clear of the wheel ---------- */
+/* It used to sit over the middle of the stage, covering the SPIN hub until it
+   was answered. On wide screens it docks beside the stage; where the viewport
+   is too short to dock sideways it shrinks to a short bar along the bottom. */
+@media (min-width: 1000px) and (min-height: 621px) {
+  #ynw-cc { left: auto; right: 16px; max-width: 380px; margin: 0; }
+}
+/* Narrow screens keep the full sentence, so the dialog goes above the stage
+   instead of on top of it. */
+@media (max-width: 999px) and (min-height: 621px) {
+  #ynw-cc { left: 12px; right: 12px; top: 12px; bottom: auto; max-width: none; margin: 0; }
+}
+@media (max-height: 620px) {
+  #ynw-cc { left: 12px; right: 12px; bottom: 12px; padding: 10px 14px; max-height: 96px; overflow: auto; }
+  #ynw-cc h2 { font-size: 15px; margin-bottom: 2px; }
+  #ynw-cc p { margin-bottom: 8px; font-size: 13px; }
+  #ynw-cc button { padding: 7px 10px; }
+}
