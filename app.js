@@ -359,52 +359,73 @@
     if (px !== (parseFloat(wrap.style.width) || 0)) wrap.style.width = px + 'px';
   }
 
-  /* The edit/results buttons float over the stage's top-right corner. When the
-     side panel narrows the stage the title ran under them, so reserve that
-     gutter: shift it while it still holds one line, and otherwise wrap it before
-     their edge. Every input comes from the stage and the text, never from the
-     padding we set, so repeated calls settle on the same value. */
-  function fitTitleGutter() {
-    var t = $('#stageTitle'), fab = document.querySelector('.fab-col.top');
-    if (!t || !fab || !t.offsetHeight) return;
-    t.style.paddingRight = '0px';
-    t.style.fontSize = '';
-    var base = parseFloat(getComputedStyle(t).fontSize);
-    var stage = t.parentElement, scs = getComputedStyle(stage);
+  /* The stage's floating buttons hang over its right edge, so a centred row that
+     is wide enough runs underneath them. Both the title and the scoreboard ask
+     for the gutter this measures: padding moves a centred box by half its own
+     width, so clearing an overlap of n takes 2n. Inputs come from the stage and
+     the row, never from the padding we set, so repeat calls settle. */
+  function fabGutter(el, fab, stage) {
+    var scs = getComputedStyle(stage);
     var padL = (parseFloat(scs.paddingLeft) || 0) + (parseFloat(scs.borderLeftWidth) || 0);
     var avail = stage.clientWidth - (parseFloat(scs.paddingLeft) || 0) - (parseFloat(scs.paddingRight) || 0);
     var contentLeft = stage.getBoundingClientRect().left + padL;
-    t.style.width = 'max-content';
-    var natural = Math.ceil(t.getBoundingClientRect().width);
-    t.style.width = '';
+    el.style.paddingRight = '0px';
+    el.style.width = 'max-content';
+    var natural = Math.ceil(el.getBoundingClientRect().width);
+    el.style.width = '';
     var fr = fab.getBoundingClientRect();
-    var pad = 0, fs = 0;
+    var out = { avail: avail, contentLeft: contentLeft, natural: natural, pad: 0, oneLine: true };
     if (natural && fr.width && avail > 0) {
       var clear = fr.left - 6;
       var shift = contentLeft + avail / 2 + natural / 2 - clear;
       if (shift > 0) {
-        /* Padding widens a centred title by its own width, so the text moves by
-           only half of it: one line needs twice the overlap as padding. */
-        if (natural + shift * 2 <= avail) {
-          pad = Math.ceil(shift * 2);
-        } else {
-          pad = Math.ceil(avail - (clear - contentLeft));
-          /* The gutter costs a whole line only when the text just misses: give
-             back a hair of type size instead of shoving the wheel down. */
-          var content = avail - pad;
-          var plain = Math.ceil(natural / avail), gutted = Math.ceil(natural / content);
-          var shortfall = natural / plain / content - 1;
-          if (content > 0 && gutted > plain && shortfall > 0 && shortfall < 0.03) fs = base / (1 + shortfall + 0.004);
-        }
+        out.pad = natural + shift * 2 <= avail
+          ? Math.ceil(shift * 2)
+          : Math.ceil(avail - (clear - contentLeft));
+        out.oneLine = natural + shift * 2 <= avail;
       }
     }
-    /* Always written back: they were cleared above to measure the unguttered box. */
-    t.style.paddingRight = pad > 0 ? pad + 'px' : '';
+    return out;
+  }
+
+  /* Title: reserve the gutter while it holds the same number of lines, and only
+     wrap it before the buttons when clearing them would cost a whole line. */
+  function fitTitleGutter() {
+    var t = $('#stageTitle'), fab = document.querySelector('.fab-col.top');
+    if (!t || !fab || !t.offsetHeight) return;
+    t.style.fontSize = '';
+    var base = parseFloat(getComputedStyle(t).fontSize);
+    var g = fabGutter(t, fab, t.parentElement);
+    var pad = g.pad, fs = 0;
+    if (pad && !g.oneLine) {
+      /* The gutter costs a whole line only when the text just misses: give back
+         a hair of type size instead of shoving the wheel down. */
+      var content = g.avail - pad;
+      var plain = Math.ceil(g.natural / g.avail), gutted = Math.ceil(g.natural / content);
+      var shortfall = g.natural / plain / content - 1;
+      if (content > 0 && gutted > plain && shortfall > 0 && shortfall < 0.03) fs = base / (1 + shortfall + 0.004);
+    }
+    /* Always written back: both were cleared above to measure the bare row. */
+    t.style.paddingRight = pad ? pad + 'px' : '';
     t.style.fontSize = fs ? Math.round(fs * 10) / 10 + 'px' : '';
+  }
+
+  /* Scoreboard row: same gutter, so the fullscreen button stops sitting on the
+     end of "Reset scoreboard". */
+  function fitTallyGutter() {
+    var t = $('#tally'), fab = document.querySelector('.fab-col.bottom');
+    if (!t) return;
+    if (!fab || t.hidden || !t.offsetHeight) {
+      if (t.style.paddingRight) t.style.paddingRight = '';
+      return;
+    }
+    var g = fabGutter(t, fab, t.parentElement);
+    t.style.paddingRight = g.pad ? g.pad + 'px' : '';
   }
 
   function resize() {
     fitTitleGutter();
+    fitTallyGutter();
     fitShortViewport();
     var r = $('#wheelWrap').getBoundingClientRect();
     dpr = Math.min(window.devicePixelRatio || 1, 2.5);
