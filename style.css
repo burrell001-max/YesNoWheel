@@ -346,6 +346,9 @@ body.present .fab-col, body.embed .fab-col { display: none; }
   #spinBtn, #exitPresent, #resultModal, #confetti, .toast, #ynw-cc, #drawer, #scrim { display: none !important; }
   body { background: #fff; }
   .layout { display: block; padding: 0; }
-  .stage { border: 0; box-shadow: none; background: transparent; padding: 0; color: #000; }
+  /* Same-specificity as the [data-theme="dark"] rules above, so dark-theme
+     wheels also print on white paper with dark ink. */
+  .stage, [data-theme="dark"] .stage { border: 0; box-shadow: none; background: transparent; padding: 0; color: #000; }
+  .stage-title, .stage-desc, [data-theme="dark"] .stage-title, [data-theme="dark"] .stage-desc { color: #000; }
   .wheel-wrap { width: 150mm; margin: 0 auto; }
 }
