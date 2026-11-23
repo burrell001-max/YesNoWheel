@@ -394,3 +394,10 @@ body.present .fab-col, body.embed .fab-col { display: none; }
      with the exact height left between the title and the SPIN button. */
   .wheel-wrap { width: min(100%, calc(100dvh - 128px), 520px); }
 }
+
+/* The edit/results buttons are pinned 58px inside the stage's right edge; on a
+   narrow phone the one-line title reached under them and lost its last letters.
+   Reserve that gutter, and go a size down so the title still holds one line. */
+@media (max-height: 560px) and (max-width: 640px) {
+  .stage-title { font-size: .9375rem; padding-right: 40px; }
+}
