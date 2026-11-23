@@ -417,6 +417,17 @@ body.present .fab-col, body.embed .fab-col { display: none; }
   .stage-title { font-size: .9375rem; padding-right: 40px; }
 }
 
+/* 320px of height is the tightest phone landscape there is: the header leaves
+   the wheel 50px and SPIN landed 12px under the fold. The topbar already says
+   what the title says, so on a screen this short the heading steps out of the
+   layout (still in the page for screen readers) and SPIN comes back up. */
+@media (max-height: 340px) {
+  .stage-title {
+    position: absolute; width: 1px; height: 1px; margin: 0;
+    overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+  }
+}
+
 /* ---------- The rotating canvas must not widen the page ------------------ */
 /* Only the disc turns, and the disc is a circle inside the square, so clipping
    the wrapper loses nothing; the canvas's square corner otherwise stuck ~67px

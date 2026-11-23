@@ -386,7 +386,8 @@
      for the gutter this measures: padding moves a centred box by half its own
      width, so clearing an overlap of n takes 2n. Inputs come from the stage and
      the row, never from the padding we set, so repeat calls settle. */
-  function fabGutter(el, fab, stage) {
+  function fabGutter(el, fab, stage, berth) {
+    var gap = berth || 6;
     var scs = getComputedStyle(stage);
     var padL = (parseFloat(scs.paddingLeft) || 0) + (parseFloat(scs.borderLeftWidth) || 0);
     var avail = stage.clientWidth - (parseFloat(scs.paddingLeft) || 0) - (parseFloat(scs.paddingRight) || 0);
@@ -398,7 +399,7 @@
     var fr = fab.getBoundingClientRect();
     var out = { avail: avail, contentLeft: contentLeft, natural: natural, pad: 0, oneLine: true };
     if (natural && fr.width && avail > 0) {
-      var clear = fr.left - 6;
+      var clear = fr.left - gap;
       var shift = contentLeft + avail / 2 + natural / 2 - clear;
       if (shift > 0) {
         out.pad = natural + shift * 2 <= avail
@@ -441,8 +442,27 @@
       if (t.style.paddingRight) t.style.paddingRight = '';
       return;
     }
-    var g = fabGutter(t, fab, t.parentElement);
-    t.style.paddingRight = g.pad ? g.pad + 'px' : '';
+    /* The row runs alongside the fullscreen button, so it asks for a wider
+       berth than the title: a three-digit total still has to clear the circle.
+       Only when the stage is too narrow for that — the row would lose a line to
+       the padding — does it settle for the title's 6px. */
+    var berth = 12;
+    var g = fabGutter(t, fab, t.parentElement, berth);
+    if (g.pad && g.pad > g.avail - g.natural) {
+      berth = 6;
+      g = fabGutter(t, fab, t.parentElement, berth);
+    }
+    var pad = g.pad;
+    t.style.paddingRight = pad ? pad + 'px' : '';
+    if (!pad) return;
+    /* Centring a padded box rounds, and the row is measured mid-layout, so look
+       at where its content actually landed instead of trusting the arithmetic. */
+    var edge = t.getBoundingClientRect().right - (parseFloat(getComputedStyle(t).paddingRight) || 0);
+    var over = edge - (fab.getBoundingClientRect().left - berth);
+    if (over > 0) {
+      var more = pad + Math.ceil(over * 2);
+      if (more <= g.avail - g.natural) t.style.paddingRight = more + 'px';
+    }
   }
 
   function resize() {
@@ -865,8 +885,11 @@
       return '<span class="chip ' + k + '"><span>' + esc(t(k)) + '</span><b>' + (state.yn.tally[k] || 0) + '</b></span>';
     }).join('');
     /* A wider total makes the row wider, and it is centred: keep the end of it
-       clear of the fullscreen button sitting over the stage's lower right. */
-    fitTallyGutter();
+       clear of the fullscreen button sitting over the stage's lower right. Wait
+       for the new chips to be laid out, or the button is measured unpositioned
+       and the row reserves the whole stage. */
+    if (window.requestAnimationFrame) requestAnimationFrame(fitTallyGutter);
+    else fitTallyGutter();
   }
 
   function renderCustomPanel() {
