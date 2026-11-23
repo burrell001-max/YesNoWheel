@@ -416,3 +416,26 @@ body.present .fab-col, body.embed .fab-col { display: none; }
 @media (max-height: 560px) and (max-width: 640px) {
   .stage-title { font-size: .9375rem; padding-right: 40px; }
 }
+
+/* ---------- The rotating canvas must not widen the page ------------------ */
+/* Only the disc turns, and the disc is a circle inside the square, so clipping
+   the wrapper loses nothing; the canvas's square corner otherwise stuck ~67px
+   out of a 306px box and scrolled the whole page sideways on a phone. */
+.wheel-wrap { overflow: hidden; overflow: clip; }
+/* The ring now has to sit inside the clip. */
+.wheel-wrap canvas:focus-visible { outline-offset: -5px; }
+
+/* ---------- Portrait phones: trade the hero strip for the whole wheel ----- */
+/* The strip repeats the wheel's own title and costs ~130px at the top of the
+   page; on a portrait phone that was the difference between the wheel, SPIN and
+   the scoreboard fitting above the fold and not. The title is still editable
+   under Settings, and the stage copy below the wheel is desktop reading. */
+@media (max-width: 480px) and (orientation: portrait) {
+  .banner { display: none; }
+  .layout { padding-top: 8px; }
+  .stage { padding: 12px 10px 14px; gap: 8px; }
+  .stage-title { font-size: 1.05rem; margin: 0; }
+  .stage-desc, .hint { display: none; }
+  /* Without JS the wheel still gets a height-derived size. */
+  .wheel-wrap { width: min(100%, calc(100dvh - 405px), 560px); }
+}

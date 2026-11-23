@@ -333,26 +333,48 @@
      the space actually between the wrapper and the viewport bottom instead, and
      the wheel (and its hub) stays on screen without scrolling. */
   var shortViewport = window.matchMedia('(max-height: 560px)');
+  /* A phone in portrait has the opposite problem: what is left of the fold is
+     height, not width, once the header has wrapped onto its rows. */
+  var narrowViewport = window.matchMedia('(max-width: 480px) and (orientation: portrait)');
 
-  function fitShortViewport() {
-    var wrap = $('#wheelWrap');
-    var stage = $('#wheelArea') || wrap.parentElement;
-    if (!shortViewport.matches || document.body.classList.contains('present') || document.body.classList.contains('embed')) {
-      if (wrap.style.width) wrap.style.width = '';
-      return;
-    }
+  /* Everything the stage lays out under the wheel. The scoreboard stays hidden
+     until there is a result, so on a narrow stage it is measured with the
+     attribute off: reserving its row now keeps it above the fold when the first
+     spin reveals it, instead of shoving itself and the wheel down by its own
+     height. */
+  function stageBelow(wrap, stage, withTally) {
     var cs = getComputedStyle(stage);
     var gap = parseFloat(cs.rowGap) || 0;
-    var top = wrap.getBoundingClientRect().top;
     var below = (parseFloat(cs.paddingBottom) || 0) + (parseFloat(cs.borderBottomWidth) || 0) + 1;
     var kids = stage.children, seen = false;
     for (var i = 0; i < kids.length; i++) {
       var el = kids[i];
       if (el === wrap) { seen = true; continue; }
-      if (!seen || !el.offsetHeight) continue;
-      if (getComputedStyle(el).position === 'absolute') continue;
+      if (!seen || getComputedStyle(el).position === 'absolute') continue;
+      if (el.hidden) {
+        if (el.id !== 'tally' || !withTally) continue;
+        el.hidden = false;
+        below += el.offsetHeight + gap;
+        el.hidden = true;
+        continue;
+      }
+      if (!el.offsetHeight) continue;
       below += el.offsetHeight + gap;
     }
+    return below;
+  }
+
+  function fitViewportWheel() {
+    var wrap = $('#wheelWrap');
+    var stage = $('#wheelArea') || wrap.parentElement;
+    var narrow = narrowViewport.matches;
+    if ((!shortViewport.matches && !narrow) || document.body.classList.contains('present') || document.body.classList.contains('embed')) {
+      if (wrap.style.width) wrap.style.width = '';
+      return;
+    }
+    var cs = getComputedStyle(stage);
+    var top = wrap.getBoundingClientRect().top;
+    var below = stageBelow(wrap, stage, narrow);
     var availH = window.innerHeight - top - below;
     var availW = stage.clientWidth - (parseFloat(cs.paddingLeft) || 0) - (parseFloat(cs.paddingRight) || 0);
     var px = Math.round(Math.max(120, Math.min(availH, availW, 520)));
@@ -426,7 +448,7 @@
   function resize() {
     fitTitleGutter();
     fitTallyGutter();
-    fitShortViewport();
+    fitViewportWheel();
     var r = $('#wheelWrap').getBoundingClientRect();
     dpr = Math.min(window.devicePixelRatio || 1, 2.5);
     var w = Math.max(120, Math.round(r.width * dpr));
