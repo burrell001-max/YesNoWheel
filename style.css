@@ -231,7 +231,7 @@ body.embed .wheel-wrap { width: min(100%, 90vh, 640px); }
 @media (max-width: 900px) {
   .layout { grid-template-columns: 1fr; }
   .title-input { max-width: none; order: 5; flex-basis: 100%; }
-  .wheel-wrap { width: min(100%, 560px); }
+  .wheel-wrap { width: min(100%, 560px, 78vh); }
 }
 @media (prefers-reduced-motion: reduce) {
   .modal-card, .drawer, .toast { animation: none; transition: none; }
@@ -370,4 +370,25 @@ body.present .fab-col, body.embed .fab-col { display: none; }
   #ynw-cc h2 { font-size: 15px; margin-bottom: 2px; }
   #ynw-cc p { margin-bottom: 8px; font-size: 13px; }
   #ynw-cc button { padding: 7px 10px; }
+}
+
+/* ---------- Short viewports: keep the wheel and its hub on screen ---------- */
+/* A landscape phone has no height left once the topbar and the marketing strip
+   are stacked, which pushed the SPIN hub below the fold. Drop the strip, tighten
+   the header, and size the wheel from the viewport height instead of its width. */
+@media (max-height: 560px) {
+  .banner { display: none; }
+  .topbar { padding-block: 4px; gap: 4px 8px; }
+  .brand svg { width: 26px; height: 26px; }
+  .brand span { display: none; }
+  .topnav > a.nav-btn { display: none; }
+  .nav-btn { padding: 4px 6px; font-size: .8rem; }
+  .seg button { padding: 4px 7px; font-size: .78rem; }
+  #langSelect { max-width: 84px; padding: 4px 6px; }
+  .title-input { display: none; }
+  .layout { padding-top: 4px; padding-bottom: 4px; }
+  .stage { padding: 6px 10px 8px; border-radius: 14px; }
+  .stage-title { font-size: 1rem; margin: 0; }
+  .stage-desc, .hint { display: none; }
+  .wheel-wrap { width: min(100%, calc(100dvh - 104px), 520px); }
 }
