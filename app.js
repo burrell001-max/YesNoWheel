@@ -328,7 +328,39 @@
   var spinStart = 0, spinDur = 0, spinFrom = 0, spinDelta = 0;
   var imgCache = new Map();
 
+  /* Landscape phones keep the whole topbar, which may wrap onto a second row, so
+     a CSS width cannot know how much height is left for the wheel. Size it from
+     the space actually between the wrapper and the viewport bottom instead, and
+     the wheel (and its hub) stays on screen without scrolling. */
+  var shortViewport = window.matchMedia('(max-height: 560px)');
+
+  function fitShortViewport() {
+    var wrap = $('#wheelWrap');
+    var stage = $('#wheelArea') || wrap.parentElement;
+    if (!shortViewport.matches || document.body.classList.contains('present') || document.body.classList.contains('embed')) {
+      if (wrap.style.width) wrap.style.width = '';
+      return;
+    }
+    var cs = getComputedStyle(stage);
+    var gap = parseFloat(cs.rowGap) || 0;
+    var top = wrap.getBoundingClientRect().top;
+    var below = (parseFloat(cs.paddingBottom) || 0) + (parseFloat(cs.borderBottomWidth) || 0) + 1;
+    var kids = stage.children, seen = false;
+    for (var i = 0; i < kids.length; i++) {
+      var el = kids[i];
+      if (el === wrap) { seen = true; continue; }
+      if (!seen || !el.offsetHeight) continue;
+      if (getComputedStyle(el).position === 'absolute') continue;
+      below += el.offsetHeight + gap;
+    }
+    var availH = window.innerHeight - top - below;
+    var availW = stage.clientWidth - (parseFloat(cs.paddingLeft) || 0) - (parseFloat(cs.paddingRight) || 0);
+    var px = Math.round(Math.max(120, Math.min(availH, availW, 520)));
+    if (px !== (parseFloat(wrap.style.width) || 0)) wrap.style.width = px + 'px';
+  }
+
   function resize() {
+    fitShortViewport();
     var r = $('#wheelWrap').getBoundingClientRect();
     dpr = Math.min(window.devicePixelRatio || 1, 2.5);
     var w = Math.max(120, Math.round(r.width * dpr));
@@ -1346,6 +1378,8 @@
     });
 
     if (window.ResizeObserver) new ResizeObserver(resize).observe($('#wheelWrap'));
+    /* A title edit changes the stage height without resizing the wrapper. */
+    if (window.ResizeObserver && $('#wheelArea')) new ResizeObserver(resize).observe($('#wheelArea'));
     window.addEventListener('resize', resize);
   }
 

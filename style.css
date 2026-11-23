@@ -374,28 +374,23 @@ body.present .fab-col, body.embed .fab-col { display: none; }
 
 /* ---------- Short viewports: keep the wheel and its hub on screen ---------- */
 /* A landscape phone has no height left once the topbar and the marketing strip
-   are stacked, which pushed the SPIN hub below the fold. Drop the strip, tighten
-   the header, and size the wheel from the viewport height instead of its width. */
+   are stacked, which pushed the SPIN hub below the fold. Drop the strip and
+   tighten the header, but keep every nav item: the bar is allowed to wrap, and
+   app.js sizes the wheel to the height that is actually left under it. */
 @media (max-height: 560px) {
   .banner { display: none; }
-  .topbar { padding-block: 4px; gap: 4px 8px; }
+  .topbar { padding-block: 4px; gap: 4px 10px; }
   .brand svg { width: 26px; height: 26px; }
-  .brand span { display: none; }
-  .topnav > a.nav-btn { display: none; }
-  .nav-btn { padding: 4px 6px; font-size: .8rem; }
-  .seg button { padding: 4px 7px; font-size: .78rem; }
-  #langSelect { max-width: 84px; padding: 4px 6px; }
-  /* Settings keeps its aria-label; dropping the word lets the bar stay one row. */
-  #btnSettings span[data-i18n] { display: none; }
-  .title-input { display: none; }
+  .brand span { font-size: 1.1rem; }
+  .nav-btn { padding: 4px 8px; font-size: .82rem; }
+  .seg button { padding: 4px 8px; font-size: .8rem; }
+  #langSelect { max-width: 92px; padding: 4px 6px; }
   .layout { padding-top: 4px; padding-bottom: 4px; }
-  .stage { padding: 6px 10px 8px; border-radius: 14px; }
-  .stage-title { font-size: 1rem; margin: 0; }
+  .stage { padding: 6px 10px 8px; border-radius: 14px; gap: 8px; }
+  .stage-title { font-size: 1rem; margin: 0; line-height: 1.25; }
   .stage-desc, .hint { display: none; }
-  .wheel-wrap { width: min(100%, calc(100dvh - 104px), 520px); }
-}
-/* The narrowest landscape phones still wrapped the topbar onto a second row,
-   which pushed the wheel past the fold again. */
-@media (max-height: 560px) and (max-width: 620px) {
-  .brand { display: none; }
+  .btn.big { padding: 8px 28px; font-size: 1rem; }
+  /* Without JS the wheel still fits under a one-row header; app.js replaces this
+     with the exact height left between the title and the SPIN button. */
+  .wheel-wrap { width: min(100%, calc(100dvh - 128px), 520px); }
 }
