@@ -7,9 +7,6 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
 try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});}}catch(e){}
 </script>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TWMPRZKV');</script>
-<!-- End Google Tag Manager -->
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-P04LW13SBM"></script>
 <script>
@@ -33,24 +30,127 @@ try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent
   <meta property="og:title" content="Name Picker Wheel - Spin the Wheel Generator for Names | YesNoWheel">
   <meta property="og:description" content="Free spin the wheel generator for names. Paste a list of names, spin the wheel and pick a random winner for classes, raffles, teams and giveaways. No sign-up.">
   <meta property="og:url" content="https://yesnowheel.xyz/random-name-picker.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://yesnowheel.xyz/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="YesNoWheel — the free Yes or No decision wheel">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Name Picker Wheel - Spin the Wheel Generator for Names | YesNoWheel">
   <meta name="twitter:description" content="Free spin the wheel generator for names. Paste a list of names, spin the wheel and pick a random winner for classes, raffles, teams and giveaways. No sign-up.">
+  <meta name="twitter:image" content="https://yesnowheel.xyz/og-image.png">
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%234f46e5'/%3E%3Cpath d='M32 32V2a30 30 0 0 1 30 30z' fill='%2310b981'/%3E%3Cpath d='M32 32H2A30 30 0 0 1 32 2z' fill='%23f59e0b'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23fff'/%3E%3C/svg%3E">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Jost:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<link rel="preload" as="font" type="font/woff2" href="fonts/bricolage-grotesque-latin.woff2" crossorigin><link rel="stylesheet" href="style.css">
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5783852883880667"
      crossorigin="anonymous"></script>
-<script src="consent.js" defer></script>
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Name Picker Wheel - Spin the Wheel Generator for Names",
+      "url": "https://yesnowheel.xyz/random-name-picker.html",
+      "description": "Free spin the wheel generator for names. Paste a list of names, spin the wheel and pick a random winner for classes, raffles, teams and giveaways. No sign-up.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript and HTML5 canvas",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "YesNoWheel",
+        "url": "https://yesnowheel.xyz/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "YesNoWheel",
+          "item": "https://yesnowheel.xyz/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://yesnowheel.xyz/tools.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Name Picker Wheel - Spin the Wheel Generator for Names | YesNoWheel",
+          "item": "https://yesnowheel.xyz/random-name-picker.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many names can I add?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "As many as you like. The wheel gets crowded past a few dozen names, so for a large class or event, run it in groups or use Elimination mode over several spins."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I remove a name after it wins?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Turn on Elimination mode and each winner is removed from the wheel after the spin, so no one is picked twice."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are my names saved or shared?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your list is kept in your browser on this device and is not sent to a server. If you use the Share button, the link contains your wheel, so only share it with people who should see the names."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I paste names from a spreadsheet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Copy a column of names and paste it into the text view, one name per line, or import a CSV file."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use this as a spin the wheel generator for names?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Paste or type your names, one per line, and spin. You can give a name extra weight, remove winners with Elimination mode, and share the wheel with a link."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. It is free to use and needs no account."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWMPRZKV" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+<script src="consent.js"></script>
 <header class="topbar">
     <a class="brand" href="./" aria-label="YesNoWheel">
       <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#7a4dff"/><path d="M32 32V2a30 30 0 0 1 30 30z" fill="#47d6a4"/><path d="M32 32H2A30 30 0 0 1 32 2z" fill="#ffc82e"/><path d="M32 32l21 21A30 30 0 0 1 32 62z" fill="#ff6a55"/><circle cx="32" cy="32" r="30" fill="none" stroke="#1d1633" stroke-width="4"/><circle cx="32" cy="32" r="7" fill="#fff" stroke="#1d1633" stroke-width="3"/></svg>
@@ -286,8 +386,8 @@ try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent
     <p style="padding:24px;text-align:center">YesNoWheel is a free Yes or No decision wheel and custom random picker wheel. Please enable JavaScript to spin the wheel.</p>
   </noscript>
 
-  <script src="i18n.js"></script>
-  <script src="app.js"></script>
+  <script src="i18n.js" defer></script>
+  <script src="app.js" defer></script>
   <script>
     document.getElementById('btnShare').addEventListener('click', function () {
       document.getElementById('btnSettings').click();

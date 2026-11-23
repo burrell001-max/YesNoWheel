@@ -7,9 +7,6 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
 try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});}}catch(e){}
 </script>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TWMPRZKV');</script>
-<!-- End Google Tag Manager -->
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-P04LW13SBM"></script>
 <script>
@@ -33,24 +30,111 @@ try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent
   <meta property="og:title" content="Food Picker Wheel - Spin the Wheel Generator for Food | YesNoWheel">
   <meta property="og:description" content="Can&#x27;t decide what to eat? Use this free spin the wheel generator for food to pick a meal, cuisine or snack at random. Edit the list to match your own favorites.">
   <meta property="og:url" content="https://yesnowheel.xyz/random-food-picker.html">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://yesnowheel.xyz/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="YesNoWheel — the free Yes or No decision wheel">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Food Picker Wheel - Spin the Wheel Generator for Food | YesNoWheel">
   <meta name="twitter:description" content="Can&#x27;t decide what to eat? Use this free spin the wheel generator for food to pick a meal, cuisine or snack at random. Edit the list to match your own favorites.">
+  <meta name="twitter:image" content="https://yesnowheel.xyz/og-image.png">
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%234f46e5'/%3E%3Cpath d='M32 32V2a30 30 0 0 1 30 30z' fill='%2310b981'/%3E%3Cpath d='M32 32H2A30 30 0 0 1 32 2z' fill='%23f59e0b'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23fff'/%3E%3C/svg%3E">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Jost:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<link rel="preload" as="font" type="font/woff2" href="fonts/bricolage-grotesque-latin.woff2" crossorigin><link rel="stylesheet" href="style.css">
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5783852883880667"
      crossorigin="anonymous"></script>
-<script src="consent.js" defer></script>
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Food Picker Wheel - Spin the Wheel Generator for Food",
+      "url": "https://yesnowheel.xyz/random-food-picker.html",
+      "description": "Can&#x27;t decide what to eat? Use this free spin the wheel generator for food to pick a meal, cuisine or snack at random. Edit the list to match your own favorites.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript and HTML5 canvas",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "YesNoWheel",
+        "url": "https://yesnowheel.xyz/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "YesNoWheel",
+          "item": "https://yesnowheel.xyz/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://yesnowheel.xyz/tools.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Food Picker Wheel - Spin the Wheel Generator for Food | YesNoWheel",
+          "item": "https://yesnowheel.xyz/random-food-picker.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can I change the foods on the wheel?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Open the text view, delete what you do not want and type your own meals, one per line."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use it for restaurants?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Replace the dishes with the names of places you like to eat or order from."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it pick healthy meals?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It picks at random from your list, so the choices are up to you. Fill the wheel with meals that fit your health needs and any advice from your doctor or dietitian."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. It is free to use and needs no account."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWMPRZKV" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+<script src="consent.js"></script>
 <header class="topbar">
     <a class="brand" href="./" aria-label="YesNoWheel">
       <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#7a4dff"/><path d="M32 32V2a30 30 0 0 1 30 30z" fill="#47d6a4"/><path d="M32 32H2A30 30 0 0 1 32 2z" fill="#ffc82e"/><path d="M32 32l21 21A30 30 0 0 1 32 62z" fill="#ff6a55"/><circle cx="32" cy="32" r="30" fill="none" stroke="#1d1633" stroke-width="4"/><circle cx="32" cy="32" r="7" fill="#fff" stroke="#1d1633" stroke-width="3"/></svg>
@@ -284,8 +368,8 @@ try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent
     <p style="padding:24px;text-align:center">YesNoWheel is a free Yes or No decision wheel and custom random picker wheel. Please enable JavaScript to spin the wheel.</p>
   </noscript>
 
-  <script src="i18n.js"></script>
-  <script src="app.js"></script>
+  <script src="i18n.js" defer></script>
+  <script src="app.js" defer></script>
   <script>
     document.getElementById('btnShare').addEventListener('click', function () {
       document.getElementById('btnSettings').click();
