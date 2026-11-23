@@ -339,3 +339,13 @@ body.present .fab-col, body.embed .fab-col { display: none; }
 #ynw-cc .acc { background: var(--primary, #7a4dff); color: var(--primary-text, #fff); }
 #ynw-cc .rej { background: transparent; color: var(--text, #1d1633); }
 #ynw-cc button:focus-visible { outline: 3px solid var(--primary, #7a4dff); outline-offset: 2px; }
+
+/* ---------- Print: the wheel on paper, without page chrome or the consent dialog ---------- */
+@media print {
+  .topbar, .banner, .panel, .fab-col, .guide, .sitefoot, .ad-slot, .hint, .tally,
+  #spinBtn, #exitPresent, #resultModal, #confetti, .toast, #ynw-cc, #drawer, #scrim { display: none !important; }
+  body { background: #fff; }
+  .layout { display: block; padding: 0; }
+  .stage { border: 0; box-shadow: none; background: transparent; padding: 0; color: #000; }
+  .wheel-wrap { width: 150mm; margin: 0 auto; }
+}

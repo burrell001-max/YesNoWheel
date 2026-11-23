@@ -332,11 +332,12 @@
     var r = $('#wheelWrap').getBoundingClientRect();
     dpr = Math.min(window.devicePixelRatio || 1, 2.5);
     var w = Math.max(120, Math.round(r.width * dpr));
-    if (w !== size) {
-      size = w;
-      [canvas, rimCanvas, hubCanvas].forEach(function (c) { c.width = c.height = w; });
-      rotApplied = -1;
-    }
+    /* Ads and webfonts nudge the layout; only a real size change needs the
+       cached layers repainted. */
+    if (w === size) return;
+    size = w;
+    [canvas, rimCanvas, hubCanvas].forEach(function (c) { c.width = c.height = w; });
+    rotApplied = -1;
     var g = geom();
     canvas.style.transformOrigin = (g.cx / size * 100) + '% ' + (g.cy / size * 100) + '%';
     dirty = true;
@@ -1082,15 +1083,17 @@
 
     // spin
     $('#spinBtn').addEventListener('click', spin);
+    /* The disc is turned by the compositor, so its own box grows and shifts as it
+       spins; hit-test against the untransformed wrapper instead. */
     canvas.addEventListener('click', function (e) {
-      var r = canvas.getBoundingClientRect();
+      var r = $('#wheelWrap').getBoundingClientRect();
       var x = (e.clientX - r.left) / r.width * size, y = (e.clientY - r.top) / r.height * size;
       var g = geom();
       if (Math.hypot(x - g.cx, y - g.cy) < g.R * 0.17) spin();
     });
     canvas.addEventListener('pointermove', function (e) {
       if (spinning) return;
-      var r = canvas.getBoundingClientRect();
+      var r = $('#wheelWrap').getBoundingClientRect();
       var x = (e.clientX - r.left) / r.width * size, y = (e.clientY - r.top) / r.height * size;
       var g = geom();
       canvas.style.cursor = Math.hypot(x - g.cx, y - g.cy) < g.R * 0.17 ? 'pointer' : 'default';
