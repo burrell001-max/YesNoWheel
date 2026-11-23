@@ -558,6 +558,7 @@
     spinning = true;
     lastIdx = indexAt();
     updateSpinUI();
+    try { document.dispatchEvent(new CustomEvent('ynw:spin-start')); } catch (e) { /* ignore */ }
   }
 
   function updateSpinUI() {
@@ -586,6 +587,9 @@
     renderResultModal();
     modal.hidden = false;
     focusModal();
+    /* tags.js starts analytics and AdSense here: the wheel has stopped and the
+       visitor is reading the result, so the parsing cannot stall a spin. */
+    try { document.dispatchEvent(new CustomEvent('ynw:spin-end')); } catch (e) { /* ignore */ }
     if (revealed) celebrate();
   }
 

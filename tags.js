@@ -34,12 +34,19 @@
     else window.addEventListener('load', fn, { once: true });
   }
 
+  /* Parsing these two bundles blocks the main thread for a moment, and on a
+     phone that moment is long enough to freeze the wheel mid-spin. The app
+     fires ynw:spin-end when a spin finishes, which is the first genuinely quiet
+     point, so that is where they start; visitors who never spin fall back to
+     these timers. */
+  var busy = false;
+  function whenQuiet(fn) {
+    return function () { if (busy) setTimeout(whenQuiet(fn), 700); else fn(); };
+  }
+  document.addEventListener('ynw:spin-start', function () { busy = true; });
+  document.addEventListener('ynw:spin-end', function () { busy = false; startAds(); startAnalytics(); });
   afterLoad(function () {
-    setTimeout(startAds, 2000);
-    setTimeout(startAnalytics, 6000);
-  });
-
-  ['pointerdown', 'keydown', 'touchstart', 'wheel'].forEach(function (ev) {
-    window.addEventListener(ev, function () { startAnalytics(); startAds(); }, { once: true, passive: true });
+    setTimeout(whenQuiet(startAds), 3000);
+    setTimeout(whenQuiet(startAnalytics), 6000);
   });
 })();
