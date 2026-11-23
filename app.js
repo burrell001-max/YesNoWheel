@@ -229,7 +229,13 @@
 
   var cache = null;
   var dirty = true;
-  function invalidate() { cache = null; dirty = true; }
+  /* The wheel repaints every frame while it idles. Drawing the slices from
+     vectors each time costs a full raster: a fill and stroke per slice plus a
+     text run for every label. Rim, disc and hub are rasterised once and
+     composited instead, so an idle frame is three blits and the pixels are the
+     same ones the vector path produced. */
+  var hubDirty = true;
+  function invalidate() { cache = null; dirty = true; hubDirty = true; }
   function slices() { return cache || (cache = computeSlices()); }
 
   function computeSlices() {
@@ -298,6 +304,25 @@
   /* ----------------------------------------------------------------- wheel */
   var canvas = $('#wheel');
   var ctx = canvas.getContext('2d');
+
+  /* Only the disc moves, so only the disc needs a canvas of its own. Rim and hub
+     are painted once onto static layers and the disc is rotated by the
+     compositor, which leaves an idle wheel with no canvas work at all. */
+  var rimCanvas = document.createElement('canvas');
+  var hubCanvas = document.createElement('canvas');
+  [rimCanvas, hubCanvas].forEach(function (c) {
+    c.setAttribute('aria-hidden', 'true');
+    c.style.pointerEvents = 'none';
+  });
+  rimCanvas.style.zIndex = '0';
+  canvas.style.zIndex = '1';
+  hubCanvas.style.zIndex = '2';
+  canvas.style.willChange = 'transform';
+  canvas.parentNode.insertBefore(rimCanvas, canvas);
+  canvas.parentNode.insertBefore(hubCanvas, canvas.nextSibling);
+  var rimCtx = rimCanvas.getContext('2d');
+  var hubCtx = hubCanvas.getContext('2d');
+  var rotApplied = -1;
   var size = 0, dpr = 1;
   var rot = 0, spinning = false, flap = 0, lastIdx = -1, lastT = 0;
   var spinStart = 0, spinDur = 0, spinFrom = 0, spinDelta = 0;
@@ -307,9 +332,15 @@
     var r = $('#wheelWrap').getBoundingClientRect();
     dpr = Math.min(window.devicePixelRatio || 1, 2.5);
     var w = Math.max(120, Math.round(r.width * dpr));
-    if (canvas.width !== w) { canvas.width = w; canvas.height = w; }
-    size = w;
+    if (w !== size) {
+      size = w;
+      [canvas, rimCanvas, hubCanvas].forEach(function (c) { c.width = c.height = w; });
+      rotApplied = -1;
+    }
+    var g = geom();
+    canvas.style.transformOrigin = (g.cx / size * 100) + '% ' + (g.cy / size * 100) + '%';
     dirty = true;
+    hubDirty = true;
   }
 
   function geom() { return { cx: size / 2, cy: size / 2 + size * 0.02, R: size / 2 * 0.9 }; }
@@ -319,7 +350,7 @@
     var im = imgCache.get(src);
     if (!im) {
       im = new Image();
-      im.onload = function () { im._ok = true; dirty = true; };
+      im.onload = function () { im._ok = true; invalidate(); };
       im.src = src;
       imgCache.set(src, im);
     }
@@ -336,118 +367,137 @@
     return text.slice(0, lo) + '…';
   }
 
+  function paintRim(c, cx, cy, R) {
+    c.save();
+    c.shadowColor = 'rgba(0,0,0,.28)';
+    c.shadowBlur = R * 0.05;
+    c.shadowOffsetY = R * 0.015;
+    c.beginPath();
+    c.arc(cx, cy, R, 0, TAU);
+    c.fillStyle = '#ffffff';
+    c.fill();
+    c.restore();
+  }
+
+  function paintDisc(c, cx, cy, R) {
+    var s = slices();
+    // Same white base the rim puts under the slices, so edge AA composites identically.
+    c.beginPath();
+    c.arc(cx, cy, R, 0, TAU);
+    c.fillStyle = '#ffffff';
+    c.fill();
+    if (!s.length) {
+      c.beginPath();
+      c.arc(cx, cy, R, 0, TAU);
+      c.fillStyle = '#cbd5e1';
+      c.fill();
+      return;
+    }
+
+    var i, sl, a0, a1;
+    for (i = 0; i < s.length; i++) {
+      sl = s[i];
+      a0 = sl.start;                       // rotation is applied when compositing
+      a1 = a0 + sl.ang;
+      c.beginPath();
+      c.moveTo(cx, cy);
+      c.arc(cx, cy, R, a0, a1);
+      c.closePath();
+      c.fillStyle = sl.color;
+      c.fill();
+      c.lineWidth = 1;
+      c.strokeStyle = sl.color;
+      c.stroke();
+    }
+
+    var mystery = state.mode === 'custom' && state.mysteryWheel;
+    for (i = 0; i < s.length; i++) {
+      sl = s[i];
+      if (sl.ang < 0.04) continue;
+      c.save();
+      c.translate(cx, cy);
+      c.rotate(sl.start + sl.ang / 2);
+      var outer = R * 0.93, inner = R * 0.22;
+      var fs = Math.max(9 * dpr, Math.min(R * 0.15, sl.ang * R * 0.38));
+      if (mystery) fs *= 1.4;
+      var right = outer;
+      var im = getImg(sl.img);
+      if (im) {
+        var ir = Math.min(R * 0.1, sl.ang * R * 0.3);
+        c.save();
+        c.beginPath();
+        c.arc(outer - ir, 0, ir, 0, TAU);
+        c.clip();
+        c.drawImage(im, outer - ir * 2, -ir, ir * 2, ir * 2);
+        c.restore();
+        right = outer - ir * 2 - R * 0.02;
+      }
+      c.font = '500 ' + fs + 'px ' + FONT;
+      c.textAlign = 'right';
+      c.textBaseline = 'middle';
+      c.fillStyle = lum(sl.color) > 0.55 ? '#111827' : '#ffffff';
+      c.fillText(fitText(mystery ? '?' : (state.mode === 'custom' ? sl.label : sl.label.toUpperCase()), right - inner), right, 0);
+      c.restore();
+    }
+  }
+
   function draw() {
     if (!size) return;
     var g = geom(), cx = g.cx, cy = g.cy, R = g.R;
-    var s = slices();
-    ctx.clearRect(0, 0, size, size);
 
-    // rim
-    ctx.save();
-    ctx.shadowColor = 'rgba(0,0,0,.28)';
-    ctx.shadowBlur = R * 0.05;
-    ctx.shadowOffsetY = R * 0.015;
-    ctx.beginPath();
-    ctx.arc(cx, cy, R, 0, TAU);
-    ctx.fillStyle = '#ffffff';
-    ctx.fill();
-    ctx.restore();
-
-    if (!s.length) {
-      ctx.beginPath();
-      ctx.arc(cx, cy, R, 0, TAU);
-      ctx.fillStyle = '#cbd5e1';
-      ctx.fill();
-    } else {
-      var i, sl, a0, a1;
-      for (i = 0; i < s.length; i++) {
-        sl = s[i];
-        a0 = rot + sl.start;
-        a1 = a0 + sl.ang;
-        ctx.beginPath();
-        ctx.moveTo(cx, cy);
-        ctx.arc(cx, cy, R, a0, a1);
-        ctx.closePath();
-        ctx.fillStyle = sl.color;
-        ctx.fill();
-        ctx.lineWidth = 1;
-        ctx.strokeStyle = sl.color;
-        ctx.stroke();
-      }
-
-      var mystery = state.mode === 'custom' && state.mysteryWheel;
-      for (i = 0; i < s.length; i++) {
-        sl = s[i];
-        if (sl.ang < 0.04) continue;
-        ctx.save();
-        ctx.translate(cx, cy);
-        ctx.rotate(rot + sl.start + sl.ang / 2);
-        var outer = R * 0.93, inner = R * 0.22;
-        var fs = Math.max(9 * dpr, Math.min(R * 0.15, sl.ang * R * 0.38));
-        if (mystery) fs *= 1.4;
-        var right = outer;
-        var im = getImg(sl.img);
-        if (im) {
-          var ir = Math.min(R * 0.1, sl.ang * R * 0.3);
-          ctx.save();
-          ctx.beginPath();
-          ctx.arc(outer - ir, 0, ir, 0, TAU);
-          ctx.clip();
-          ctx.drawImage(im, outer - ir * 2, -ir, ir * 2, ir * 2);
-          ctx.restore();
-          right = outer - ir * 2 - R * 0.02;
-        }
-        ctx.font = '500 ' + fs + 'px ' + FONT;
-        ctx.textAlign = 'right';
-        ctx.textBaseline = 'middle';
-        ctx.fillStyle = lum(sl.color) > 0.55 ? '#111827' : '#ffffff';
-        ctx.fillText(fitText(mystery ? '?' : (state.mode === 'custom' ? sl.label : sl.label.toUpperCase()), right - inner), right, 0);
-        ctx.restore();
-      }
+    if (dirty) {
+      dirty = false;
+      rimCtx.clearRect(0, 0, size, size);
+      paintRim(rimCtx, cx, cy, R);
+      ctx.clearRect(0, 0, size, size);
+      paintDisc(ctx, cx, cy, R);        // painted unrotated; the angle comes from CSS
+      hubDirty = true;
     }
-
-    drawCenter(cx, cy, R);
-    drawPointer(cx, cy, R);
+    if (hubDirty) {
+      hubDirty = false;
+      hubCtx.clearRect(0, 0, size, size);
+      paintCenter(hubCtx, cx, cy, R, spinning ? 0.85 : 1, flap);
+    }
   }
 
-  function drawCenter(cx, cy, R) {
+  function paintCenter(c, cx, cy, R, alpha, flapAng) {
     var cr = R * 0.15, d = cr * 1.75, phi = Math.acos(cr / d);
-    ctx.save();
-    ctx.globalAlpha = spinning ? 0.85 : 1;
-    ctx.translate(cx, cy);
-    ctx.rotate(-flap * 0.55);
-    ctx.shadowColor = 'rgba(0,0,0,.35)';
-    ctx.shadowBlur = R * 0.04;
-    ctx.shadowOffsetY = R * 0.01;
-    ctx.beginPath();
-    ctx.moveTo(0, -d);
-    ctx.lineTo(cr * Math.cos(-Math.PI / 2 + phi), cr * Math.sin(-Math.PI / 2 + phi));
-    ctx.arc(0, 0, cr, -Math.PI / 2 + phi, 1.5 * Math.PI - phi, false);
-    ctx.closePath();
-    ctx.fillStyle = state.s.centerColor;
-    ctx.strokeStyle = state.s.centerColor;
-    ctx.lineJoin = 'round';
-    ctx.lineWidth = R * 0.03;
-    ctx.fill();
-    ctx.stroke();
-    ctx.restore();
-    ctx.save();
-    ctx.globalAlpha = spinning ? 0.85 : 1;
+    c.save();
+    c.globalAlpha = alpha;
+    c.translate(cx, cy);
+    c.rotate(-flapAng * 0.55);
+    c.shadowColor = 'rgba(0,0,0,.35)';
+    c.shadowBlur = R * 0.04;
+    c.shadowOffsetY = R * 0.01;
+    c.beginPath();
+    c.moveTo(0, -d);
+    c.lineTo(cr * Math.cos(-Math.PI / 2 + phi), cr * Math.sin(-Math.PI / 2 + phi));
+    c.arc(0, 0, cr, -Math.PI / 2 + phi, 1.5 * Math.PI - phi, false);
+    c.closePath();
+    c.fillStyle = state.s.centerColor;
+    c.strokeStyle = state.s.centerColor;
+    c.lineJoin = 'round';
+    c.lineWidth = R * 0.03;
+    c.fill();
+    c.stroke();
+    c.restore();
+    c.save();
+    c.globalAlpha = alpha;
     var label = state.s.centerText || t('spin').toUpperCase();
     var fs = cr * 0.42;
-    ctx.font = '800 ' + fs + 'px ' + FONT;
-    while (ctx.measureText(label).width > cr * 1.6 && fs > 6 * dpr) {
+    c.font = '800 ' + fs + 'px ' + FONT;
+    while (c.measureText(label).width > cr * 1.6 && fs > 6 * dpr) {
       fs -= 1;
-      ctx.font = '800 ' + fs + 'px ' + FONT;
+      c.font = '800 ' + fs + 'px ' + FONT;
     }
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillStyle = lum(state.s.centerColor) > 0.6 ? '#111827' : '#ffffff';
-    ctx.fillText(label, cx, cy + fs * 0.04);
-    ctx.restore();
+    c.textAlign = 'center';
+    c.textBaseline = 'middle';
+    c.fillStyle = lum(state.s.centerColor) > 0.6 ? '#111827' : '#ffffff';
+    c.fillText(label, cx, cy + fs * 0.04);
+    c.restore();
   }
 
-  function drawPointer() { /* the pointer is now the teardrop above the hub (see drawCenter) */ }
+  function drawPointer() { /* the pointer is now the teardrop above the hub (see paintCenter) */ }
 
   function indexAt() {
     var s = slices();
@@ -471,7 +521,7 @@
       rot = spinFrom + spinDelta * ease(x);
       var idx = indexAt();
       if (idx !== lastIdx) { lastIdx = idx; flap = 1; AudioFX.tick(); }
-      dirty = true;
+      hubDirty = true;
       if (x >= 1) {
         spinning = false;
         rot = mod(rot, TAU);
@@ -480,10 +530,15 @@
       }
     } else if (state.s.idle && !reduceMotion && !modalOpen()) {
       rot = mod(rot + dt * 0.0004, TAU);
-      dirty = true;
     }
-    if (flap > 0) { flap = Math.max(0, flap - dt / 140); dirty = true; }
-    if (dirty) { dirty = false; draw(); }
+    if (flap > 0) { flap = Math.max(0, flap - dt / 140); hubDirty = true; }
+    if (dirty || hubDirty) draw();
+
+    var deg = rot * 180 / Math.PI;
+    if (deg !== rotApplied) {
+      rotApplied = deg;
+      canvas.style.transform = 'rotate(' + deg + 'deg)';
+    }
   }
 
   function spin() {
@@ -1292,5 +1347,7 @@
   bindEvents();
   applyI18n();
   resize();
+  /* Jost arrives after first paint; repaint the cached layers when it lands. */
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(invalidate);
   requestAnimationFrame(frame);
 })();
