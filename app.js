@@ -359,7 +359,52 @@
     if (px !== (parseFloat(wrap.style.width) || 0)) wrap.style.width = px + 'px';
   }
 
+  /* The edit/results buttons float over the stage's top-right corner. When the
+     side panel narrows the stage the title ran under them, so reserve that
+     gutter: shift it while it still holds one line, and otherwise wrap it before
+     their edge. Every input comes from the stage and the text, never from the
+     padding we set, so repeated calls settle on the same value. */
+  function fitTitleGutter() {
+    var t = $('#stageTitle'), fab = document.querySelector('.fab-col.top');
+    if (!t || !fab || !t.offsetHeight) return;
+    t.style.paddingRight = '0px';
+    t.style.fontSize = '';
+    var base = parseFloat(getComputedStyle(t).fontSize);
+    var stage = t.parentElement, scs = getComputedStyle(stage);
+    var padL = (parseFloat(scs.paddingLeft) || 0) + (parseFloat(scs.borderLeftWidth) || 0);
+    var avail = stage.clientWidth - (parseFloat(scs.paddingLeft) || 0) - (parseFloat(scs.paddingRight) || 0);
+    var contentLeft = stage.getBoundingClientRect().left + padL;
+    t.style.width = 'max-content';
+    var natural = Math.ceil(t.getBoundingClientRect().width);
+    t.style.width = '';
+    var fr = fab.getBoundingClientRect();
+    var pad = 0, fs = 0;
+    if (natural && fr.width && avail > 0) {
+      var clear = fr.left - 6;
+      var shift = contentLeft + avail / 2 + natural / 2 - clear;
+      if (shift > 0) {
+        /* Padding widens a centred title by its own width, so the text moves by
+           only half of it: one line needs twice the overlap as padding. */
+        if (natural + shift * 2 <= avail) {
+          pad = Math.ceil(shift * 2);
+        } else {
+          pad = Math.ceil(avail - (clear - contentLeft));
+          /* The gutter costs a whole line only when the text just misses: give
+             back a hair of type size instead of shoving the wheel down. */
+          var content = avail - pad;
+          var plain = Math.ceil(natural / avail), gutted = Math.ceil(natural / content);
+          var shortfall = natural / plain / content - 1;
+          if (content > 0 && gutted > plain && shortfall > 0 && shortfall < 0.03) fs = base / (1 + shortfall + 0.004);
+        }
+      }
+    }
+    /* Always written back: they were cleared above to measure the unguttered box. */
+    t.style.paddingRight = pad > 0 ? pad + 'px' : '';
+    t.style.fontSize = fs ? Math.round(fs * 10) / 10 + 'px' : '';
+  }
+
   function resize() {
+    fitTitleGutter();
     fitShortViewport();
     var r = $('#wheelWrap').getBoundingClientRect();
     dpr = Math.min(window.devicePixelRatio || 1, 2.5);
@@ -1388,7 +1433,8 @@
   bindEvents();
   applyI18n();
   resize();
-  /* Jost arrives after first paint; repaint the cached layers when it lands. */
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(invalidate);
+  /* Jost arrives after first paint; repaint the cached layers when it lands,
+     and re-fit because the wider face changes how far the title reaches. */
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { invalidate(); resize(); });
   requestAnimationFrame(frame);
 })();
