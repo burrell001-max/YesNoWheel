@@ -468,3 +468,7 @@ body.present .fab-col, body.embed .fab-col { display: none; }
   /* Without JS the wheel still gets a height-derived size. */
   .wheel-wrap { width: min(100%, calc(100dvh - 355px), 560px); }
 }
+
+/* Mobile: avoid the double-tap zoom delay and keep controls at a usable tap size. */
+button, a, input, select, textarea { touch-action: manipulation; }
+@media (max-width: 600px) { button, .btn, nav a { min-height: 44px; } }
