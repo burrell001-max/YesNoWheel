@@ -28,6 +28,27 @@
   var FONT = '"Jost", "Segoe UI", Roboto, "Noto Sans", "Noto Sans JP", "Noto Sans KR", "Noto Sans SC", "Noto Sans Arabic", Tahoma, sans-serif';
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* --------------------------------------------------------------- tracking */
+  var SLUG = (location.pathname.split('/').pop() || 'index.html').replace(/\.html$/, '');
+  var TEMPLATE = SLUG === 'index' ? 'home'
+    : /^random-/.test(SLUG) ? 'generator'
+      : SLUG === 'custom-picker-wheel' ? 'custom-picker'
+        : SLUG === 'truth-or-dare-questions' ? 'truth-or-dare' : 'other';
+  var TOOL = TEMPLATE === 'home' ? 'yes-no-wheel'
+    : SLUG.replace(/^random-/, '').replace(/-questions$/, '').replace(/(-generator|-picker-wheel)$/, '');
+  var pageTracked = false;
+  /* events are fire-and-forget: if tags.js is blocked or the visitor has not
+     accepted analytics cookies, nothing leaves and the wheel is unaffected */
+  function track(name, params) {
+    return typeof window.ynwTrack === 'function' && window.ynwTrack(name, params) === true;
+  }
+  function trackPage() {
+    if (pageTracked) return;
+    /* stays false while analytics cookies are refused, so accepting the
+       banner later still reports the page */
+    pageTracked = track('tool_page', { tool: TOOL, template: TEMPLATE, language: lang });
+  }
+
   var PALETTES = {
     vibrant: ['#f9b61e', '#fdee96', '#2d5a0a', '#aeaa3a'],
     pastel: ['#fca5a5', '#fdba74', '#fde68a', '#bbf7d0', '#a5f3fc', '#bfdbfe', '#ddd6fe', '#fbcfe8'],
@@ -718,6 +739,9 @@
     if (state.history.length > 200) state.history.length = 200;
     if (state.mode === 'yesno') state.yn.tally[w.key] = (state.yn.tally[w.key] || 0) + 1;
     else if (state.action === 'accumulation') state.wins[w.label] = (state.wins[w.label] || 0) + 1;
+    track('spin', state.mode === 'yesno'
+      ? { tool: TOOL, template: TEMPLATE, mode: 'yesno', outcome: w.key }
+      : { tool: TOOL, template: TEMPLATE, mode: 'custom', segments: s.length });
     save();
     renderTally();
     renderResults();
@@ -1205,12 +1229,19 @@
     // language
     var sel = $('#langSelect');
     sel.innerHTML = I.LANGS.map(function (l) { return '<option value="' + l.code + '">' + esc(l.name) + '</option>'; }).join('');
-    sel.addEventListener('change', function () { lang = sel.value; applyI18n(); if (drawerOpen()) updateShare(); });
+    sel.addEventListener('change', function () {
+      lang = sel.value;
+      applyI18n();
+      if (drawerOpen()) updateShare();
+      track('language_change', { language: lang });
+    });
 
     // mode
     $$('[data-mode]').forEach(function (b) {
-      b.addEventListener('click', function () {
+      b.addEventListener('click', function (ev) {
         if (spinning) return;
+        /* the tool pages select their own wheel by clicking this tab on boot */
+        if (ev.isTrusted && state.mode !== b.dataset.mode) track('wheel_mode', { tool: TOOL, template: TEMPLATE, mode: b.dataset.mode });
         state.mode = b.dataset.mode;
         changed();
         renderMode();
@@ -1504,6 +1535,10 @@
   if (embed) document.body.classList.add('embed');
   bindEvents();
   applyI18n();
+  /* a first visit accepts the banner after boot, so wait for that decision
+     rather than losing the page event */
+  document.addEventListener('ynw:consent', function (e) { if (e.detail && e.detail.granted) trackPage(); });
+  trackPage();
   resize();
   /* Jost arrives after first paint; repaint the cached layers when it lands,
      and re-fit because the wider face changes how far the title reaches. */
