@@ -29,13 +29,27 @@
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* --------------------------------------------------------------- tracking */
+  /* One row per page that loads app.js, spelled out rather than derived from
+     the filename, so a new page shows up as 'other' rather than a mangled slug. */
   var SLUG = (location.pathname.split('/').pop() || 'index.html').replace(/\.html$/, '');
-  var TEMPLATE = SLUG === 'index' ? 'home'
-    : /^random-/.test(SLUG) ? 'generator'
-      : SLUG === 'custom-picker-wheel' ? 'custom-picker'
-        : SLUG === 'truth-or-dare-questions' ? 'truth-or-dare' : 'other';
-  var TOOL = TEMPLATE === 'home' ? 'yes-no-wheel'
-    : SLUG.replace(/^random-/, '').replace(/-questions$/, '').replace(/(-generator|-picker-wheel)$/, '');
+  var PAGES = {
+    'index': { tool: 'yes-no-wheel', template: 'home' },
+    'custom-picker-wheel': { tool: 'custom-picker', template: 'custom-picker' },
+    'truth-or-dare-questions': { tool: 'truth-or-dare', template: 'truth-or-dare' },
+    'random-name-picker': { tool: 'name', template: 'generator' },
+    'random-number-generator': { tool: 'number', template: 'generator' },
+    'random-food-picker': { tool: 'food', template: 'generator' },
+    'random-color-generator': { tool: 'color', template: 'generator' },
+    'random-letter-generator': { tool: 'letter', template: 'generator' },
+    'random-date-generator': { tool: 'date', template: 'generator' },
+    'random-image-generator': { tool: 'image', template: 'generator' },
+    'random-state-generator': { tool: 'state', template: 'generator' },
+    'random-country-generator': { tool: 'country', template: 'generator' },
+    'random-nfl-team-generator': { tool: 'nfl-team', template: 'generator' },
+    'random-nba-team-generator': { tool: 'nba-team', template: 'generator' },
+    'random-mlb-team-generator': { tool: 'mlb-team', template: 'generator' }
+  };
+  var PAGE = PAGES[SLUG] || { tool: SLUG, template: 'other' };
   var pageTracked = false;
   /* events are fire-and-forget: if tags.js is blocked or the visitor has not
      accepted analytics cookies, nothing leaves and the wheel is unaffected */
@@ -45,8 +59,10 @@
   function trackPage() {
     if (pageTracked) return;
     /* stays false while analytics cookies are refused, so accepting the
-       banner later still reports the page */
-    pageTracked = track('tool_page', { tool: TOOL, template: TEMPLATE, language: lang });
+       banner later still reports the page. This is the only event that
+       carries the page identity: spin and wheel_mode would only repeat what
+       page_location already says. */
+    pageTracked = track('tool_page', { tool: PAGE.tool, template: PAGE.template, language: lang });
   }
 
   var PALETTES = {
@@ -739,9 +755,11 @@
     if (state.history.length > 200) state.history.length = 200;
     if (state.mode === 'yesno') state.yn.tally[w.key] = (state.yn.tally[w.key] || 0) + 1;
     else if (state.action === 'accumulation') state.wins[w.label] = (state.wins[w.label] || 0) + 1;
+    /* the winner's text never leaves the device: outcome is yes/no/maybe, or
+       the number of slices that were on a custom wheel */
     track('spin', state.mode === 'yesno'
-      ? { tool: TOOL, template: TEMPLATE, mode: 'yesno', outcome: w.key }
-      : { tool: TOOL, template: TEMPLATE, mode: 'custom', segments: s.length });
+      ? { mode: 'yesno', outcome: w.key }
+      : { mode: 'custom', segments: s.length });
     save();
     renderTally();
     renderResults();
@@ -1241,7 +1259,7 @@
       b.addEventListener('click', function (ev) {
         if (spinning) return;
         /* the tool pages select their own wheel by clicking this tab on boot */
-        if (ev.isTrusted && state.mode !== b.dataset.mode) track('wheel_mode', { tool: TOOL, template: TEMPLATE, mode: b.dataset.mode });
+        if (ev.isTrusted && state.mode !== b.dataset.mode) track('wheel_mode', { mode: b.dataset.mode });
         state.mode = b.dataset.mode;
         changed();
         renderMode();
