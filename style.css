@@ -375,13 +375,19 @@ body.present .fab-col, body.embed .fab-col { display: none; }
 /* ---------- Narrow portrait phones: keep the header from eating the fold ---- */
 /* At 360px the bar stacked into five rows (254px) and pushed the hub past the
    fold. Tighten the type and spacing so the same items pack into fewer rows;
-   every nav item stays visible. */
+   every nav item stays visible. The three rows left are 44px tall because that
+   is the tap-target floor, so the height has to come out of the chrome around
+   them - the bar's padding and row gaps and the mode switch's own frame -
+   never the targets themselves. */
 @media (max-width: 480px) {
-  .topbar { padding: 6px 10px; gap: 6px 8px; }
+  .topbar { padding: 3px 10px; gap: 4px 8px; }
   .brand { font-size: 1.2rem; gap: 6px; }
   .brand svg { width: 28px; height: 28px; }
-  .topnav { gap: 4px 6px; }
+  .topnav { gap: 2px 6px; }
   .nav-btn { padding: 5px 9px; font-size: .88rem; gap: 5px; }
+  /* The switch's 3px padding sat on top of its 44px buttons and its border,
+     making that row 6px taller than the others. Drop the frame, keep the 44. */
+  .topnav .seg { padding: 0; }
   .seg button { padding: 5px 10px; font-size: .84rem; }
   #langSelect { max-width: 96px; padding: 4px 6px; font-size: .88rem; }
   .icon-btn { width: 34px; height: 34px; font-size: 1rem; }
