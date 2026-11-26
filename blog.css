@@ -37,3 +37,14 @@
 .tthumb svg{display:block;width:100%;height:auto}
 .tcard h2{font-size:1.4rem;line-height:1.2;margin:16px 6px 6px}
 .tcard p{margin:0 8px;line-height:1.5}
+
+/* Byline, Try it box and related posts on article pages */
+.byline{margin:0 0 14px;font-weight:600}
+.byline a{color:var(--text);text-decoration-thickness:2px;text-underline-offset:3px}
+.byline a:hover{background:var(--sun);color:var(--ink)}
+.trybox{margin:22px 0 26px;padding:16px 18px;border:3px solid var(--border);border-radius:16px;background:var(--sun);color:var(--ink);box-shadow:var(--shadow)}
+.trybox p{margin:0;line-height:1.6}
+.trybox b{display:block;margin-bottom:4px}
+.related{margin:36px 0 0;padding-top:22px;border-top:3px solid var(--border)}
+.related h2{font-size:1.3rem;margin:0 0 10px}
+.related ul{margin:0;padding-left:1.2em}

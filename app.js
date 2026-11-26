@@ -1553,9 +1553,6 @@
   if (embed) document.body.classList.add('embed');
   bindEvents();
   applyI18n();
-  /* a first visit accepts the banner after boot, so wait for that decision
-     rather than losing the page event */
-  document.addEventListener('ynw:consent', function (e) { if (e.detail && e.detail.granted) trackPage(); });
   trackPage();
   resize();
   /* Jost arrives after first paint; repaint the cached layers when it lands,

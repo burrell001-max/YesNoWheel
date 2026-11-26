@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
-<!-- Consent Mode v2: default denied until the visitor chooses -->
+<!-- Consent Mode v2: denied by default in the EEA, the UK and Switzerland, granted
+     elsewhere. Google's consent message, delivered by the AdSense tag below, shows
+     the choice and updates these signals. -->
 <script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
-try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});}}catch(e){}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',region:['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],wait_for_update:500});
+gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});
 </script>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TWMPRZKV');</script>
-<!-- End Google Tag Manager -->
-<!-- Google tag (gtag.js) and AdSense: loaded after first paint by tags.js -->
+<!-- AdSense: static tag, so the review crawler finds it in the HTML source. -->
+<meta name="google-adsense-account" content="ca-pub-5783852883880667">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5783852883880667" crossorigin="anonymous"></script>
+<!-- Analytics (gtag.js) is loaded after first paint by tags.js. -->
 <script src="tags.js" defer></script>
 
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>About YesNoWheel | YesNoWheel</title>
-<meta name="description" content="YesNoWheel is a free decision wheel built by Kent B. Williams.">
+<title>About YesNoWheel: Free Decision Tools</title>
+<meta name="description" content="YesNoWheel is a free decision wheel built by Kent B. Williams. What each tool does, how a result is picked, where your data stays and how the site is funded.">
 <link rel="canonical" href="https://yesnowheel.xyz/about.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="YesNoWheel">
-  <meta property="og:title" content="About YesNoWheel | YesNoWheel">
-  <meta property="og:description" content="YesNoWheel is a free decision wheel built by Kent B. Williams.">
+  <meta property="og:title" content="About YesNoWheel: Free Decision Tools">
+  <meta property="og:description" content="YesNoWheel is a free decision wheel built by Kent B. Williams. What each tool does, how a result is picked, where your data stays and how the site is funded.">
   <meta property="og:url" content="https://yesnowheel.xyz/about.html">
   <meta property="og:image" content="https://yesnowheel.xyz/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="YesNoWheel — the free Yes or No decision wheel">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="About YesNoWheel | YesNoWheel">
-  <meta name="twitter:description" content="YesNoWheel is a free decision wheel built by Kent B. Williams.">
+  <meta name="twitter:title" content="About YesNoWheel: Free Decision Tools">
+  <meta name="twitter:description" content="YesNoWheel is a free decision wheel built by Kent B. Williams. What each tool does, how a result is picked, where your data stays and how the site is funded.">
   <meta name="twitter:image" content="https://yesnowheel.xyz/og-image.png">
 <meta name="theme-color" content="#7a4dff">
 <link rel="preload" as="font" type="font/woff2" href="fonts/bricolage-grotesque-latin.woff2" crossorigin><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="blog.css">
@@ -38,14 +40,33 @@ try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWMPRZKV"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-<script src="consent.js"></script>
 <header class="topbar"><a class="brand" href="./"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#7a4dff"/><path d="M32 32V2a30 30 0 0 1 30 30z" fill="#47d6a4"/><path d="M32 32H2A30 30 0 0 1 32 2z" fill="#ffc82e"/><path d="M32 32l21 21A30 30 0 0 1 32 62z" fill="#ff6a55"/><circle cx="32" cy="32" r="30" fill="none" stroke="#1d1633" stroke-width="4"/><circle cx="32" cy="32" r="7" fill="#fff" stroke="#1d1633" stroke-width="3"/></svg><span>YesNoWheel</span></a>
 <nav class="topnav" aria-label="Main"><a class="nav-btn" href="./">Wheel</a><a class="nav-btn" href="tools.html">Tools</a><a class="nav-btn share" href="blog.html">Blog</a></nav></header>
-<main class="blog article"><h1>About YesNoWheel</h1><p class="lead">YesNoWheel is a free decision wheel for the small choices that eat up your day.</p><h2>What it does</h2><p>Spin the Yes or No wheel for a quick answer, switch to Yes, No or Maybe, or build your own wheel with names, weights, colors and images. You can remove each winner as you go, keep a running leaderboard, share a wheel with a link, or embed it on another page. It works in 10 languages and needs no account.</p><h2>Who makes it</h2><p>YesNoWheel is built and run by Kent B. Williams, an independent web developer. I make simple, fast tools and games that work on any device, and I keep them free by showing a small number of ads.</p><h2>How we think about it</h2><p>A wheel is for fun and low-stakes choices: dinner, game night, whose turn it is. It is not a replacement for good information or professional advice on serious matters like health, money or legal questions. Our <a href="blog.html">blog</a> has practical ideas for making everyday choices easier.</p><h2>Get in touch</h2><p>Questions, bug reports and ideas are welcome. Write to <a href="mailto:YesNoWheel@outlook.com">YesNoWheel@outlook.com</a> or visit the <a href="contact.html">contact page</a>.</p></main>
+<main class="blog article">
+<h1>About YesNoWheel</h1>
+<p class="meta">Last updated: November 26, 2026</p>
+<p class="lead">YesNoWheel is a free decision wheel for the small choices that use up an evening.</p>
+<h2>Why the site exists</h2>
+<p>Most of what people stall on is not important. It is small, reversible and cheap: where to eat, which film, who goes first, which job nobody wants. The stalling comes from having several decent options and no reason to prefer one. A wheel settles that kind of decision in about two seconds, and it does it in the open, where everyone can see the result was not chosen by whoever suggested the options.</p>
+<p>The site exists to do that one job properly on a phone: no account, no install, no paywall. It is built and run by Kent B. Williams, an independent web developer.</p>
+<h2>What each tool is for</h2>
+<ul>
+<li>The <a href="./">Yes or No wheel</a> answers a question that has two or three possible answers.</li>
+<li>The <a href="random-name-picker.html">name picker</a> draws people for turns, teams, seats and prize draws.</li>
+<li>The <a href="custom-picker-wheel.html">custom wheel</a> takes any list you type, with weights if the draw should not be even.</li>
+<li>The topic wheels come with their list already loaded: <a href="random-number-generator.html">numbers 1 to 20</a>, <a href="random-letter-generator.html">letters A to Z</a>, <a href="random-state-generator.html">the 50 US states</a>, <a href="random-country-generator.html">196 countries</a>, <a href="random-nfl-team-generator.html">NFL</a>, <a href="random-nba-team-generator.html">NBA</a> and <a href="random-mlb-team-generator.html">MLB</a> teams, <a href="random-food-picker.html">food</a>, <a href="random-color-generator.html">colour names</a>, <a href="random-date-generator.html">the next 14 days</a> and <a href="random-image-generator.html">your own pictures</a>.</li>
+<li><a href="truth-or-dare-questions.html">Truth or dare</a> carries 40 truth questions and 40 dares for a game night.</li>
+</ul>
+<h2>How a result is picked</h2>
+<p>Every spin asks the browser for a random number through <code>crypto.getRandomValues</code>, and falls back to <code>Math.random</code> only when that is not available. The wheel then animates to the slice that number points at. The decision is made before the animation starts; the spin only shows it. Weights change a slice's chance, elimination mode removes a slice once it wins, and accumulation mode counts wins instead of removing them. There is no hidden rule selecting a result.</p>
+<p>Nothing about your wheels is sent anywhere. Entries, titles, colours and pictures are stored in your browser's local storage on your device, and they disappear when you clear site data. There is no account, and no list you build reaches a server. A wheel edited on one device will not appear on another, which is the trade-off for keeping it private.</p>
+<h2>How the site is funded</h2>
+<p>The site is free and carries advertising through Google AdSense. Ads are why there is no subscription. Google Analytics records which pages are visited, so I can tell which tools are used and which explanations are not. Both are governed by consent. Visitors in the EEA, the UK and Switzerland choose through Google's consent message before analytics or personalised ads run, and the <a href="privacy.html">Privacy Policy</a> explains how to change that answer.</p>
+<h2>How the blog is written and kept current</h2>
+<p>Each post covers one narrow decision problem and describes a routine that can be carried out with the tools on this site, in the order the steps appear. A post is dated from the day it was published and shows the date it was last revised; a post that has not changed keeps its original date rather than being re-dated. When a wheel's behaviour changes, the posts describing it are updated in the same edit. If you find something that is wrong or out of date, the contact page is the fastest way to have it corrected.</p>
+<h2>Get in touch</h2>
+<p>Questions, bug reports and corrections are welcome: <a href="mailto:YesNoWheel@outlook.com">YesNoWheel@outlook.com</a>, or use the <a href="contact.html">contact page</a>.</p>
+</main>
 <footer class="sitefoot"><div class="cols">
 <div><b>YesNoWheel</b>&copy; 2026</div>
 <div><b>Explore</b><a href="tools.html">Tools</a><a href="blog.html">Blog</a><a href="about.html">About</a></div>

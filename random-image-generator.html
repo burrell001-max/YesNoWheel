@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
-  <!-- Consent Mode v2: default denied until the visitor chooses -->
+  <!-- Consent Mode v2: denied by default in the EEA, the UK and Switzerland, granted
+     elsewhere. Google's consent message, delivered by the AdSense tag below, shows
+     the choice and updates these signals. -->
 <script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
-try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});}}catch(e){}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',region:['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],wait_for_update:500});
+gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});
 </script>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TWMPRZKV');</script>
-<!-- End Google Tag Manager -->
-<!-- Google tag (gtag.js) and AdSense: loaded after first paint by tags.js -->
+<!-- AdSense: static tag, so the review crawler finds it in the HTML source. -->
+<meta name="google-adsense-account" content="ca-pub-5783852883880667">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5783852883880667" crossorigin="anonymous"></script>
+<!-- Analytics (gtag.js) is loaded after first paint by tags.js. -->
 <script src="tags.js" defer></script>
 
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Image Picker Wheel - Free Random Picker | YesNoWheel</title>
-  <meta name="description" content="Add your own pictures to a custom wheel and let it choose one at random. Good for choosing artwork, a photo, a meal or a destination. Free, no sign-up.">
-  <meta name="keywords" content="yes or no wheel, yes no wheel, yes no picker wheel, random decision wheel, spin the wheel, custom picker wheel, random name picker, decision maker, wheel of names, raffle wheel">
+  <title>Image Picker Wheel: Spin Your Own Pictures</title>
+  <meta name="description" content="Add your own photos to a wheel and spin to choose one. Pictures stay in your browser, with no upload and no account, and each entry can be named.">
+  
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#7a4dff">
   <link rel="canonical" href="https://yesnowheel.xyz/random-image-generator.html">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="YesNoWheel">
-  <meta property="og:title" content="Image Picker Wheel | YesNoWheel">
-  <meta property="og:description" content="Add your own pictures to a custom wheel and let it choose one at random. Good for choosing artwork, a photo, a meal or a destination. Free, no sign-up.">
+  <meta property="og:title" content="Image Picker Wheel: Spin Your Own Pictures">
+  <meta property="og:description" content="Add your own photos to a wheel and spin to choose one. Pictures stay in your browser, with no upload and no account, and each entry can be named.">
   <meta property="og:url" content="https://yesnowheel.xyz/random-image-generator.html">
   <meta property="og:image" content="https://yesnowheel.xyz/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="YesNoWheel — the free Yes or No decision wheel">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Image Picker Wheel | YesNoWheel">
-  <meta name="twitter:description" content="Add your own pictures to a custom wheel and let it choose one at random. Good for choosing artwork, a photo, a meal or a destination. Free, no sign-up.">
+  <meta name="twitter:title" content="Image Picker Wheel: Spin Your Own Pictures">
+  <meta name="twitter:description" content="Add your own photos to a wheel and spin to choose one. Pictures stay in your browser, with no upload and no account, and each entry can be named.">
   <meta name="twitter:image" content="https://yesnowheel.xyz/og-image.png">
 
 <link rel="preload" as="font" type="font/woff2" href="fonts/bricolage-grotesque-latin.woff2" crossorigin><link rel="stylesheet" href="style.css">
   <!-- Structured data -->
-  <script type="application/ld+json">
-{
+  <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -92,41 +93,59 @@ try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent
           "name": "Are my pictures uploaded to a server?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "This site has no accounts. Your wheel is kept in your browser on your own device."
+            "text": "No. They are stored in your browser on your device. There is no account and no upload step on this site."
           }
         },
         {
           "@type": "Question",
-          "name": "Can I add a label as well as a picture?",
+          "name": "Can an entry be a picture with no name?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Each entry can have a name and an image."
+            "text": "Yes. An entry is kept as long as it has a picture or a name, so a wordless wheel of images works fine."
           }
         },
         {
           "@type": "Question",
-          "name": "Is it free?",
+          "name": "How many pictures should go on one wheel?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. It is free to use and needs no account."
+            "text": "Six to eight is comfortable. Beyond that the slices get small and the pictures become hard to tell apart."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I clear my browser data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The wheel is emptied, because the pictures were stored locally. Keep the originals on the device if you want to rebuild it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use pictures I found online?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only if you have the right to use them. Images you add stay on your device, but the responsibility for the licence is yours."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the wheel work on a phone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Adding a picture from the phone camera roll works the same way, and the wheel and result pop-up fit the screen."
           }
         }
       ]
     }
   ]
-}
-  </script>
+}</script>
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWMPRZKV"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-<script src="consent.js"></script>
 <header class="topbar">
     <a class="brand" href="./" aria-label="YesNoWheel">
       <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#7a4dff"/><path d="M32 32V2a30 30 0 0 1 30 30z" fill="#47d6a4"/><path d="M32 32H2A30 30 0 0 1 32 2z" fill="#ffc82e"/><path d="M32 32l21 21A30 30 0 0 1 32 62z" fill="#ff6a55"/><circle cx="32" cy="32" r="30" fill="none" stroke="#1d1633" stroke-width="4"/><circle cx="32" cy="32" r="7" fill="#fff" stroke="#1d1633" stroke-width="3"/></svg>
@@ -157,7 +176,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <main class="layout">
     <section class="stage" id="wheelArea">
-      <h1 id="stageTitle" class="stage-title"></h1>
+      <h1 id="stageTitle" class="stage-title">Image Picker Wheel</h1>
       <p id="stageDesc" class="stage-desc" hidden></p>
       <div class="fab-col top">
         <button id="fabEdit" class="fab dark" type="button" title="Edit entries" aria-label="Edit entries">✎</button>
@@ -263,15 +282,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </main>
 
 <div class="guide" lang="en">
-    <section><h2>1. What Is the Image Picker Wheel?</h2><p>Add your own pictures to a custom wheel and let it choose one at random. Good for choosing artwork, a photo, a meal or a destination.</p></section>
+<section><h2>A wheel you fill yourself</h2>
+<p>The picture wheel opens with six starter entries, none of them carrying a picture. Replace them with your own options: one picture per entry, with a short name if you want one. That makes it a different tool from the other wheels on the site, which arrive with their lists already loaded.</p>
+<p>An entry can be a photo from your device, or an address that points at a picture online. Either way the picture is drawn onto the wheel itself, so the slices show the actual options rather than a label for them.</p>
+</section>
+<hr>
+<section><h2>How to add pictures and spin</h2>
+<p>Open the entries panel and add an entry for each option. Choose a picture for it, then give it a name if the result pop-up needs to be readable at a glance. When the list is ready, spin with the button, the space bar, or the hub at the centre of the wheel.</p>
+<ul>
+<li><b>Keep it to six or eight entries.</b> A picture wheel with twenty photos produces slices too small to tell apart.</li>
+<li><b>Use the same aspect for every picture.</b> Mixed portrait and landscape photos draw unevenly and the wheel looks untidy.</li>
+<li><b>Elimination mode</b> offers Hide choice on the winning picture, which is how you work through a set of choices one at a time.</li>
+<li><b>The text view</b> still works for the names, so you can paste a list of labels and add pictures afterwards.</li>
+<li><b>Mystery wheel</b> hides the pictures until the spin ends, if the point is a surprise rather than a comparison.</li>
+</ul>
+</section>
+<hr>
+<section><h2>Five uses for a picture draw</h2>
+<h3>Choosing artwork to draw</h3>
+<p>Add six reference photos of subjects you would be happy to draw, then spin. It removes the ten minutes of scrolling that usually happens before anyone picks up a pencil.</p>
+<h3>Dinner from photos</h3>
+<p>Photograph five meals you can actually cook this week, add them, and spin. Seeing the dishes makes the choice faster than reading a list of names.</p>
+<h3>Classroom picture prompts</h3>
+<p>Add a set of images for a writing task and let the wheel choose the prompt. Every student sees the same picture chosen in the same way, which matters when the task is graded.</p>
+<h3>Where to go</h3>
+<p>Save four photos of places within a day's travel and spin. It is a decision between things you already want to do, which is the kind of choice a wheel is good at.</p>
+<h3>Photo to share</h3>
+<p>Load a shortlist from a trip and let the wheel pick the one to post, rather than opening the camera roll and closing it again.</p>
+</section>
+<hr>
+<section><h2>Where the pictures live</h2>
+<p>They stay in your browser on this device. There is no account and no upload step, so a photo you add is not sent to a server to be stored. That also means the wheel is tied to the browser you built it in: clearing site data removes it, and a different device starts empty.</p>
+<p>Because the pictures are stored locally, a very large set of high-resolution photos can slow the page down. Resize before adding if you plan to keep a lot of them.</p>
+</section>
+<hr>
+<section><h2>Related wheels and guides</h2>
+<ul>
+<li><a href="custom-picker-wheel.html">The custom wheel</a> for text-only entries when pictures are not the point.</li>
+<li><a href="post-build-a-better-shortlist.html">How to build a shortlist the wheel can decide</a> explains why six options usually beat twenty.</li>
+<li><a href="post-what-to-watch-tonight.html">Choosing what to watch</a> uses the same short-list logic without any pictures at all.</li>
+<li><a href="random-color-generator.html">The colour wheel</a> if the choice is a palette rather than a photo.</li>
+</ul>
+</section>
+<hr>
     <hr>
-    <section><h2>2. How to Use It</h2><p>Press Spin, click the wheel or hit the space bar. The pointer shows the winning slice and a pop-up shows the result. Open the entries list, add an image to each entry, then press Spin. Give each entry a short label so the result is easy to read.</p></section>
-    <hr>
-    <section><h2>3. Ways to Use It</h2><ul class="pills"><li>Pick a photo to share</li><li>Choose artwork to draw</li><li>Select a meal from pictures</li><li>Classroom picture prompts</li><li>Decide between places</li></ul>
-    <p>Choosing between pictures is still a shortlist decision: a handful of options at the same level, costing roughly the same. <a href="post-build-a-better-shortlist.html">How to build a shortlist the wheel can decide</a> covers those rules; the ones about wording matter less when every option is already a photo.</p>
-    <p>Want a different kind of wheel? See all our <a href="tools.html">tools</a> or read tips on the <a href="blog.html">blog</a>.</p></section>
-    <hr>
-    <section><h2>4. Frequently Asked Questions</h2><details><summary>Are my pictures uploaded to a server?</summary><p>This site has no accounts. Your wheel is kept in your browser on your own device.</p></details><details><summary>Can I add a label as well as a picture?</summary><p>Yes. Each entry can have a name and an image.</p></details><details><summary>Is it free?</summary><p>Yes. It is free to use and needs no account.</p></details></section>
+    <section><h2>Questions people ask</h2><details><summary>Are my pictures uploaded to a server?</summary><p>No. They are stored in your browser on your device. There is no account and no upload step on this site.</p></details><details><summary>Can an entry be a picture with no name?</summary><p>Yes. An entry is kept as long as it has a picture or a name, so a wordless wheel of images works fine.</p></details><details><summary>How many pictures should go on one wheel?</summary><p>Six to eight is comfortable. Beyond that the slices get small and the pictures become hard to tell apart.</p></details><details><summary>What happens if I clear my browser data?</summary><p>The wheel is emptied, because the pictures were stored locally. Keep the originals on the device if you want to rebuild it.</p></details><details><summary>Can I use pictures I found online?</summary><p>Only if you have the right to use them. Images you add stay on your device, but the responsibility for the licence is yours.</p></details><details><summary>Does the wheel work on a phone?</summary><p>Yes. Adding a picture from the phone camera roll works the same way, and the wheel and result pop-up fit the screen.</p></details></section>
   </div>
 
 <footer class="sitefoot"><div class="cols">
