@@ -368,8 +368,14 @@ body.present .fab-col, body.embed .fab-col { display: none; }
 }
 /* Narrow screens keep the full sentence, so the dialog goes above the stage
    instead of on top of it. */
-@media (max-width: 999px) and (min-height: 621px) {
-  #ynw-cc { left: 12px; right: 12px; top: 12px; bottom: auto; max-width: none; margin: 0; }
+@media (max-width: 999px) {
+  /* Bottom sheet on phones: the dialog must not sit over the page title or the
+     hero, so it docks to the bottom and scrolls inside a capped height instead. */
+  #ynw-cc { left: 10px; right: 10px; bottom: 10px; top: auto; max-width: none; margin: 0;
+    max-height: 46vh; overflow: auto; padding: 12px 14px; border-radius: 14px 14px 10px 10px; }
+  #ynw-cc h2 { font-size: 16px; }
+  #ynw-cc p { font-size: 14px; margin-bottom: 10px; }
+  #ynw-cc button { padding: 12px 14px; min-height: 44px; }
 }
 @media (max-height: 620px) {
   #ynw-cc { left: 12px; right: 12px; bottom: 12px; padding: 10px 14px; max-height: 96px; overflow: auto; }
