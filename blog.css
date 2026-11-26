@@ -52,3 +52,12 @@
 /* Group headings on the blog index */
 .post-group{margin:0}
 .post-group>h2{font-size:clamp(1.15rem,2.4vw,1.4rem);margin:30px 0 14px;color:var(--muted);letter-spacing:.02em}
+
+/* Tables and ordered lists in long-form guides */
+.article .table-wrap{overflow-x:auto;margin:0 0 18px;border:3px solid var(--border);border-radius:14px;background:var(--card)}
+.article table{width:100%;border-collapse:collapse;min-width:560px;font-size:.95rem}
+.article th,.article td{padding:10px 12px;text-align:left;border-bottom:1px solid rgba(29,22,51,.18);vertical-align:top;line-height:1.45}
+.article th{background:var(--sun);color:var(--ink)}
+.article tr:last-child td{border-bottom:0}
+.article ol{line-height:1.75;margin:0 0 14px;padding-left:1.4em}
+.article ol li{margin:0 0 6px}
