@@ -1,7 +1,14 @@
 /* YesNoWheel cookie consent. Works with Google Consent Mode v2.
    Defaults are set inline in each page <head> (denied) before any Google tag loads.
    The dialog styles ship in style.css; this file only builds the markup, so the
-   banner can render on the first paint instead of after app.js boots. */
+   banner can render on the first paint instead of after app.js boots.
+
+   TODO before serving ads to visitors in the EEA, the UK or Switzerland: this is a
+   custom banner written for this site. It is NOT a Google-certified CMP and it is not
+   on Google's list of certified consent management platforms. Google requires a
+   certified CMP to deliver ads to those regions, so replace this file with one (for
+   example Google's own consent message tool, or another certified CMP) before ads go
+   live there. Until then, treat ads in those regions as unsupported. */
 (function () {
   var KEY = 'ynw_consent_v1';
   function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
