@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
-<!-- Consent Mode v2: default denied until the visitor chooses -->
+<!-- Consent Mode v2: denied by default in the EEA, the UK and Switzerland, granted
+     elsewhere. Google's consent message, delivered by the AdSense tag below, shows
+     the choice and updates these signals. -->
 <script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
-try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});}}catch(e){}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',region:['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],wait_for_update:500});
+gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});
 </script>
 <!-- AdSense: static tag, so the review crawler finds it in the HTML source. -->
 <meta name="google-adsense-account" content="ca-pub-5783852883880667">
@@ -38,7 +40,6 @@ try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
-<script src="consent.js"></script>
 <header class="topbar"><a class="brand" href="./"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#7a4dff"/><path d="M32 32V2a30 30 0 0 1 30 30z" fill="#47d6a4"/><path d="M32 32H2A30 30 0 0 1 32 2z" fill="#ffc82e"/><path d="M32 32l21 21A30 30 0 0 1 32 62z" fill="#ff6a55"/><circle cx="32" cy="32" r="30" fill="none" stroke="#1d1633" stroke-width="4"/><circle cx="32" cy="32" r="7" fill="#fff" stroke="#1d1633" stroke-width="3"/></svg><span>YesNoWheel</span></a>
 <nav class="topnav" aria-label="Main"><a class="nav-btn" href="./">Wheel</a><a class="nav-btn" href="tools.html">Tools</a><a class="nav-btn share" href="blog.html">Blog</a></nav></header>
 <main class="blog article">
@@ -48,11 +49,12 @@ try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent
 <h2>What stays on your device</h2>
 <p>You do not need an account to use anything here. The names, options, pictures, colours, titles, language and theme you set stay in your browser's local storage on your device. They are not transmitted to us, and clearing site data removes them. If you email us, we receive your email address and whatever you write, and we use it only to reply.</p>
 <h2>Information collected automatically</h2>
-<p>The site is hosted on GitHub Pages, which may keep server logs such as IP address, browser type and requested pages under its own privacy statement. We also use Google Analytics to understand how many people visit and which pages are used. Analytics cookies are set only if you accept them in the consent banner; if you reject, Google Consent Mode keeps measurement to cookieless signals and no analytics cookie is stored. You can opt out of Google Analytics across all sites with the <a href="https://tools.google.com/dlpage/gaoptout">Google Analytics Opt-out Browser Add-on</a>.</p>
+<p>The site is hosted on GitHub Pages, which may keep server logs such as IP address, browser type and requested pages under its own privacy statement. We also use Google Analytics to understand how many people visit and which pages are used. Whether analytics cookies are set depends on consent: in the EEA, the UK and Switzerland they are denied until you answer Google's consent message, and outside those regions they are on by default. You can block them in your browser at any time, or opt out across all sites with the <a href="https://tools.google.com/dlpage/gaoptout">Google Analytics Opt-out Browser Add-on</a>.</p>
 <h2>Advertising</h2>
 <p>The site shows advertising through Google AdSense (publisher ID ca-pub-5783852883880667). Google and its partners use cookies to serve ads based on your prior visits to this and other websites. Personalised advertising is used only where you have consented. You can review or change your ad personalisation at <a href="https://adssettings.google.com">adssettings.google.com</a>, opt out of many third-party ad vendors at <a href="https://www.aboutads.info">aboutads.info</a>, and read how Google uses information from sites that use its services at <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a>.</p>
 <h2>Cookies and consent</h2>
-<p>On your first visit a banner asks you to accept or reject non-essential cookies, and the defaults are set to denied until you choose. Accepting allows analytics and advertising cookies; rejecting keeps them off. The <b>Cookie settings</b> link in the footer of every page reopens the banner so you can change your mind, and your choice is stored locally on your device. The <a href="cookies.html">Cookie Policy</a> lists what each category does.</p>
+<p>Consent is handled by Google's consent messages rather than by a banner from this site. The messages are published in our AdSense account and delivered to the page by Google's AdSense tag: a European regulations message for visitors in the EEA, the UK and Switzerland, and a US state regulations message where those laws apply. The answer you give there is applied through Google Consent Mode v2.</p>
+<p>Before any Google script runs, each page sets consent defaults: analytics and advertising storage are denied for the 32 countries in the EEA, UK and Switzerland list, and granted everywhere else. Google's message then updates those signals to match what you selected. This site sets no consent cookie of its own. To change an answer later, clear this site's cookies in your browser and reload the page, and the message will appear again. The <a href="cookies.html">Cookie Policy</a> lists what each category does.</p>
 <h2>How information is used</h2>
 <p>Information is used to run and improve the site, measure which pages are useful, keep the site secure, show the ads that keep it free, and answer your messages. We do not sell your personal information.</p>
 <h2>Your choices and rights</h2>

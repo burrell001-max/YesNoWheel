@@ -20,15 +20,11 @@
   gtag('js', new Date());
   gtag('config', 'G-P04LW13SBM');
 
-  /* Consent-gated events for app.js. The consent defaults in each page head stop
-     Google storing anything, but a queued event is still a request, so nothing is
-     pushed until the visitor has accepted analytics cookies; Reject, or a later
-     change in Cookie settings, stops it again. Event names and fixed values only:
-     custom wheel labels, titles and descriptions never leave the device. */
+  /* Events for app.js. Consent is handled by Google Consent Mode and Google's own
+     consent message, so events are pushed normally here. Event names and fixed
+     values only: custom wheel labels, titles and descriptions never leave the
+     device. */
   window.ynwTrack = function (name, params) {
-    var granted = false;
-    try { granted = localStorage.getItem('ynw_consent_v1') === 'granted'; } catch (e) { /* private mode */ }
-    if (!granted) return false;
     window.dataLayer = window.dataLayer || [];
     (function () { window.dataLayer.push(arguments); })('event', name, params || {});
     return true;
