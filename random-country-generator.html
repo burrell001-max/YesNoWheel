@@ -7,39 +7,38 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
 try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});}}catch(e){}
 </script>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TWMPRZKV');</script>
-<!-- End Google Tag Manager -->
-<!-- Google tag (gtag.js) and AdSense: loaded after first paint by tags.js -->
+<!-- AdSense: static tag, so the review crawler finds it in the HTML source. -->
+<meta name="google-adsense-account" content="ca-pub-5783852883880667">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5783852883880667" crossorigin="anonymous"></script>
+<!-- Analytics (gtag.js) is loaded after first paint by tags.js. -->
 <script src="tags.js" defer></script>
 
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Country Picker Wheel - Free Random Picker | YesNoWheel</title>
-  <meta name="description" content="Spin to pick a random country from a list of 196. Use it for geography games, trivia, travel inspiration or language practice. Free, no sign-up.">
-  <meta name="keywords" content="yes or no wheel, yes no wheel, yes no picker wheel, random decision wheel, spin the wheel, custom picker wheel, random name picker, decision maker, wheel of names, raffle wheel">
+  <title>Random Country Picker: 196 Countries</title>
+  <meta name="description" content="Spin a wheel of 196 countries: the 193 UN member states plus Palestine, Taiwan and Vatican City. Every entry is listed on the page from A to Z.">
+  
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#7a4dff">
   <link rel="canonical" href="https://yesnowheel.xyz/random-country-generator.html">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="YesNoWheel">
-  <meta property="og:title" content="Country Picker Wheel | YesNoWheel">
-  <meta property="og:description" content="Spin to pick a random country from a list of 196. Use it for geography games, trivia, travel inspiration or language practice. Free, no sign-up.">
+  <meta property="og:title" content="Random Country Picker: 196 Countries">
+  <meta property="og:description" content="Spin a wheel of 196 countries: the 193 UN member states plus Palestine, Taiwan and Vatican City. Every entry is listed on the page from A to Z.">
   <meta property="og:url" content="https://yesnowheel.xyz/random-country-generator.html">
   <meta property="og:image" content="https://yesnowheel.xyz/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="YesNoWheel — the free Yes or No decision wheel">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Country Picker Wheel | YesNoWheel">
-  <meta name="twitter:description" content="Spin to pick a random country from a list of 196. Use it for geography games, trivia, travel inspiration or language practice. Free, no sign-up.">
+  <meta name="twitter:title" content="Random Country Picker: 196 Countries">
+  <meta name="twitter:description" content="Spin a wheel of 196 countries: the 193 UN member states plus Palestine, Taiwan and Vatican City. Every entry is listed on the page from A to Z.">
   <meta name="twitter:image" content="https://yesnowheel.xyz/og-image.png">
 
 <link rel="preload" as="font" type="font/woff2" href="fonts/bricolage-grotesque-latin.woff2" crossorigin><link rel="stylesheet" href="style.css">
   <!-- Structured data -->
-  <script type="application/ld+json">
-{
+  <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -92,40 +91,59 @@ try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent
           "name": "Which countries are included?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The list covers the 193 United Nations member states plus Palestine, Taiwan and Vatican City."
+            "text": "The 193 UN member states plus Palestine, Taiwan and Vatican City: 196 entries in total. The full list is printed above and comes from the same data the wheel uses."
           }
         },
         {
           "@type": "Question",
-          "name": "Can I pick from one continent only?",
+          "name": "Why are some names shortened?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Edit the list in the text view and keep only the countries you want."
+            "text": "A long official name takes up most of a slice on a small screen, so the common short form is used. The text view accepts the full name if you want it back."
           }
         },
         {
           "@type": "Question",
-          "name": "Is it free?",
+          "name": "Can I spin one continent at a time?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. It is free to use and needs no account."
+            "text": "Yes. Delete the other entries in the text view and the wheel redraws with the countries you kept."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are flags or capitals shown on the slices?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The slices carry country names only, so the wheel stays readable on a phone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does elimination mode remember my progress?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It lasts for the session and is restored with the list. If you need a term-long record, keep the list in the text view and trim it as you go."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use it offline in a classroom?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Once the page has loaded, the wheel runs in the browser without a connection, so a dropped school network does not stop the draw."
           }
         }
       ]
     }
   ]
-}
-  </script>
+}</script>
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWMPRZKV"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 <script src="consent.js"></script>
 <header class="topbar">
     <a class="brand" href="./" aria-label="YesNoWheel">
@@ -157,7 +175,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <main class="layout">
     <section class="stage" id="wheelArea">
-      <h1 id="stageTitle" class="stage-title"></h1>
+      <h1 id="stageTitle" class="stage-title">Country Picker Wheel</h1>
       <p id="stageDesc" class="stage-desc" hidden></p>
       <div class="fab-col top">
         <button id="fabEdit" class="fab dark" type="button" title="Edit entries" aria-label="Edit entries">✎</button>
@@ -263,14 +281,79 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </main>
 
 <div class="guide" lang="en">
-    <section><h2>1. What Is the Country Picker Wheel?</h2><p>Spin to pick a random country from a list of 196. Use it for geography games, trivia, travel inspiration or language practice.</p></section>
+<section><h2>196 countries on one wheel</h2>
+<p>The wheel carries 196 entries: the 193 United Nations member states, plus Palestine, Taiwan and Vatican City. Each one is a single slice and every slice is the same size, so any country has a 1-in-196 chance. Names run alphabetically, and no slice carries a flag, a capital city or a population figure, because the draw is about which country comes up, not how much you already know about it.</p>
+<p>A handful of entries use a short form so the label still fits a phone screen. The Democratic Republic of the Congo appears as DR Congo, and Cote d'Ivoire is written without its accent. The country is the same either way, and the text view accepts the long form if you would rather see it spelled out.</p>
+</section>
+<hr>
+<section><h2>How to run it</h2>
+<p>Press Spin, click the wheel, or use the space bar. The pointer marks the winning slice and a pop-up names the country.</p>
+<ul>
+<li><b>Elimination mode</b> removes a country after it wins, which is the setting for a class that studies one country a week: after 30 weeks, 30 different countries.</li>
+<li><b>The text view</b> is how you cut the list to a continent, a language region or a set of countries you are actually travelling to.</li>
+<li><b>Accumulation mode</b> leaves every country in play and counts the draws, which is useful across a term of quiz rounds.</li>
+<li><b>The share link</b> hands the exact list you built to someone else, so two classes can work from the same 196 or the same dozen.</li>
+</ul>
+</section>
+<hr>
+<section><h2>Five ways to use a country draw</h2>
+<h3>Country of the week</h3>
+<p>Spin once on Monday, then spend a page on the country it lands on: where it is, what language is spoken, one dish, one landmark. Elimination mode stops the same country returning next week.</p>
+<h3>Cook the country</h3>
+<p>Draw a country and find one dish you can actually cook with what is in the shop. It works better as a food project than as a quiz question, because the result is eaten.</p>
+<h3>Capital quiz</h3>
+<p>Spin and give the group ten seconds to name the capital before the next spin. Because nobody picks the country, the quiz covers the map instead of the same five places.</p>
+<h3>Travel shortlist</h3>
+<p>Cut the list to countries you would genuinely visit this year, then spin. A draw among ten real options is more useful than a draw among 196.</p>
+<h3>Language practice</h3>
+<p>Draw a country, then write two sentences in its main language, or find one news story from it. The wheel picks the topic; the work is still the work.</p>
+</section>
+<hr>
+<section><h2>Every country on the wheel, A to Z</h2>
+<p>This is the full list, generated from the same entries the wheel uses. If a country is missing, it is not on the wheel, and you can add it in the text view.</p>
+<table>
+<thead><tr><th>Letter</th><th>Countries</th><th>Count</th></tr></thead>
+<tbody>
+<tr><td>A</td><td>Afghanistan, Albania, Algeria, Andorra, Angola, Antigua and Barbuda, Argentina, Armenia, Australia, Austria, Azerbaijan</td><td>11</td></tr>
+<tr><td>B</td><td>Bahamas, Bahrain, Bangladesh, Barbados, Belarus, Belgium, Belize, Benin, Bhutan, Bolivia, Bosnia and Herzegovina, Botswana, Brazil, Brunei, Bulgaria, Burkina Faso, Burundi</td><td>17</td></tr>
+<tr><td>C</td><td>Cabo Verde, Cambodia, Cameroon, Canada, Central African Republic, Chad, Chile, China, Colombia, Comoros, Congo, Costa Rica, Cote d'Ivoire, Croatia, Cuba, Cyprus, Czechia</td><td>17</td></tr>
+<tr><td>D</td><td>DR Congo, Denmark, Djibouti, Dominica, Dominican Republic</td><td>5</td></tr>
+<tr><td>E</td><td>Ecuador, Egypt, El Salvador, Equatorial Guinea, Eritrea, Estonia, Eswatini, Ethiopia</td><td>8</td></tr>
+<tr><td>F</td><td>Fiji, Finland, France</td><td>3</td></tr>
+<tr><td>G</td><td>Gabon, Gambia, Georgia, Germany, Ghana, Greece, Grenada, Guatemala, Guinea, Guinea-Bissau, Guyana</td><td>11</td></tr>
+<tr><td>H</td><td>Haiti, Honduras, Hungary</td><td>3</td></tr>
+<tr><td>I</td><td>Iceland, India, Indonesia, Iran, Iraq, Ireland, Israel, Italy</td><td>8</td></tr>
+<tr><td>J</td><td>Jamaica, Japan, Jordan</td><td>3</td></tr>
+<tr><td>K</td><td>Kazakhstan, Kenya, Kiribati, Kuwait, Kyrgyzstan</td><td>5</td></tr>
+<tr><td>L</td><td>Laos, Latvia, Lebanon, Lesotho, Liberia, Libya, Liechtenstein, Lithuania, Luxembourg</td><td>9</td></tr>
+<tr><td>M</td><td>Madagascar, Malawi, Malaysia, Maldives, Mali, Malta, Marshall Islands, Mauritania, Mauritius, Mexico, Micronesia, Moldova, Monaco, Mongolia, Montenegro, Morocco, Mozambique, Myanmar</td><td>18</td></tr>
+<tr><td>N</td><td>Namibia, Nauru, Nepal, Netherlands, New Zealand, Nicaragua, Niger, Nigeria, North Korea, North Macedonia, Norway</td><td>11</td></tr>
+<tr><td>O</td><td>Oman</td><td>1</td></tr>
+<tr><td>P</td><td>Pakistan, Palau, Palestine, Panama, Papua New Guinea, Paraguay, Peru, Philippines, Poland, Portugal</td><td>10</td></tr>
+<tr><td>Q</td><td>Qatar</td><td>1</td></tr>
+<tr><td>R</td><td>Romania, Russia, Rwanda</td><td>3</td></tr>
+<tr><td>S</td><td>Saint Kitts and Nevis, Saint Lucia, Saint Vincent and the Grenadines, Samoa, San Marino, Sao Tome and Principe, Saudi Arabia, Senegal, Serbia, Seychelles, Sierra Leone, Singapore, Slovakia, Slovenia, Solomon Islands, Somalia, South Africa, South Korea, South Sudan, Spain, Sri Lanka, Sudan, Suriname, Sweden, Switzerland, Syria</td><td>26</td></tr>
+<tr><td>T</td><td>Taiwan, Tajikistan, Tanzania, Thailand, Timor-Leste, Togo, Tonga, Trinidad and Tobago, Tunisia, Turkey, Turkmenistan, Tuvalu</td><td>12</td></tr>
+<tr><td>U</td><td>Uganda, Ukraine, United Arab Emirates, United Kingdom, United States, Uruguay, Uzbekistan</td><td>7</td></tr>
+<tr><td>V</td><td>Vanuatu, Vatican City, Venezuela, Vietnam</td><td>4</td></tr>
+<tr><td>Y</td><td>Yemen</td><td>1</td></tr>
+<tr><td>Z</td><td>Zambia, Zimbabwe</td><td>2</td></tr>
+</tbody>
+</table>
+<p>Total: 196 entries.</p>
+</section>
+<hr>
+<section><h2>Related wheels and guides</h2>
+<ul>
+<li><a href="random-state-generator.html">The US state wheel</a> does the same job inside one country, with all 50 states.</li>
+<li><a href="post-random-generator-uses.html">Six uses for the number, letter and country wheels</a> has a worked classroom round built on country draws.</li>
+<li><a href="random-number-generator.html">The number wheel</a> is the better choice when the answer should be a score rather than a place.</li>
+<li><a href="post-build-a-better-shortlist.html">Building a shortlist</a> explains how to cut 196 options down to a pool worth spinning.</li>
+</ul>
+</section>
+<hr>
     <hr>
-    <section><h2>2. How to Use It</h2><p>Press Spin, click the wheel or hit the space bar. The pointer shows the winning slice and a pop-up shows the result. Spin the wheel, then learn something about the country it lands on. Remove countries you already know or visited by editing the list.</p></section>
-    <hr>
-    <section><h2>3. Ways to Use It</h2><ul class="pills"><li>Geography quiz</li><li>Dream trip ideas</li><li>Trivia night rounds</li><li>Study a new country each week</li><li>Pick a cuisine to cook</li></ul>    <p>Stuck for a use? <a href="post-random-generator-uses.html">Six uses for these random pickers</a> gives each generator a concrete job, from seating plans to quiz rounds.</p>
-    <p>Want a different kind of wheel? See all our <a href="tools.html">tools</a> or read tips on the <a href="blog.html">blog</a>.</p></section>
-    <hr>
-    <section><h2>4. Frequently Asked Questions</h2><details><summary>Which countries are included?</summary><p>The list covers the 193 United Nations member states plus Palestine, Taiwan and Vatican City.</p></details><details><summary>Can I pick from one continent only?</summary><p>Yes. Edit the list in the text view and keep only the countries you want.</p></details><details><summary>Is it free?</summary><p>Yes. It is free to use and needs no account.</p></details></section>
+    <section><h2>Questions people ask</h2><details><summary>Which countries are included?</summary><p>The 193 UN member states plus Palestine, Taiwan and Vatican City: 196 entries in total. The full list is printed above and comes from the same data the wheel uses.</p></details><details><summary>Why are some names shortened?</summary><p>A long official name takes up most of a slice on a small screen, so the common short form is used. The text view accepts the full name if you want it back.</p></details><details><summary>Can I spin one continent at a time?</summary><p>Yes. Delete the other entries in the text view and the wheel redraws with the countries you kept.</p></details><details><summary>Are flags or capitals shown on the slices?</summary><p>No. The slices carry country names only, so the wheel stays readable on a phone.</p></details><details><summary>Does elimination mode remember my progress?</summary><p>It lasts for the session and is restored with the list. If you need a term-long record, keep the list in the text view and trim it as you go.</p></details><details><summary>Can I use it offline in a classroom?</summary><p>Once the page has loaded, the wheel runs in the browser without a connection, so a dropped school network does not stop the draw.</p></details></section>
   </div>
 
 <footer class="sitefoot"><div class="cols">

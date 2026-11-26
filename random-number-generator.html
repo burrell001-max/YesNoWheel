@@ -7,39 +7,38 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
 try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});}}catch(e){}
 </script>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TWMPRZKV');</script>
-<!-- End Google Tag Manager -->
-<!-- Google tag (gtag.js) and AdSense: loaded after first paint by tags.js -->
+<!-- AdSense: static tag, so the review crawler finds it in the HTML source. -->
+<meta name="google-adsense-account" content="ca-pub-5783852883880667">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5783852883880667" crossorigin="anonymous"></script>
+<!-- Analytics (gtag.js) is loaded after first paint by tags.js. -->
 <script src="tags.js" defer></script>
 
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Number Wheel: Spin the Wheel Generator for Numbers | YesNoWheel</title>
-  <meta name="description" content="Free spin the wheel generator for numbers: pick a random number from 1 to 20 or enter your own range. A number wheel for raffles, games and classes.">
-  <meta name="keywords" content="yes or no wheel, yes no wheel, yes no picker wheel, random decision wheel, spin the wheel, custom picker wheel, random name picker, decision maker, wheel of names, raffle wheel">
+  <title>Random Number Wheel: 1 to 20</title>
+  <meta name="description" content="Spin a wheel of numbers 1 to 20 for scoring, dice replacement or chore order. Edit the list for any range, including two-digit draws.">
+  
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#7a4dff">
   <link rel="canonical" href="https://yesnowheel.xyz/random-number-generator.html">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="YesNoWheel">
-  <meta property="og:title" content="Number Wheel: Spin the Wheel Generator for Numbers | YesNoWheel">
-  <meta property="og:description" content="Free spin the wheel generator for numbers: pick a random number from 1 to 20 or enter your own range. A number wheel for raffles, games and classes.">
+  <meta property="og:title" content="Random Number Wheel: 1 to 20">
+  <meta property="og:description" content="Spin a wheel of numbers 1 to 20 for scoring, dice replacement or chore order. Edit the list for any range, including two-digit draws.">
   <meta property="og:url" content="https://yesnowheel.xyz/random-number-generator.html">
   <meta property="og:image" content="https://yesnowheel.xyz/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="YesNoWheel — the free Yes or No decision wheel">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Number Wheel: Spin the Wheel Generator for Numbers | YesNoWheel">
-  <meta name="twitter:description" content="Free spin the wheel generator for numbers: pick a random number from 1 to 20 or enter your own range. A number wheel for raffles, games and classes.">
+  <meta name="twitter:title" content="Random Number Wheel: 1 to 20">
+  <meta name="twitter:description" content="Spin a wheel of numbers 1 to 20 for scoring, dice replacement or chore order. Edit the list for any range, including two-digit draws.">
   <meta name="twitter:image" content="https://yesnowheel.xyz/og-image.png">
 
 <link rel="preload" as="font" type="font/woff2" href="fonts/bricolage-grotesque-latin.woff2" crossorigin><link rel="stylesheet" href="style.css">
   <!-- Structured data -->
-  <script type="application/ld+json">
-{
+  <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -89,26 +88,42 @@ try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Is this a true random number generator?",
+          "name": "Can I change the range?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Each spin picks at random, which is fine for games and classroom use. Do not use it for anything that needs certified randomness, such as security or official lotteries."
+            "text": "Yes. Edit the list in the text view: 1 to 6 for a die, 1 to 100 for a percentage, or any set of numbers you need."
           }
         },
         {
           "@type": "Question",
-          "name": "Can I avoid repeats?",
+          "name": "Does it avoid repeating a number?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Switch on Elimination mode and each number is removed after it is picked."
+            "text": "Not in normal mode; each spin is independent. Elimination mode removes a number once it wins, so a run of draws cannot repeat."
           }
         },
         {
           "@type": "Question",
-          "name": "How do I spin numbers from 1 to 100?",
+          "name": "Can I draw two numbers at once?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Paste the numbers into the text view, one per line, or use two wheels of 0 to 9 for the tens and the ones. A single wheel with 100 slices is hard to read."
+            "text": "Not in one spin. Spin twice, or use elimination mode so the second draw cannot match the first."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the draw truly random?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The wheel picks a slice with your browser's random number generator and then animates to it. It is fine for games and classroom use; it is not a certified lottery draw."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I make some numbers more likely?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, with weights. A number with weight two gets twice the chance of a number with weight one."
           }
         },
         {
@@ -116,24 +131,19 @@ try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent
           "name": "Is it free?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. It is free to use and needs no account."
+            "text": "Yes, with no account and no limit on spins."
           }
         }
       ]
     }
   ]
-}
-  </script>
+}</script>
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWMPRZKV"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 <script src="consent.js"></script>
 <header class="topbar">
     <a class="brand" href="./" aria-label="YesNoWheel">
@@ -165,7 +175,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <main class="layout">
     <section class="stage" id="wheelArea">
-      <h1 id="stageTitle" class="stage-title"></h1>
+      <h1 id="stageTitle" class="stage-title">Number Picker Wheel</h1>
       <p id="stageDesc" class="stage-desc" hidden></p>
       <div class="fab-col top">
         <button id="fabEdit" class="fab dark" type="button" title="Edit entries" aria-label="Edit entries">✎</button>
@@ -271,14 +281,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </main>
 
 <div class="guide" lang="en">
-    <section><h2>1. Spin the Wheel Generator for Numbers</h2><p>This free number wheel picks a random number from 1 to 20 each time you spin. It is a quick way to run a raffle, replace a die in a board game, pick a page or seat, or settle who goes first. Because it is a spin the wheel generator, you can swap in any numbers you like.</p></section>
+<section><h2>Twenty numbers, one to twenty</h2>
+<p>The wheel loads with the numbers 1 to 20, one per slice, in order. Each number has the same 1-in-20 chance, and a number that has just won is no less likely to win again unless you switch modes.</p>
+<p>Twenty is a useful default because it covers most small draws: a twenty-sided die, a class of twenty, twenty minutes, twenty points. It is also short enough that the labels stay large on a phone.</p>
+</section>
+<hr>
+<section><h2>How to use it</h2>
+<p>Spin with the button, the wheel, or the space bar. The number appears in a pop-up, big enough to read across a table.</p>
+<ul>
+<li><b>The text view</b> replaces the list. Type 1 to 6 for a die, 1 to 100 for a percentage, or 0 to 9 for digits.</li>
+<li><b>Elimination mode</b> removes each number as it is drawn, so five spins give five different numbers. That is the mode for seating orders and unique picks.</li>
+<li><b>Accumulation mode</b> keeps every number in play and counts the draws, which turns the wheel into a visible tally for a quiz.</li>
+<li><b>Weights</b> can give a number two slices when the draw is meant to be biased, for example a handicap in a game.</li>
+</ul>
+</section>
+<hr>
+<section><h2>Five ways to use a number draw</h2>
+<h3>Dice replacement</h3>
+<p>Put 1 to 6 on the wheel and spin instead of rolling. It is useful when a board game has lost its die, and it is visible to everyone at the table, which matters in a game where people suspect each other.</p>
+<h3>Scoring</h3>
+<p>Spin for points after a round: 1 to 20 gives a spread wide enough to matter and small enough to stay fair over a short game.</p>
+<h3>Chore or seat order</h3>
+<p>In elimination mode, spin once per name and read the numbers out as the order. Nobody has to argue about who goes first because the sequence was drawn in front of them.</p>
+<h3>Quiz points</h3>
+<p>Draw a number for how many points the next question is worth, or for how many seconds the team has to answer. It keeps a quiz from settling into the same rhythm.</p>
+<h3>Random pick from a numbered list</h3>
+<p>Number a list of options 1 to 20, spin, and match the result to the number. It is the quickest way to draw from something you cannot easily type out.</p>
+</section>
+<hr>
+<section><h2>What the default range is for</h2>
+<p>1 to 20 is a starting point, not a limit. The wheel does not generate a number between two values you choose; it draws from the list on the wheel. So if you need 1 to 50, put 50 lines in the text view, or type only the numbers that are actually in play.</p>
+<p>Typing a short list is usually better than a wide range. A draw from six options tells everyone what the possibilities are, while a draw from 1 to 100 mostly produces a number that means nothing until someone looks it up.</p>
+</section>
+<hr>
+<section><h2>Related wheels and guides</h2>
+<ul>
+<li><a href="random-letter-generator.html">The letter wheel</a> for word games built on a drawn letter.</li>
+<li><a href="random-name-picker.html">The name picker</a> when the draw is a person rather than a number.</li>
+<li><a href="post-random-generator-uses.html">Six uses for the generators</a> includes a scoring round built on number draws.</li>
+<li><a href="custom-picker-wheel.html">Build a custom wheel</a> to mix numbers with names in one spin.</li>
+</ul>
+</section>
+<hr>
     <hr>
-    <section><h2>2. How to Use the Number Wheel</h2><p>Press Spin, click the wheel or hit the space bar. The pointer shows the winning slice and a pop-up shows the result. The wheel starts with the numbers 1 to 20. To use a different range, open the text view and type or paste your own numbers, one per line.</p><p>Wheels with many slices get hard to read. For a range such as 1 to 100, spin two wheels: one with the digits 0 to 9 for the tens and one with 0 to 9 for the ones. For a raffle, use Elimination mode so a ticket number cannot win twice.</section>
-    <hr>
-    <section><h2>3. Ways to Use It</h2><ul class="pills"><li>Raffle and draw numbers</li><li>Replace a die in a board game</li><li>Pick a random seat or page</li><li>Choose who goes first</li><li>Number-guessing games</li></ul>    <p>Stuck for a use? <a href="post-random-generator-uses.html">Six uses for these random pickers</a> gives each generator a concrete job, from seating plans to quiz rounds.</p>
-    <p>Want a different kind of wheel? See all our <a href="tools.html">tools</a> or read tips on the <a href="blog.html">blog</a>.</p></section>
-    <hr>
-    <section><h2>4. Frequently Asked Questions</h2><details><summary>Is this a true random number generator?</summary><p>Each spin picks at random, which is fine for games and classroom use. Do not use it for anything that needs certified randomness, such as security or official lotteries.</p></details><details><summary>Can I avoid repeats?</summary><p>Yes. Switch on Elimination mode and each number is removed after it is picked.</p></details><details><summary>How do I spin numbers from 1 to 100?</summary><p>Paste the numbers into the text view, one per line, or use two wheels of 0 to 9 for the tens and the ones. A single wheel with 100 slices is hard to read.</p></details><details><summary>Is it free?</summary><p>Yes. It is free to use and needs no account.</p></details></section>
+    <section><h2>Questions people ask</h2><details><summary>Can I change the range?</summary><p>Yes. Edit the list in the text view: 1 to 6 for a die, 1 to 100 for a percentage, or any set of numbers you need.</p></details><details><summary>Does it avoid repeating a number?</summary><p>Not in normal mode; each spin is independent. Elimination mode removes a number once it wins, so a run of draws cannot repeat.</p></details><details><summary>Can I draw two numbers at once?</summary><p>Not in one spin. Spin twice, or use elimination mode so the second draw cannot match the first.</p></details><details><summary>Is the draw truly random?</summary><p>The wheel picks a slice with your browser's random number generator and then animates to it. It is fine for games and classroom use; it is not a certified lottery draw.</p></details><details><summary>Can I make some numbers more likely?</summary><p>Yes, with weights. A number with weight two gets twice the chance of a number with weight one.</p></details><details><summary>Is it free?</summary><p>Yes, with no account and no limit on spins.</p></details></section>
   </div>
 
 <footer class="sitefoot"><div class="cols">
