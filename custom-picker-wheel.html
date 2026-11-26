@@ -87,50 +87,58 @@ gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_persona
       ]
     },
     {
-      "@type": "FAQPage",
-      "mainEntity": [
+    "@type": "FAQPage",
+    "mainEntity": [
         {
-          "@type": "Question",
-          "name": "How many entries can I add?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Up to 500. The wheel gets crowded past a few dozen entries, so shorter lists are easier to read."
-          }
+            "@type": "Question",
+            "name": "How many entries can one wheel hold?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Five hundred. Past a few dozen slices the labels get cramped, so a shorter list is easier to read from across a room."
+            }
         },
         {
-          "@type": "Question",
-          "name": "Is my wheel saved?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Your entries and settings are kept in your browser on this device, so they are there when you come back."
-          }
+            "@type": "Question",
+            "name": "Why did my entries disappear?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The page keeps entries in this browser on this device. Clearing site data, using a private window or switching browsers starts you with an empty wheel, so export a CSV of anything you want to keep."
+            }
         },
         {
-          "@type": "Question",
-          "name": "Is this spin the wheel generator really free?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. It is free to use, with no account, no sign-up and no limit on spins."
-          }
+            "@type": "Question",
+            "name": "Can a slice show a picture instead of text?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Each entry has an image control that accepts a pasted address or an uploaded file, and the picture is drawn inside that slice."
+            }
         },
         {
-          "@type": "Question",
-          "name": "Can I make a custom wheel with my own entries?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Type or paste your own options, then customize colors, weights and images. Your wheel is saved in your browser on this device."
-          }
+            "@type": "Question",
+            "name": "What does a weight of 0 do?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "It keeps the entry in the list but takes it off the wheel. That is useful for a name or prize you want to leave out of this round without deleting it."
+            }
         },
         {
-          "@type": "Question",
-          "name": "Is it free?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. It is free to use and needs no account."
-          }
+            "@type": "Question",
+            "name": "Do entries keep their color when I paste a new list?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, when the text matches. The wheel pairs a pasted line with an existing entry of the same name and reuses its color, weight and picture. A new name arrives with the default styling."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Can I put the wheel on my own website?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Settings has an embed code, an iframe pointed at this page with your list in the address. Paste it into a page that allows iframes and the wheel runs there."
+            }
         }
-      ]
-    }
+    ]
+}
   ]
 }
   </script>
@@ -276,16 +284,67 @@ gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_persona
   </main>
 
 <div class="guide" lang="en">
-    <section><h2>1. What Is This Spin the Wheel Generator?</h2><p>This is a free spin the wheel generator for any list you can think of. Type or paste your options, spin, and the wheel picks one at random. Because it is a custom wheel, you decide everything: the entries, their order, their colors and images, and how likely each one is to win. It runs in your browser, so there is no sign-up and nothing to install.</p>
-    <p>Need a ready-made list? Try the <a href="random-name-picker.html">name wheel</a>, the <a href="random-number-generator.html">number wheel</a>, the <a href="random-food-picker.html">food wheel</a> or the <a href="random-color-generator.html">color wheel</a>, then edit it to fit.</p></section>
+    <section><h2>A wheel for a list you write yourself</h2>
+    <p>The custom picker is the general-purpose version of this site: the other wheels arrive with a known set of entries, and this one arrives empty so you can supply the set. Names, chores, raffle tickets, films, tasks, prizes, anything that can be written on one line can go on a slice.</p>
+    <p>Because you write the list, you also control the odds. Each entry carries a weight, so a ticket holder with six tickets can be six times as likely as one with a single ticket, and every slice can carry its own color or picture. Nothing is uploaded and no account is involved: the list lives in the browser you are using.</p></section>
     <hr>
-    <section><h2>2. How to Make Your Custom Wheel</h2><p>Add one entry per line in the list or text view, or paste a whole list at once. Press Spin, hit the space bar or click the hub at the centre of the wheel, and the pointer shows the winning slice with a pop-up. To customize the wheel:</p><ul><li><b>Weights:</b> give an entry a higher number to make it more likely.</li><li><b>Colors and images:</b> change an entry's color or add a picture to its slice, and pick a palette in Settings.</li><li><b>Elimination:</b> hide each winner from the result so nothing repeats.</li><li><b>Accumulation:</b> keep score of how often each entry wins.</li><li><b>Import and export:</b> load a list from a CSV, TXT or JSON file and save your results as a CSV.</li><li><b>Share:</b> copy a link to your custom wheel to send to others.</li></ul>
-    <p>If the list is the problem, <a href="post-build-a-better-shortlist.html">how to build a shortlist the wheel can decide</a> covers the six rules to set before you spin.</p></section>
+    <section><h2>How to use it</h2>
+    <p>Open the Inputs tab and add entries in either view. The list view gives each entry a row with a weight box, a color control and an image button. The text view is a plain box where every line is one entry, which is the faster route for a list you already have in a spreadsheet or a message.</p>
+    <p>Press Spin, press the space bar or click the hub. The result opens in a pop-up, and in Elimination mode that pop-up also carries the Hide choice and Hide all matching buttons. The second one removes every entry with the same name, which is how a duplicated name is cleared in one click.</p>
+    <p>These are the controls that actually exist, and what each one does:</p>
+    <ul>
+    <li><b>Weights.</b> Each entry runs from 0 to 999 in steps of 0.5. A weight of 2 doubles an entry's chance; a weight of 0 keeps the line but drops it from the wheel. In the text view, a line beginning <code>6, Ada</code> sets Ada's weight to six.</li>
+    <li><b>Colors.</b> Every entry can take a color, and Settings offers palettes called vibrant, pastel, neon, mono and custom, plus a page background color and a center label.</li>
+    <li><b>Images.</b> An entry can hold an image address or an uploaded picture, shown inside its slice and in the result pop-up.</li>
+    <li><b>Normal, elimination and accumulation.</b> Normal keeps every slice in play; elimination hides winners as you go; accumulation counts wins and shows a leaderboard.</li>
+    <li><b>List tools.</b> Shuffle, sort A to Z, delete empty lines and clear all sit above the list.</li>
+    <li><b>Import and export.</b> CSV, TXT and JSON files can be imported, and the wheel exports as CSV or JSON, with text, weight, color and hidden state in the CSV.</li>
+    <li><b>Share and embed.</b> Settings builds a link that carries the list in the address, and an iframe version of the same wheel.</li>
+    </ul>
+    <p>Spin behavior is adjustable too: the duration slider runs from 1 to 15 seconds, speed from 1 to 10, and the tick, victory sound, confetti, idle spin and dark theme are separate switches.</p></section>
     <hr>
-    <section><h2>3. Ways to Use It</h2><ul class="pills"><li>Pick a winner</li><li>Choose a restaurant</li><li>Assign tasks</li><li>Run a class draw</li><li>Pick a movie</li></ul><p>Want a different kind of wheel? See all our <a href="tools.html">tools</a> or read tips on the <a href="blog.html">blog</a>.</p></section>
+    <section><h2>A worked example: a weighted raffle</h2>
+    <p>Suppose a school raffle sells tickets in strips, so one family holds six tickets and another holds one. A plain wheel with one entry per person would give both families the same chance, which is the wrong answer. Here is the whole setup.</p>
+    <ol>
+    <li>Clear the default entries with Clear all, then open the text view.</li>
+    <li>Write one line per ticket holder, starting with the number of tickets they hold: <code>6, Ada</code>, <code>6, Ben</code>, <code>1, Cara</code>. The number before the comma becomes the weight.</li>
+    <li>Check the list view. Each row should show the weight you typed; the slices are now sized in proportion to tickets sold.</li>
+    <li>Choose Elimination mode, because a prize draw should not hand the same family two prizes unless the rules allow it.</li>
+    <li>Spin for the first prize. In the pop-up, press Hide choice so that winner leaves the wheel, then spin again for the next prize.</li>
+    <li>Open the Results tab to read the order of winners, and export the history as CSV if the draw needs a written record.</li>
+  </ol>
+    <p>Two extras are worth knowing. The share link sends the whole weighted list to a colleague, so a second person can watch the same draw; the embed code puts that wheel on the raffle page itself. And if the draw is happening in front of an audience, raise the spin duration so nobody can claim the result arrived too fast to see.</p></section>
     <hr>
-    <section><h2>4. Frequently Asked Questions</h2><details><summary>How many entries can I add?</summary><p>Up to 500. The wheel gets crowded past a few dozen entries, so shorter lists are easier to read.</p></details><details><summary>Is my wheel saved?</summary><p>Yes. Your entries and settings are kept in your browser on this device, so they are there when you come back.</p></details><details><summary>Is this spin the wheel generator really free?</summary><p>Yes. It is free to use, with no account, no sign-up and no limit on spins.</p></details><details><summary>Can I make a custom wheel with my own entries?</summary><p>Yes. Type or paste your own options, then customize colors, weights and images. Your wheel is saved in your browser on this device.</p></details><details><summary>Is it free?</summary><p>Yes. It is free to use and needs no account.</p></details></section>
-  </div>
+    <section><h2>Making a list that spins well</h2>
+    <ul>
+    <li><b>One idea per line.</b> A line that says "Movie night or takeaway" is two options hiding in one entry, and the wheel can only pick the pair.</li>
+    <li><b>Keep it readable.</b> Under twenty entries the labels stay legible on a phone; a hundred entries need a shorter list or a spoken draw.</li>
+    <li><b>Trim near-duplicates.</b> Three versions of the same restaurant split one preference across three slices, which quietly changes the odds.</li>
+    <li><b>Reserve weights for real differences.</b> Ticket counts and seniority are reasons; liking an option more is not, unless the group agreed to it first.</li>
+    <li><b>Use colors to group.</b> One color per team or category turns a crowded wheel into something readable at a glance.</li>
+    <li><b>Export before clearing.</b> A CSV takes a second to save and turns a lost browser session into a minor annoyance.</li>
+    </ul></section>
+    <hr>
+    <section><h2>Six ways people use it</h2>
+    <ul>
+    <li><b>A weighted raffle</b> where each entry carries the number of tickets held.</li>
+    <li><b>A chores rota</b> with one job per line and a spin each week.</li>
+    <li><b>A classroom draw</b> that hides each name once it has been called.</li>
+    <li><b>A team picker</b> for a lunchtime game with uneven sides.</li>
+    <li><b>A film shortlist</b> capped at the five films people will actually watch.</li>
+    <li><b>A task order</b> for the jobs nobody wants to start first.</li>
+    </ul></section>
+    <hr>
+    <section><h2>Related wheels and guides</h2>
+    <ul>
+    <li><a href="post-fair-raffle-name-picker.html">Running a raffle the room can verify</a> covers the record-keeping that a weighted draw needs.</li>
+    <li><a href="post-build-a-better-shortlist.html">Building a shortlist the wheel can decide</a> is the six-rule checklist behind a list that produces a usable answer.</li>
+    <li><a href="random-name-picker.html">The name wheel</a> is the simpler option when every entry has the same chance.</li>
+    <li><a href="post-split-chores-with-a-wheel.html">Splitting chores with a wheel</a> applies this page's list to a household rota.</li>
+    <li><a href="random-number-generator.html">The number wheel</a> handles a draw where the result is a quantity rather than a name.</li>
+  </ul></section>
+    <hr>
+    <section><h2>Questions people ask</h2><details><summary>How many entries can one wheel hold?</summary><p>Five hundred. Past a few dozen slices the labels get cramped, so a shorter list is easier to read from across a room.</p></details><details><summary>Why did my entries disappear?</summary><p>The page keeps entries in this browser on this device. Clearing site data, using a private window or switching browsers starts you with an empty wheel, so export a CSV of anything you want to keep.</p></details><details><summary>Can a slice show a picture instead of text?</summary><p>Yes. Each entry has an image control that accepts a pasted address or an uploaded file, and the picture is drawn inside that slice.</p></details><details><summary>What does a weight of 0 do?</summary><p>It keeps the entry in the list but takes it off the wheel. That is useful for a name or prize you want to leave out of this round without deleting it.</p></details><details><summary>Do entries keep their color when I paste a new list?</summary><p>Yes, when the text matches. The wheel pairs a pasted line with an existing entry of the same name and reuses its color, weight and picture. A new name arrives with the default styling.</p></details><details><summary>Can I put the wheel on my own website?</summary><p>Yes. Settings has an embed code, an iframe pointed at this page with your list in the address. Paste it into a page that allows iframes and the wheel runs there.</p></details></section></div>
 
 <footer class="sitefoot"><div class="cols">
   <div><b>YesNoWheel</b>&copy; 2026</div>

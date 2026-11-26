@@ -87,42 +87,58 @@ gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_persona
       ]
     },
     {
-      "@type": "FAQPage",
-      "mainEntity": [
+    "@type": "FAQPage",
+    "mainEntity": [
         {
-          "@type": "Question",
-          "name": "Can I change the foods on the wheel?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Open the text view, delete what you do not want and type your own meals, one per line."
-          }
+            "@type": "Question",
+            "name": "Are the sixteen dishes meant to be a balanced menu?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. They are common meals chosen to show what the wheel does, not a nutrition plan. Replace them with the dishes your household actually eats."
+            }
         },
         {
-          "@type": "Question",
-          "name": "Can I use it for restaurants?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Replace the dishes with the names of places you like to eat or order from."
-          }
+            "@type": "Question",
+            "name": "Can I put restaurants on it instead of dishes?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Clear the list and type the places you order from, one per line, and the wheel becomes a restaurant draw."
+            }
         },
         {
-          "@type": "Question",
-          "name": "Does it pick healthy meals?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "It picks at random from your list, so the choices are up to you. Fill the wheel with meals that fit your health needs and any advice from your doctor or dietitian."
-          }
+            "@type": "Question",
+            "name": "Does it avoid meals I am allergic to?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Only if those meals are not on the list. The wheel has no ingredient data, so remove anything you cannot eat before the first spin."
+            }
         },
         {
-          "@type": "Question",
-          "name": "Is it free?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. It is free to use and needs no account."
-          }
+            "@type": "Question",
+            "name": "How do I stop the same dinner coming up twice in a week?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Switch to Elimination mode, then press Hide choice on each result. The dish leaves the wheel, and Restore hidden puts the whole list back."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Can I make one dish more likely than the others?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Open the list view and raise that entry's weight, or start its line in the text view with a number and a comma, such as 3, Pizza."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Is my food list still there next time?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The sixteen starter dishes return with a fresh page, because the preset is reloaded on every visit. A list you type lasts for the visit, so export it as CSV if you want to keep it."
+            }
         }
-      ]
-    }
+    ]
+}
   ]
 }
   </script>
@@ -268,16 +284,69 @@ gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_persona
   </main>
 
 <div class="guide" lang="en">
-    <section><h2>1. What Is the Food Picker Wheel?</h2><p>This is a free spin the wheel generator for food. When you cannot decide what to eat, spin the wheel and let it choose a meal, a cuisine or a snack. It starts with sixteen popular dishes, and you can replace them with your own favorites in a few seconds. It runs in your browser, with no sign-up.</p></section>
+    <section><h2>Sixteen dishes, one decision</h2>
+    <p>This wheel exists for the moment when nobody in the house will name a meal. It opens with sixteen dishes already on the slices: pizza, tacos, sushi, burgers, pasta, salad, ramen, curry, sandwiches, fried rice, soup, stir fry, a burrito bowl, pancakes, an omelet and dumplings. That is a starter list rather than a menu, so treat it as raw material. Delete what nobody at your table will eat, then type the meals you really cook or order.</p>
+    <p>The wheel does not read a menu, check ingredients or know what is in the fridge. It picks a slice from the list in front of it, which is why the list matters more than the spin does. A short list of meals everyone would accept gives a useful answer; a long list of maybes gives an argument with a random number attached to it.</p></section>
     <hr>
-    <section><h2>2. How to Use It</h2><p>Press Spin, hit the space bar or click the hub at the centre of the wheel, and the pointer shows tonight's winner. To make it your own, open the text view and type or paste your meals, one per line. Remove anything you do not eat, and add the places you order from or the dishes you cook.</p><p>For the best results, keep ten to twelve options you would be happy with. If a meal wins and you feel a little disappointed, that tells you what you really wanted, so go with that instead. See <a href="post-pick-a-restaurant.html">how to pick a restaurant when nobody can agree</a> for a five-minute routine.</p></section>
+    <section><h2>How to use it</h2>
+    <p>Press the Spin button, press the space bar, or click the hub at the centre of the wheel. The pointer stops on one slice and the result appears in a pop-up. The spin is animation: the winning dish is chosen before the wheel starts turning.</p>
+    <p>Editing happens in the Inputs tab. The list view shows one row per dish; the text view is a box where each line is one entry, which is quicker when you are pasting a week of dinners. Five hundred lines is the ceiling.</p>
+    <p>Four settings change what a spin means, and each one is a real control in the panel:</p>
+    <ul>
+    <li><b>Weights.</b> Every entry carries a weight from 0 to 999 in steps of 0.5. A dish at weight 2 gets twice the chance of a dish at weight 1, and a weight of 0 takes it off the wheel without deleting the line. In the text view, start a line with the number and a comma, as in <code>3, Pizza</code>.</li>
+    <li><b>Elimination.</b> After a result the pop-up offers Hide choice and Hide all matching. The first removes that dish; the second removes every entry with the same name. Restore hidden brings them all back.</li>
+    <li><b>Accumulation.</b> Every win adds to a tally and a leaderboard, which is how a household discovers it really does pick pasta four nights in seven.</li>
+    <li><b>Normal.</b> Nothing is removed and each spin stands alone, so the same dish can win twice in a row.</li>
+    </ul>
+    <p>A dish can also be given its own color, or a picture pasted as an image address or uploaded from your device. Whole lists can be imported from CSV, TXT or JSON, and exported as CSV or JSON, so a meal plan survives a browser clean-up.</p>
+    <p>Two sharing tools live in Settings. The share link packs the current list into the address, so whoever opens it sees the same wheel. The embed code is an iframe for putting that wheel inside another page. Both are snapshots: edits made after you copy them do not travel with the link.</p></section>
     <hr>
-    <section><h2>3. Ways to Use It</h2><ul class="pills"><li>Dinner tonight</li><li>Takeout or delivery</li><li>Lunch with coworkers</li><li>Snack time</li><li>Pick a cuisine</li><li>Dinner party ideas</li></ul><p>Feeding a group? <a href="post-build-a-better-shortlist.html">Build a shortlist first</a>, then let the wheel choose. Want a different kind of wheel? See all our <a href="tools.html">tools</a> or read tips on the <a href="blog.html">blog</a>.</p></section>
+    <section><h2>Breakfast</h2>
+    <p>Morning decisions are made before anyone is properly awake, which makes them a good fit for a wheel. Keep a separate breakfast list short: porridge, eggs on toast, yogurt with fruit, pancakes, an omelet, a smoothie. Pancakes and the omelet are already on the default wheel, so the fastest version of this is to delete everything else.</p>
+    <p>Spin it the night before if the morning is rushed. A decision made at ten in the evening is one argument the next day does not have to have, and a breakfast that needs twenty minutes is easier to accept when nobody is choosing it at seven.</p></section>
+    <section><h2>Lunch</h2>
+    <p>Lunch is usually a smaller decision with a harder constraint: whatever is in the bag, or whatever is near the office. Build a list of five or six realistic options rather than a wish list. Sandwiches, soup, salad, a burrito bowl and fried rice are all on the wheel already and all travel well.</p>
+    <p>If several people order together, give each person their own line and spin for whose turn it is to choose, then spin the food wheel for the choice itself. Two short spins settle a group faster than one long discussion.</p></section>
+    <section><h2>Dinner</h2>
+    <p>Dinner is where a food wheel earns its place, because it is the meal with the most options and the least patience. The default list leans towards dinners: pizza, pasta, curry, ramen, stir fry, a burrito bowl, dumplings, burgers. Leave the ones your household likes and delete the rest before the first spin.</p>
+    <p>For a week of dinners, use Elimination mode and hide each winner as it is drawn. Seven draws from a list of fourteen gives seven different meals, and the list can be refilled with Restore hidden once the week is done.</p></section>
+    <section><h2>Snacks and small meals</h2>
+    <p>Not every spin has to be a plate of food. A snack wheel works on a much shorter list, and it is useful at the point in the afternoon when nobody can remember what is in the cupboard. Try fruit, crackers and cheese, toast, yogurt, nuts, popcorn, or whatever is actually on the shelf.</p>
+    <p>The rule is the same as for dinner: only put on the wheel what you would be happy to eat right now. A snack wheel loaded with things you would have to go and buy is a shopping list pretending to be a decision.</p></section>
+    <section><h2>Takeaway or cooking at home</h2>
+    <p>The first decision of the evening is not which food, it is whether anyone is cooking. Make a two-entry wheel that says Cook and Order in, spin it, and then spin the food wheel that matches the answer. Two entries make that first spin honest: with more choices, the result is easy to ignore.</p>
+    <p>Keep separate lists for the two outcomes. A cooking list holds meals you can make tonight with what is in the kitchen; a takeaway list holds the places that deliver. Mixing them on one wheel produces results nobody can act on, such as a restaurant meal on a night with no budget for it.</p></section>
     <hr>
-    <section><h2>4. Tips for Choosing Food</h2><ul><li><b>Build the list around your needs.</b> Remove foods you are allergic to, avoid or cannot get, so every result works for you.</li><li><b>Use Elimination mode for the week.</b> Click Hide choice after each pick and the meal leaves the wheel, so you do not repeat dinner.</li><li><b>Add weights.</b> Give a favorite a higher weight if you want it to come up more often.</li><li><b>Make a second wheel for cuisine.</b> Spin a cuisine first, then spin dishes within it.</li><li><b>Share it.</b> Copy the share link so everyone at home can use the same wheel.</li></ul></section>
+    <section><h2>What is on the default wheel</h2>
+    <p>The sixteen starter entries, in the order they appear on the first load:</p>
+    <ul>
+    <li>Pizza, Tacos, Sushi, Burgers</li>
+    <li>Pasta, Salad, Ramen, Curry</li>
+    <li>Sandwiches, Fried Rice, Soup, Stir Fry</li>
+    <li>Burrito Bowl, Pancakes, Omelet, Dumplings</li>
+    </ul>
+    <p>Each one is a whole meal rather than a side, so a result is something you can act on. Nothing in the list is regional to one country, which makes it a reasonable starting point for a shared kitchen.</p></section>
     <hr>
-    <section><h2>5. Frequently Asked Questions</h2><details><summary>Can I change the foods on the wheel?</summary><p>Yes. Open the text view, delete what you do not want and type your own meals, one per line.</p></details><details><summary>Can I use it for restaurants?</summary><p>Yes. Replace the dishes with the names of places you like to eat or order from.</p></details><details><summary>Does it pick healthy meals?</summary><p>It picks at random from your list, so the choices are up to you. Fill the wheel with meals that fit your health needs and any advice from your doctor or dietitian.</p></details><details><summary>Is it free?</summary><p>Yes. It is free to use and needs no account.</p></details></section>
-  </div>
+    <section><h2>Six ways people use it</h2>
+    <ul>
+    <li><b>A weeknight dinner</b> when the fridge is full but nobody will commit.</li>
+    <li><b>A takeaway night</b> with the delivery places typed in as entries.</li>
+    <li><b>A shared lunch</b> where the group cannot agree on one cuisine.</li>
+    <li><b>A weekly meal plan</b> using Elimination mode to avoid repeats.</li>
+    <li><b>A buffet or party table</b> where the theme needs a single dish.</li>
+    <li><b>A snack break</b> with the short list of what is actually in the cupboard.</li>
+    </ul></section>
+    <hr>
+    <section><h2>Related wheels and guides</h2>
+    <ul>
+    <li><a href="post-pick-a-restaurant.html">Picking a restaurant when nobody can agree</a> uses the same shortlist idea for going out rather than staying in.</li>
+    <li><a href="custom-picker-wheel.html">The custom picker wheel</a> holds a longer list, weights and pictures, which suits a menu with prices.</li>
+    <li><a href="post-build-a-better-shortlist.html">Building a shortlist the wheel can decide</a> explains why six good options beat twenty maybes.</li>
+    <li><a href="random-name-picker.html">The name wheel</a> settles who chooses the food when the group cannot.</li>
+    <li><a href="post-random-generator-uses.html">Six uses for the generators</a> puts a food draw into a wider routine of small household decisions.</li>
+    </ul></section>
+    <hr>
+    <section><h2>Questions people ask</h2><details><summary>Are the sixteen dishes meant to be a balanced menu?</summary><p>No. They are common meals chosen to show what the wheel does, not a nutrition plan. Replace them with the dishes your household actually eats.</p></details><details><summary>Can I put restaurants on it instead of dishes?</summary><p>Yes. Clear the list and type the places you order from, one per line, and the wheel becomes a restaurant draw.</p></details><details><summary>Does it avoid meals I am allergic to?</summary><p>Only if those meals are not on the list. The wheel has no ingredient data, so remove anything you cannot eat before the first spin.</p></details><details><summary>How do I stop the same dinner coming up twice in a week?</summary><p>Switch to Elimination mode, then press Hide choice on each result. The dish leaves the wheel, and Restore hidden puts the whole list back.</p></details><details><summary>Can I make one dish more likely than the others?</summary><p>Yes. Open the list view and raise that entry's weight, or start its line in the text view with a number and a comma, such as 3, Pizza.</p></details><details><summary>Is my food list still there next time?</summary><p>The sixteen starter dishes return with a fresh page, because the preset is reloaded on every visit. A list you type lasts for the visit, so export it as CSV if you want to keep it.</p></details></section></div>
 
 <footer class="sitefoot"><div class="cols">
   <div><b>YesNoWheel</b>&copy; 2026</div>
