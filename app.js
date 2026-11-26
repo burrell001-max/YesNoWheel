@@ -130,30 +130,36 @@
     try {
       var o = JSON.parse(localStorage.getItem(STORE) || 'null');
       if (o && typeof o === 'object') {
-        if (o.mode === 'custom' || o.mode === 'yesno') d.mode = o.mode;
+        /* One storage key covers every tool, so only the page that saved a
+           wheel restores its mode, title, list and history. Preferences such
+           as theme, duration and view still follow the visitor across pages. */
+        var own = o.page === SLUG;
         if (o.view === 'text') d.view = 'text';
-        if (o.yn) {
-          d.yn.three = !!o.yn.three;
-          d.yn.sets = clamp(parseInt(o.yn.sets, 10) || 1, 1, 5);
-          ['yes', 'no', 'maybe'].forEach(function (k) {
-            var v = parseInt(o.yn.tally && o.yn.tally[k], 10);
-            if (v > 0) d.yn.tally[k] = v;
-          });
-        }
-        if (Array.isArray(o.entries)) d.entries = o.entries.slice(0, 500).map(mkEntry);
-        if (['normal', 'elimination', 'accumulation'].indexOf(o.action) > -1) d.action = o.action;
-        d.mysteryWheel = !!o.mysteryWheel;
-        d.mysteryResult = !!o.mysteryResult;
-        d.title = String(o.title || '').slice(0, 80);
-        d.desc = String(o.desc || '').slice(0, 300);
-        if (Array.isArray(o.history)) {
-          d.history = o.history.slice(0, 200).filter(function (h) { return h && typeof h.label === 'string'; });
-        }
-        if (o.wins && typeof o.wins === 'object') {
-          Object.keys(o.wins).forEach(function (k) {
-            var v = parseInt(o.wins[k], 10);
-            if (v > 0 && k !== '__proto__') d.wins[k] = v;
-          });
+        if (own) {
+          if (o.mode === 'custom' || o.mode === 'yesno') d.mode = o.mode;
+          if (o.yn) {
+            d.yn.three = !!o.yn.three;
+            d.yn.sets = clamp(parseInt(o.yn.sets, 10) || 1, 1, 5);
+            ['yes', 'no', 'maybe'].forEach(function (k) {
+              var v = parseInt(o.yn.tally && o.yn.tally[k], 10);
+              if (v > 0) d.yn.tally[k] = v;
+            });
+          }
+          if (Array.isArray(o.entries)) d.entries = o.entries.slice(0, 500).map(mkEntry);
+          if (['normal', 'elimination', 'accumulation'].indexOf(o.action) > -1) d.action = o.action;
+          d.mysteryWheel = !!o.mysteryWheel;
+          d.mysteryResult = !!o.mysteryResult;
+          d.title = String(o.title || '').slice(0, 80);
+          d.desc = String(o.desc || '').slice(0, 300);
+          if (Array.isArray(o.history)) {
+            d.history = o.history.slice(0, 200).filter(function (h) { return h && typeof h.label === 'string'; });
+          }
+          if (o.wins && typeof o.wins === 'object') {
+            Object.keys(o.wins).forEach(function (k) {
+              var v = parseInt(o.wins[k], 10);
+              if (v > 0 && k !== '__proto__') d.wins[k] = v;
+            });
+          }
         }
         if (o.s) applySettings(d.s, o.s);
       }
@@ -218,13 +224,21 @@
     }
   }
   if (shared) { applyShare(shared); sandbox = true; }
+  /* A #yesno link asks for the Yes/No wheel even when this page's saved state
+     was the custom wheel, so the wheel's own title comes back rather than the
+     custom title saved for this URL. */
+  if (!shared && location.hash === '#yesno') { state.mode = 'yesno'; state.title = ''; }
 
   var saveTimer;
   function save() {
     if (sandbox) return;
     clearTimeout(saveTimer);
     saveTimer = setTimeout(function () {
-      try { localStorage.setItem(STORE, JSON.stringify(state)); } catch (e) { /* quota or private mode */ }
+      try {
+        var blob = { page: SLUG };
+        for (var k in state) { if (Object.prototype.hasOwnProperty.call(state, k)) blob[k] = state[k]; }
+        localStorage.setItem(STORE, JSON.stringify(blob));
+      } catch (e) { /* quota or private mode */ }
     }, 200);
   }
 

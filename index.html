@@ -451,7 +451,10 @@ gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_persona
         image: { t: 'Image Picker Wheel' }
       };
       function run() {
-        var k = (location.hash || '').slice(1) || 'yesno';
+        var raw = (location.hash || '').slice(1);
+        /* A share link or embed URL brings its own mode and title. */
+        if (raw.indexOf('s=') === 0 || raw.indexOf('embed=') === 0) return;
+        var k = raw || 'yesno';
         if (!k) return;
         var m = document.querySelector('[data-mode="' + (k === 'yesno' ? 'yesno' : 'custom') + '"]');
         if (m) m.click();

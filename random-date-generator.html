@@ -470,6 +470,10 @@ gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_persona
         };
       })();
       function run() {
+        var raw = (location.hash || '').slice(1);
+        /* A share link or embed URL brings its own state; the page preset
+           must not override the mode and title it carries. */
+        if (raw.indexOf('s=') === 0 || raw.indexOf('embed=') === 0) return;
         var k = (location.hash || '').slice(1) || 'dates';
         if (!k) return;
         var m = document.querySelector('[data-mode="' + (k === 'yesno' ? 'yesno' : 'custom') + '"]');
