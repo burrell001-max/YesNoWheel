@@ -13,7 +13,13 @@
     gtag('consent', 'update', { ad_storage: s, ad_user_data: s, ad_personalization: s, analytics_storage: s });
   }
   function close() { var el = document.getElementById('ynw-cc'); if (el) el.remove(); }
-  function choose(granted) { save(granted ? 'granted' : 'denied'); apply(granted); close(); }
+  function choose(granted) {
+    save(granted ? 'granted' : 'denied');
+    apply(granted);
+    close();
+    /* tags.js and app.js only send events once this says yes. */
+    try { document.dispatchEvent(new CustomEvent('ynw:consent', { detail: { granted: granted } })); } catch (e) { /* old browser */ }
+  }
   function show() {
     if (document.getElementById('ynw-cc')) return;
     var d = document.createElement('div');
