@@ -207,7 +207,7 @@ gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_persona
 
       <div id="paneInputs">
         <!-- Yes / No controls -->
-        <div id="ynPanel">
+        <div id="ynPanel" hidden>
           <div class="field">
             <div class="seg">
               <button type="button" data-three="0" data-i18n="opt2"></button>
@@ -223,7 +223,7 @@ gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_persona
         </div>
 
         <!-- Custom wheel controls -->
-        <div id="customPanel" hidden>
+        <div id="customPanel">
           <div class="field">
             <div class="seg">
               <button type="button" data-view="list" data-i18n="listView"></button>
@@ -512,7 +512,7 @@ gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_persona
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
   <noscript>
-    <p style="padding:24px;text-align:center">YesNoWheel is a free Yes or No decision wheel and custom random picker wheel. Please enable JavaScript to spin the wheel.</p>
+    <p style="padding:24px;text-align:center">YesNoWheel's Truth or Dare wheel spins prompts for a game night. Please enable JavaScript to spin the wheel.</p>
   </noscript>
 
   <script src="i18n.js" defer></script>
@@ -554,6 +554,20 @@ gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_persona
         dates: { t: 'Date Picker Wheel', e: function () { var a = [], d = new Date(); for (var i = 0; i < 14; i++) { var x = new Date(d.getFullYear(), d.getMonth(), d.getDate() + i); a.push(x.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' })); } return a; } },
         image: { t: 'Image Picker Wheel' }
       };
+      /* Published before app.js runs so the first render already has this
+         page's wheel, entries and title. run() below keeps hash links working. */
+      (function () {
+        var raw = (location.hash || '').slice(1);
+        if (raw === 'yesno') return;
+        var key = raw || 'truth-or-dare';
+        var p = P[key];
+        var e = p && p.e ? (typeof p.e === 'function' ? p.e() : p.e) : null;
+        var h = document.getElementById('stageTitle');
+        window.YNW_PRESET = {
+          title: (p && p.t) || (h ? h.textContent.trim() : ''),
+          entries: e ? e.slice(0, 500) : null
+        };
+      })();
       function run() {
         var k = (location.hash || '').slice(1) || 'truth-or-dare';
         if (!k) return;

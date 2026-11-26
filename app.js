@@ -91,12 +91,19 @@
 
   function defaultState() {
     var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    /* Tool pages publish window.YNW_PRESET from an inline script that runs
+       before this deferred file, so the very first paint already shows that
+       page's wheel. The home page publishes no preset and keeps Yes/No. */
+    var preset = window.YNW_PRESET;
+    var starter = (preset && preset.entries && preset.entries.length)
+      ? preset.entries.slice(0, 500)
+      : ['Pizza', 'Burgers', 'Sushi', 'Tacos', 'Salad', 'Pasta'];
     return {
-      mode: 'yesno', view: 'list',
+      mode: preset ? 'custom' : 'yesno', view: 'list',
       yn: { three: false, sets: 4, tally: { yes: 0, no: 0, maybe: 0 } },
-      entries: ['Pizza', 'Burgers', 'Sushi', 'Tacos', 'Salad', 'Pasta'].map(function (t) { return mkEntry({ text: t }); }),
+      entries: starter.map(function (t) { return mkEntry({ text: t }); }),
       action: 'normal', mysteryWheel: false, mysteryResult: false,
-      title: '', desc: '', history: [], wins: {},
+      title: (preset && preset.title) ? String(preset.title).slice(0, 80) : '', desc: '', history: [], wins: {},
       s: {
         duration: 5, speed: 5, idle: true, tick: true, victory: true, confetti: true,
         theme: dark ? 'dark' : 'light', palette: 'vibrant',
@@ -151,6 +158,17 @@
         if (o.s) applySettings(d.s, o.s);
       }
     } catch (e) { /* ignore corrupt storage */ }
+    /* The page's own preset outranks saved state at first paint: the preset
+       script applies the same mode, title and entries on load, and storage is
+       shared by every tool on the origin, so a saved title from another wheel
+       must not show here. Share links still override this in applyShare(). */
+    if (window.YNW_PRESET) {
+      d.mode = 'custom';
+      if (window.YNW_PRESET.title) d.title = String(window.YNW_PRESET.title).slice(0, 80);
+      if (window.YNW_PRESET.entries && window.YNW_PRESET.entries.length) {
+        d.entries = window.YNW_PRESET.entries.slice(0, 500).map(function (t) { return mkEntry({ text: t }); });
+      }
+    }
     return d;
   }
 
