@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
-  <!-- Consent Mode v2: default denied until the visitor chooses -->
+  <!-- Consent Mode v2: denied by default in the EEA, the UK and Switzerland, granted
+     elsewhere. Google's consent message, delivered by the AdSense tag below, shows
+     the choice and updates these signals. -->
 <script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
-try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});}}catch(e){}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',region:['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],wait_for_update:500});
+gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});
 </script>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TWMPRZKV');</script>
-<!-- End Google Tag Manager -->
-<!-- Google tag (gtag.js) and AdSense: loaded after first paint by tags.js -->
+<!-- AdSense: static tag, so the review crawler finds it in the HTML source. -->
+<meta name="google-adsense-account" content="ca-pub-5783852883880667">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5783852883880667" crossorigin="anonymous"></script>
+<!-- Analytics (gtag.js) is loaded after first paint by tags.js. -->
 <script src="tags.js" defer></script>
 
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Random Color Wheel - Spin the Wheel Generator for Color | YesNoWheel</title>
-  <meta name="description" content="Spin the wheel generator for color: pick a random color for art, crafts, outfits and decorating. Free color wheel spinner with 16 colors you can edit.">
-  <meta name="keywords" content="yes or no wheel, yes no wheel, yes no picker wheel, random decision wheel, spin the wheel, custom picker wheel, random name picker, decision maker, wheel of names, raffle wheel">
+  <title>Color Picker Wheel: 16 Random Colors</title>
+  <meta name="description" content="Spin 16 colour names from red to maroon, or add your own. Built for art prompts, outfit choices and craft projects rather than colour codes.">
+  
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#7a4dff">
   <link rel="canonical" href="https://yesnowheel.xyz/random-color-generator.html">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="YesNoWheel">
-  <meta property="og:title" content="Random Color Wheel - Spin the Wheel Generator for Color | YesNoWheel">
-  <meta property="og:description" content="Spin the wheel generator for color: pick a random color for art, crafts, outfits and decorating. Free color wheel spinner with 16 colors you can edit.">
+  <meta property="og:title" content="Color Picker Wheel: 16 Random Colors">
+  <meta property="og:description" content="Spin 16 colour names from red to maroon, or add your own. Built for art prompts, outfit choices and craft projects rather than colour codes.">
   <meta property="og:url" content="https://yesnowheel.xyz/random-color-generator.html">
   <meta property="og:image" content="https://yesnowheel.xyz/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="YesNoWheel — the free Yes or No decision wheel">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Random Color Wheel - Spin the Wheel Generator for Color | YesNoWheel">
-  <meta name="twitter:description" content="Spin the wheel generator for color: pick a random color for art, crafts, outfits and decorating. Free color wheel spinner with 16 colors you can edit.">
+  <meta name="twitter:title" content="Color Picker Wheel: 16 Random Colors">
+  <meta name="twitter:description" content="Spin 16 colour names from red to maroon, or add your own. Built for art prompts, outfit choices and craft projects rather than colour codes.">
   <meta name="twitter:image" content="https://yesnowheel.xyz/og-image.png">
 
 <link rel="preload" as="font" type="font/woff2" href="fonts/bricolage-grotesque-latin.woff2" crossorigin><link rel="stylesheet" href="style.css">
   <!-- Structured data -->
-  <script type="application/ld+json">
-{
+  <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -89,26 +90,42 @@ try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Does it show the exact color?",
+          "name": "Does the wheel show the exact colour?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It picks a color name from the list. The slices use the wheel&#x27;s own palette, which you can change in Settings."
+            "text": "It picks a colour name. The slices use the wheel palette from Settings, which you can change, so the paint on a slice is not necessarily the colour it names."
           }
         },
         {
           "@type": "Question",
-          "name": "Can I add more colors?",
+          "name": "Can I add my own colours?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Add more names, one per line, in the text view."
+            "text": "Yes. Add one name per line in the text view and each becomes its own slice with an equal chance."
           }
         },
         {
           "@type": "Question",
-          "name": "Is this a color wheel for design?",
+          "name": "Can I use a hex code as an entry?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. It is a spin the wheel generator that picks a color name at random, which suits games, crafts and creative prompts. For color codes or palettes, use a dedicated design tool."
+            "text": "Yes, entries are plain text, so a code like #1E90FF works as a label. The wheel will not render that shade; copy the code into a design tool for that."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this a colour wheel for design work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It is a random picker for names, useful for games, crafts and prompts. For harmonies, contrast checking or palettes, use a design tool."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I get three colours without repeats?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Switch to Elimination mode and hide each winner, so three spins give three different names."
           }
         },
         {
@@ -116,25 +133,19 @@ try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent
           "name": "Is it free?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. It is free to use and needs no account."
+            "text": "Yes, with no account and no limit on spins."
           }
         }
       ]
     }
   ]
-}
-  </script>
+}</script>
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWMPRZKV"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-<script src="consent.js"></script>
 <header class="topbar">
     <a class="brand" href="./" aria-label="YesNoWheel">
       <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#7a4dff"/><path d="M32 32V2a30 30 0 0 1 30 30z" fill="#47d6a4"/><path d="M32 32H2A30 30 0 0 1 32 2z" fill="#ffc82e"/><path d="M32 32l21 21A30 30 0 0 1 32 62z" fill="#ff6a55"/><circle cx="32" cy="32" r="30" fill="none" stroke="#1d1633" stroke-width="4"/><circle cx="32" cy="32" r="7" fill="#fff" stroke="#1d1633" stroke-width="3"/></svg>
@@ -165,7 +176,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <main class="layout">
     <section class="stage" id="wheelArea">
-      <h1 id="stageTitle" class="stage-title"></h1>
+      <h1 id="stageTitle" class="stage-title">Color Picker Wheel</h1>
       <p id="stageDesc" class="stage-desc" hidden></p>
       <div class="fab-col top">
         <button id="fabEdit" class="fab dark" type="button" title="Edit entries" aria-label="Edit entries">✎</button>
@@ -271,14 +282,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </main>
 
 <div class="guide" lang="en">
-    <section><h2>1. Spin the Wheel Generator for Color</h2><p>Spin for a random color name. It is handy for art challenges, drawing games, decorating ideas, crafts and picking an outfit. This is a random color picker, not a design tool: it picks a color name from your list and does not show color codes or a color-theory wheel.</p></section>
+<section><h2>Sixteen colour names on the wheel</h2>
+<p>The default list is sixteen common colours: red, orange, yellow, green, teal, blue, indigo, purple, pink, brown, black, white, gray, gold, turquoise and maroon. They are broad names on purpose. Blue is one slice, not a hundred shades of it, because the draw is meant to give you a direction rather than a specification.</p>
+<p>The colour a slice is painted in comes from the wheel palette in Settings, not from the name on it. A slice labelled green may be drawn in yellow, and that is deliberate: the palette keeps the wheel legible, while the label is the thing being chosen. Nothing on this page returns a colour code.</p>
+<p>Each of the sixteen has the same 1-in-16 chance, and adding a name gives it its own slice rather than nudging the others.</p>
+</section>
+<hr>
+<section><h2>How to use it</h2>
+<p>Tap Spin, press space, or click the hub at the centre of the wheel. The colour name then appears in a pop-up, written in the same words as the slice.</p>
+<ul>
+<li><b>The text view</b> is where you add names: coral, navy, sage, mustard, or the exact words your group uses for colours.</li>
+<li><b>Elimination mode</b> offers Hide choice after each draw, which is how you build a palette of three without repeating one.</li>
+<li><b>The palette</b> in Settings changes how the slices look, so you can match the wheel to a project or keep it neutral.</li>
+<li><b>Weights</b> let you push a palette towards the colours you actually have to hand, for example when a pack of pencils only contains twelve.</li>
+</ul>
+</section>
+<hr>
+<section><h2>Five ways to use a colour draw</h2>
+<h3>Two-colour art prompt</h3>
+<p>Spin twice for a pair, then a third time for the background. The constraint is the exercise: a drawing that has to work in two colours, chosen without you, is a different problem from a free choice.</p>
+<h3>Outfit decision</h3>
+<p>Spin once before opening the wardrobe and wear that colour as the main one. It is a small decision that otherwise takes five minutes and three changes.</p>
+<h3>Craft and paint projects</h3>
+<p>Draw a colour and use only what you already own in that family. It stops a craft session turning into a shopping trip.</p>
+<h3>Team colours</h3>
+<p>Spin once per team in elimination mode so no two teams end up with the same colour, then use the result for bibs, cards or a scoreboard.</p>
+<h3>Party or classroom theme</h3>
+<p>Draw a colour for the week and build one small thing around it: a display, a snack, a playlist cover. One colour is a manageable theme; five is a project.</p>
+</section>
+<hr>
+<section><h2>The sixteen names, and what they are not</h2>
+<p>The list is deliberately short and plain. Each name is a category, not a shade, so "blue" covers everything from a pale sky to a deep navy, and "gold" is a name rather than a metallic finish.</p>
+<ul>
+<li>Warm: red, orange, yellow, gold, pink</li>
+<li>Cool: teal, blue, indigo, turquoise</li>
+<li>Neutral: brown, black, white, gray</li>
+<li>In between: green, purple, maroon</li>
+</ul>
+<p>If you need a specific shade, add it as a name and use a design tool to match it. This wheel picks words; it does not mix paint, generate hex codes or check contrast.</p>
+</section>
+<hr>
+<section><h2>Related wheels and guides</h2>
+<ul>
+<li><a href="random-image-generator.html">The image wheel</a> if you would rather choose between pictures than names.</li>
+<li><a href="post-build-a-better-shortlist.html">Building a shortlist</a> explains why a small list of broad options beats a long list of specific ones.</li>
+<li><a href="random-number-generator.html">The number wheel</a> when the draw is a quantity rather than a colour.</li>
+<li><a href="post-random-generator-uses.html">Six uses for the generators</a> has a classroom round built on colour and letter draws together.</li>
+</ul>
+</section>
+<hr>
     <hr>
-    <section><h2>2. How to Use the Color Wheel</h2><p>Press Spin, click the wheel or hit the space bar. The pointer shows the winning slice and a pop-up shows the result. The wheel lists 16 common colors. Add your own, like coral or navy, in the text view, or change the wheel colors in Settings. For an art game, spin twice to combine two colors, or spin once for each part of a drawing.</section>
-    <hr>
-    <section><h2>3. Ways to Use It</h2><ul class="pills"><li>Art and drawing challenges</li><li>Pick a paint color</li><li>Choose an outfit color</li><li>Craft projects</li><li>Team color games</li></ul>    <p>Stuck for a use? <a href="post-random-generator-uses.html">Six uses for these random pickers</a> gives each generator a concrete job, from seating plans to quiz rounds.</p>
-    <p>Want a different kind of wheel? See all our <a href="tools.html">tools</a> or read tips on the <a href="blog.html">blog</a>.</p></section>
-    <hr>
-    <section><h2>4. Frequently Asked Questions</h2><details><summary>Does it show the exact color?</summary><p>It picks a color name from the list. The slices use the wheel&#x27;s own palette, which you can change in Settings.</p></details><details><summary>Can I add more colors?</summary><p>Yes. Add more names, one per line, in the text view.</p></details><details><summary>Is this a color wheel for design?</summary><p>No. It is a spin the wheel generator that picks a color name at random, which suits games, crafts and creative prompts. For color codes or palettes, use a dedicated design tool.</p></details><details><summary>Is it free?</summary><p>Yes. It is free to use and needs no account.</p></details></section>
+    <section><h2>Questions people ask</h2><details><summary>Does the wheel show the exact colour?</summary><p>It picks a colour name. The slices use the wheel palette from Settings, which you can change, so the paint on a slice is not necessarily the colour it names.</p></details><details><summary>Can I add my own colours?</summary><p>Yes. Add one name per line in the text view and each becomes its own slice with an equal chance.</p></details><details><summary>Can I use a hex code as an entry?</summary><p>Yes, entries are plain text, so a code like #1E90FF works as a label. The wheel will not render that shade; copy the code into a design tool for that.</p></details><details><summary>Is this a colour wheel for design work?</summary><p>No. It is a random picker for names, useful for games, crafts and prompts. For harmonies, contrast checking or palettes, use a design tool.</p></details><details><summary>How do I get three colours without repeats?</summary><p>Switch to Elimination mode and hide each winner, so three spins give three different names.</p></details><details><summary>Is it free?</summary><p>Yes, with no account and no limit on spins.</p></details></section>
   </div>
 
 <footer class="sitefoot"><div class="cols">

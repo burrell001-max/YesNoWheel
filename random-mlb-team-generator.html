@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
-  <!-- Consent Mode v2: default denied until the visitor chooses -->
+  <!-- Consent Mode v2: denied by default in the EEA, the UK and Switzerland, granted
+     elsewhere. Google's consent message, delivered by the AdSense tag below, shows
+     the choice and updates these signals. -->
 <script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
-try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});}}catch(e){}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',region:['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],wait_for_update:500});
+gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});
 </script>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TWMPRZKV');</script>
-<!-- End Google Tag Manager -->
-<!-- Google tag (gtag.js) and AdSense: loaded after first paint by tags.js -->
+<!-- AdSense: static tag, so the review crawler finds it in the HTML source. -->
+<meta name="google-adsense-account" content="ca-pub-5783852883880667">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5783852883880667" crossorigin="anonymous"></script>
+<!-- Analytics (gtag.js) is loaded after first paint by tags.js. -->
 <script src="tags.js" defer></script>
 
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>MLB Picker Wheel - Free Random Picker | YesNoWheel</title>
-  <meta name="description" content="Spin to pick one of the 30 Major League Baseball teams. Use it for a fantasy draft, a fan challenge or a random team to follow. Free, no sign-up.">
-  <meta name="keywords" content="yes or no wheel, yes no wheel, yes no picker wheel, random decision wheel, spin the wheel, custom picker wheel, random name picker, decision maker, wheel of names, raffle wheel">
+  <title>MLB Team Picker Wheel: All 30 Clubs</title>
+  <meta name="description" content="Spin all 30 MLB clubs by nickname. Elimination mode sets a draft order or a season trial, and the page lists every club by league and division.">
+  
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#7a4dff">
   <link rel="canonical" href="https://yesnowheel.xyz/random-mlb-team-generator.html">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="YesNoWheel">
-  <meta property="og:title" content="MLB Picker Wheel | YesNoWheel">
-  <meta property="og:description" content="Spin to pick one of the 30 Major League Baseball teams. Use it for a fantasy draft, a fan challenge or a random team to follow. Free, no sign-up.">
+  <meta property="og:title" content="MLB Team Picker Wheel: All 30 Clubs">
+  <meta property="og:description" content="Spin all 30 MLB clubs by nickname. Elimination mode sets a draft order or a season trial, and the page lists every club by league and division.">
   <meta property="og:url" content="https://yesnowheel.xyz/random-mlb-team-generator.html">
   <meta property="og:image" content="https://yesnowheel.xyz/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="YesNoWheel — the free Yes or No decision wheel">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="MLB Picker Wheel | YesNoWheel">
-  <meta name="twitter:description" content="Spin to pick one of the 30 Major League Baseball teams. Use it for a fantasy draft, a fan challenge or a random team to follow. Free, no sign-up.">
+  <meta name="twitter:title" content="MLB Team Picker Wheel: All 30 Clubs">
+  <meta name="twitter:description" content="Spin all 30 MLB clubs by nickname. Elimination mode sets a draft order or a season trial, and the page lists every club by league and division.">
   <meta name="twitter:image" content="https://yesnowheel.xyz/og-image.png">
 
 <link rel="preload" as="font" type="font/woff2" href="fonts/bricolage-grotesque-latin.woff2" crossorigin><link rel="stylesheet" href="style.css">
   <!-- Structured data -->
-  <script type="application/ld+json">
-{
+  <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -89,44 +90,62 @@ try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Are the logos shown?",
+          "name": "Why are the slices nicknames and not full club names?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. The wheel shows team names only. YesNoWheel is not affiliated with Major League Baseball or its teams."
+            "text": "Nicknames are shorter, so the text still fits on a phone screen. The order follows the city, which is why the Diamondbacks come before the Braves."
           }
         },
         {
           "@type": "Question",
-          "name": "Can I pick from one league?",
+          "name": "Can I spin within one league or division?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Delete the teams you do not want in the text view."
+            "text": "Yes. The wheel does not label leagues, so delete the clubs you do not want in the text view. Both leagues have fifteen clubs and each division has five."
           }
         },
         {
           "@type": "Question",
-          "name": "Is it free?",
+          "name": "Are club logos or uniforms shown?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. It is free to use and needs no account."
+            "text": "No. The wheel shows names only. YesNoWheel is not affiliated with Major League Baseball or its clubs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I set a draft order?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Switch to Elimination mode and spin once per pick, hiding each club as it is drawn, so the order cannot repeat a team."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I add minor league or fantasy teams?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The text view takes any names, so the same wheel can run a league of your own."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the wheel free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, with no account and no limit on spins."
           }
         }
       ]
     }
   ]
-}
-  </script>
+}</script>
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWMPRZKV"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-<script src="consent.js"></script>
 <header class="topbar">
     <a class="brand" href="./" aria-label="YesNoWheel">
       <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#7a4dff"/><path d="M32 32V2a30 30 0 0 1 30 30z" fill="#47d6a4"/><path d="M32 32H2A30 30 0 0 1 32 2z" fill="#ffc82e"/><path d="M32 32l21 21A30 30 0 0 1 32 62z" fill="#ff6a55"/><circle cx="32" cy="32" r="30" fill="none" stroke="#1d1633" stroke-width="4"/><circle cx="32" cy="32" r="7" fill="#fff" stroke="#1d1633" stroke-width="3"/></svg>
@@ -157,7 +176,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <main class="layout">
     <section class="stage" id="wheelArea">
-      <h1 id="stageTitle" class="stage-title"></h1>
+      <h1 id="stageTitle" class="stage-title">MLB Picker Wheel</h1>
       <p id="stageDesc" class="stage-desc" hidden></p>
       <div class="fab-col top">
         <button id="fabEdit" class="fab dark" type="button" title="Edit entries" aria-label="Edit entries">✎</button>
@@ -263,15 +282,61 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </main>
 
 <div class="guide" lang="en">
-    <section><h2>1. What Is the MLB Picker Wheel?</h2><p>Spin to pick one of the 30 Major League Baseball teams. Use it for a fantasy draft, a fan challenge or a random team to follow.</p></section>
+<section><h2>Thirty clubs, nicknames on the slices</h2>
+<p>All 30 Major League clubs are on the wheel, one slice each, in city order from Arizona to Washington and labelled with the nickname alone. Three cities field two clubs, so the nicknames are doing real work here: Cubs and White Sox, Dodgers and Angels, Yankees and Mets. Without them, half the slices would read the same.</p>
+<p>Every slice is identical in size, so each club has a 1-in-30 chance. Nothing on the wheel mentions a league, a division, a record or a payroll, because a draw for a team should not quietly favour the ones having a good season.</p>
+</section>
+<hr>
+<section><h2>Using it for a real draw</h2>
+<p>Spin with the button, the space bar, or a click on the hub at the centre of the wheel. The pointer marks the winner and a pop-up names the club.</p>
+<ul>
+<li><b>Elimination mode</b> offers Hide choice after each win. For a draft order that is exactly what you want: the first ten draws are ten different clubs in the order they landed.</li>
+<li><b>Accumulation mode</b> keeps all 30 available and tallies the results, which suits a long season of small bets where repeats are expected.</li>
+<li><b>The text view</b> is where you narrow things down: one league, one division, or the six clubs you would actually watch.</li>
+<li><b>Weights</b> let a game double a rival's slice, so a friendly bet is not a straight coin toss.</li>
+</ul>
+</section>
+<hr>
+<section><h2>Five ways to use an MLB draw</h2>
+<h3>Season trial</h3>
+<p>Draw a club, then follow its results for a month before deciding anything. A month is long enough to learn a few names and short enough to abandon without guilt.</p>
+<h3>Fantasy draft order</h3>
+<p>Run elimination mode and read the first ten or twelve draws as the draft order. It takes a minute, everyone watches it happen, and nobody has to argue about who picked the order.</p>
+<h3>Ballpark shortlist</h3>
+<p>Draw a club and put its park on the list of grounds you want to visit. Draw again next month and the list builds itself without a spreadsheet.</p>
+<h3>Scoreboard game</h3>
+<p>Spin for two clubs, then follow both for a week and compare series results. It is a light way to care about games you would otherwise skip.</p>
+<h3>Video game career</h3>
+<p>Spin before starting a franchise so you manage a club you would never have chosen. The draw is the point: a familiar team makes for a familiar season.</p>
+</section>
+<hr>
+<section><h2>All 30 clubs by league and division</h2>
+<p>The same 30 nicknames that sit on the wheel, grouped the way the league groups them. The wheel does not label leagues, so this table is the reference for cutting a list down.</p>
+<table>
+<thead><tr><th>League</th><th>Division</th><th>Clubs</th></tr></thead>
+<tbody>
+<tr><td>American</td><td>East</td><td>Orioles, Red Sox, Yankees, Rays, Blue Jays</td></tr>
+<tr><td>American</td><td>Central</td><td>White Sox, Guardians, Tigers, Royals, Twins</td></tr>
+<tr><td>American</td><td>West</td><td>Astros, Angels, Athletics, Mariners, Rangers</td></tr>
+<tr><td>National</td><td>East</td><td>Braves, Marlins, Mets, Phillies, Nationals</td></tr>
+<tr><td>National</td><td>Central</td><td>Cubs, Reds, Brewers, Pirates, Cardinals</td></tr>
+<tr><td>National</td><td>West</td><td>Diamondbacks, Rockies, Dodgers, Padres, Giants</td></tr>
+</tbody>
+</table>
+<p>Two leagues of fifteen clubs, split into three divisions of five. To spin inside one league, delete the other fifteen lines in the text view.</p>
+</section>
+<hr>
+<section><h2>Where to go next</h2>
+<ul>
+<li><a href="post-pick-a-team-to-root-for.html">How to pick a team to root for</a> covers what to do in the first month with a club you did not choose.</li>
+<li><a href="post-fair-raffle-name-picker.html">Running a fair draw</a> explains the rules that make an elimination draw believable in a group.</li>
+<li><a href="random-nfl-team-generator.html">The NFL team wheel</a> and <a href="random-nba-team-generator.html">the NBA team wheel</a> work the same way for other leagues.</li>
+<li><a href="custom-picker-wheel.html">Build a custom wheel</a> if you want clubs mixed with people or prizes.</li>
+</ul>
+</section>
+<hr>
     <hr>
-    <section><h2>2. How to Use It</h2><p>Press Spin, click the wheel or hit the space bar. The pointer shows the winning slice and a pop-up shows the result. The wheel shows team nicknames. Use Elimination mode to go through all 30 teams without repeats.</p></section>
-    <hr>
-    <section><h2>3. Ways to Use It</h2><ul class="pills"><li>Pick a team to follow this season</li><li>Fantasy draft order</li><li>Baseball trivia</li><li>Choose a team in a video game</li><li>Settle a friendly debate</li></ul>
-    <p>Drawn a team at random? <a href="post-pick-a-team-to-root-for.html">How to pick a team to root for</a> walks through cutting the list, the first month of games and when switching is fair.</p>
-    <p>Want a different kind of wheel? See all our <a href="tools.html">tools</a> or read tips on the <a href="blog.html">blog</a>.</p></section>
-    <hr>
-    <section><h2>4. Frequently Asked Questions</h2><details><summary>Are the logos shown?</summary><p>No. The wheel shows team names only. YesNoWheel is not affiliated with Major League Baseball or its teams.</p></details><details><summary>Can I pick from one league?</summary><p>Yes. Delete the teams you do not want in the text view.</p></details><details><summary>Is it free?</summary><p>Yes. It is free to use and needs no account.</p></details></section>
+    <section><h2>Questions people ask</h2><details><summary>Why are the slices nicknames and not full club names?</summary><p>Nicknames are shorter, so the text still fits on a phone screen. The order follows the city, which is why the Diamondbacks come before the Braves.</p></details><details><summary>Can I spin within one league or division?</summary><p>Yes. The wheel does not label leagues, so delete the clubs you do not want in the text view. Both leagues have fifteen clubs and each division has five.</p></details><details><summary>Are club logos or uniforms shown?</summary><p>No. The wheel shows names only. YesNoWheel is not affiliated with Major League Baseball or its clubs.</p></details><details><summary>How do I set a draft order?</summary><p>Switch to Elimination mode and spin once per pick, hiding each club as it is drawn, so the order cannot repeat a team.</p></details><details><summary>Can I add minor league or fantasy teams?</summary><p>Yes. The text view takes any names, so the same wheel can run a league of your own.</p></details><details><summary>Is the wheel free?</summary><p>Yes, with no account and no limit on spins.</p></details></section>
   </div>
 
 <footer class="sitefoot"><div class="cols">

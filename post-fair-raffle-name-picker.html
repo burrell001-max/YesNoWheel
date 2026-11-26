@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
-<!-- Consent Mode v2: default denied until the visitor chooses -->
+<!-- Consent Mode v2: denied by default in the EEA, the UK and Switzerland, granted
+     elsewhere. Google's consent message, delivered by the AdSense tag below, shows
+     the choice and updates these signals. -->
 <script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
-try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});}}catch(e){}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',region:['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],wait_for_update:500});
+gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});
 </script>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TWMPRZKV');</script>
-<!-- End Google Tag Manager -->
-<!-- Google tag (gtag.js) and AdSense: loaded after first paint by tags.js -->
+<!-- AdSense: static tag, so the review crawler finds it in the HTML source. -->
+<meta name="google-adsense-account" content="ca-pub-5783852883880667">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5783852883880667" crossorigin="anonymous"></script>
+<!-- Analytics (gtag.js) is loaded after first paint by tags.js. -->
 <script src="tags.js" defer></script>
 
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>How to Run a Fair Raffle or Prize Draw With a Name Picker | YesNoWheel</title>
-<meta name="description" content="One entry per person, a list everyone can see, one spin, a recorded result. The checks that make a prize draw fair, and the mistakes that turn it into an argument.">
+<title>How to Run a Fair Raffle With a Name Picker | YesNoWheel</title>
+<meta name="description" content="One entry per person, a list everyone can see, one spin, a recorded result. The checks that make a prize draw fair.">
 <link rel="canonical" href="https://yesnowheel.xyz/post-fair-raffle-name-picker.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="YesNoWheel">
-  <meta property="og:title" content="How to Run a Fair Raffle or Prize Draw With a Name Picker | YesNoWheel">
-  <meta property="og:description" content="One entry per person, a list everyone can see, one spin, a recorded result. The checks that make a prize draw fair, and the mistakes that turn it into an argument.">
+  <meta property="og:title" content="How to Run a Fair Raffle With a Name Picker | YesNoWheel">
+  <meta property="og:description" content="One entry per person, a list everyone can see, one spin, a recorded result. The checks that make a prize draw fair.">
   <meta property="og:url" content="https://yesnowheel.xyz/post-fair-raffle-name-picker.html">
   <meta property="og:image" content="https://yesnowheel.xyz/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="YesNoWheel — the free Yes or No decision wheel">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="How to Run a Fair Raffle or Prize Draw With a Name Picker | YesNoWheel">
-  <meta name="twitter:description" content="One entry per person, a list everyone can see, one spin, a recorded result. The checks that make a prize draw fair, and the mistakes that turn it into an argument.">
+  <meta name="twitter:title" content="How to Run a Fair Raffle With a Name Picker | YesNoWheel">
+  <meta name="twitter:description" content="One entry per person, a list everyone can see, one spin, a recorded result. The checks that make a prize draw fair.">
   <meta name="twitter:image" content="https://yesnowheel.xyz/og-image.png">
 <meta name="theme-color" content="#7a4dff">
 <link rel="preload" as="font" type="font/woff2" href="fonts/bricolage-grotesque-latin.woff2" crossorigin><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="blog.css">
@@ -92,17 +94,14 @@ try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWMPRZKV"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-<script src="consent.js"></script>
 <header class="topbar"><a class="brand" href="./"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#7a4dff"/><path d="M32 32V2a30 30 0 0 1 30 30z" fill="#47d6a4"/><path d="M32 32H2A30 30 0 0 1 32 2z" fill="#ffc82e"/><path d="M32 32l21 21A30 30 0 0 1 32 62z" fill="#ff6a55"/><circle cx="32" cy="32" r="30" fill="none" stroke="#1d1633" stroke-width="4"/><circle cx="32" cy="32" r="7" fill="#fff" stroke="#1d1633" stroke-width="3"/></svg><span>YesNoWheel</span></a>
 <nav class="topnav" aria-label="Main"><a class="nav-btn" href="./">Wheel</a><a class="nav-btn" href="tools.html">Tools</a><a class="nav-btn share" href="blog.html">Blog</a></nav></header>
 <main class="blog article"><p class="crumb"><a href="blog.html">Blog</a> / How to Run a Fair Raffle or Prize Draw With a Name Picker</p>
 <div class="hero-art" style="--c:#7a4dff"><span>🎟️</span></div>
-<h1>How to Run a Fair Raffle or Prize Draw With a Name Picker</h1><p class="meta">Last updated: November 25, 2026</p><p class="lead">A draw is fair when everyone can see the same list before the spin and the result is recorded after it. Everything else is detail.</p>
+<h1>How to Run a Fair Raffle or Prize Draw With a Name Picker</h1><p class="meta">Last updated: November 25, 2026</p>
+<p class="byline">By <a href="about.html">Kent B. Williams</a></p><p class="lead">A draw is fair when everyone can see the same list before the spin and the result is recorded after it. Everything else is detail.</p>
 
+<div class="trybox"><b>Try it</b><p><a href="random-name-picker.html">Open the name picker</a>. Load the entrant list, switch on elimination mode, and spin once with the screen visible to the room.</p></div>
 <h2>What fairness actually requires</h2>
 <p>Strip it down and a fair draw needs five things:</p>
 <ul>
@@ -139,7 +138,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p>If money is involved, or the prize comes from a sponsor, or the draw has an audience, write the rules down before the draw: who is eligible, the entry period, one prize per person, how the winner is contacted, and what happens if they do not reply. That document is worth more than any amount of reassurance afterwards.</p>
 
 <h2>More than one prize</h2>
-<p>Use elimination mode. The winner is removed from the wheel after each spin, so the second prize goes to a different person without re-typing the list, and nobody wins twice by accident.</p>
+<p>Use elimination mode and click Hide choice after each spin. The winner leaves the wheel, so the second prize goes to a different person without re-typing the list, and nobody wins twice by accident.</p>
 <p>Decide the order before the first spin. Does the first name drawn get the best prize, or the last? Both are defensible; switching halfway through is not.</p>
 <p>If prizes differ in value, draw for the biggest one first and work down. It is the order people expect, and expectation is most of what &quot;fair&quot; means in a small draw.</p>
 
@@ -159,7 +158,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p>For a club raffle, a team lunch, a stream giveaway, a school fair or picking who goes first, a visible browser wheel is entirely adequate, and better than a hat because everyone can see the list.</p>
 
 <div class="cta"><b>Run your draw</b><p>Paste the entry list, check the count, then spin in front of everyone.</p><a class="btn primary big" href="random-name-picker.html">Open the name picker</a></div>
-<p class="next">Next: <a href="post-split-chores-with-a-wheel.html">How to Split Chores and Seats Fairly With a Wheel</a></p></main>
+<p class="next">Next: <a href="post-split-chores-with-a-wheel.html">How to Split Chores and Seats Fairly With a Wheel</a></p>
+<section class="related"><h2>Related posts</h2><p>Fairness in a draw comes from a visible list and a single spin, not from the tool. These three cover the other places that discipline applies: household jobs, a classroom rota, and a pool small enough for everyone to check. None of them needs software beyond this page.</p><ul>
+<li><a href="post-split-chores-with-a-wheel.html">jobs and seats drawn in public</a></li>
+<li><a href="post-classroom-random-name-picker.html">calling on students without favouritism</a></li>
+<li><a href="post-build-a-better-shortlist.html">a pool small enough to check</a></li>
+</ul></section>
+</main>
 <footer class="sitefoot"><div class="cols">
 <div><b>YesNoWheel</b>&copy; 2026</div>
 <div><b>Explore</b><a href="tools.html">Tools</a><a href="blog.html">Blog</a><a href="about.html">About</a></div>

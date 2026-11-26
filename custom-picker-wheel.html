@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="light">
 <head>
-  <!-- Consent Mode v2: default denied until the visitor chooses -->
+  <!-- Consent Mode v2: denied by default in the EEA, the UK and Switzerland, granted
+     elsewhere. Google's consent message, delivered by the AdSense tag below, shows
+     the choice and updates these signals. -->
 <script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
-try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});}}catch(e){}
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',region:['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'],wait_for_update:500});
+gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});
 </script>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TWMPRZKV');</script>
-<!-- End Google Tag Manager -->
-<!-- Google tag (gtag.js) and AdSense: loaded after first paint by tags.js -->
+<!-- AdSense: static tag, so the review crawler finds it in the HTML source. -->
+<meta name="google-adsense-account" content="ca-pub-5783852883880667">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5783852883880667" crossorigin="anonymous"></script>
+<!-- Analytics (gtag.js) is loaded after first paint by tags.js. -->
 <script src="tags.js" defer></script>
 
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Spin the Wheel Generator - Free Custom Picker Wheel | YesNoWheel</title>
+  <title>Custom Picker Wheel: Spin Your Own List</title>
   <meta name="description" content="Free spin the wheel generator: type or paste your own list, customize colors, weights and images, then spin to pick a winner. No sign-up needed.">
   <meta name="keywords" content="yes or no wheel, yes no wheel, yes no picker wheel, random decision wheel, spin the wheel, custom picker wheel, random name picker, decision maker, wheel of names, raffle wheel">
   <meta name="robots" content="index, follow">
@@ -24,7 +26,7 @@ try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="YesNoWheel">
-  <meta property="og:title" content="Spin the Wheel Generator - Free Custom Picker Wheel | YesNoWheel">
+  <meta property="og:title" content="Custom Picker Wheel: Spin Your Own List">
   <meta property="og:description" content="Free spin the wheel generator: type or paste your own list, customize colors, weights and images, then spin to pick a winner. No sign-up needed.">
   <meta property="og:url" content="https://yesnowheel.xyz/custom-picker-wheel.html">
   <meta property="og:image" content="https://yesnowheel.xyz/og-image.png">
@@ -32,7 +34,7 @@ try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="YesNoWheel — the free Yes or No decision wheel">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Spin the Wheel Generator - Free Custom Picker Wheel | YesNoWheel">
+  <meta name="twitter:title" content="Custom Picker Wheel: Spin Your Own List">
   <meta name="twitter:description" content="Free spin the wheel generator: type or paste your own list, customize colors, weights and images, then spin to pick a winner. No sign-up needed.">
   <meta name="twitter:image" content="https://yesnowheel.xyz/og-image.png">
 
@@ -92,7 +94,7 @@ try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent
           "name": "How many entries can I add?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Add as many as you like. The wheel gets crowded past a few dozen entries, so shorter lists are easier to read."
+            "text": "Up to 500. The wheel gets crowded past a few dozen entries, so shorter lists are easier to read."
           }
         },
         {
@@ -138,11 +140,6 @@ try{var c=localStorage.getItem('ynw_consent_v1');if(c==='granted'){gtag('consent
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWMPRZKV"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-<script src="consent.js"></script>
 <header class="topbar">
     <a class="brand" href="./" aria-label="YesNoWheel">
       <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#7a4dff"/><path d="M32 32V2a30 30 0 0 1 30 30z" fill="#47d6a4"/><path d="M32 32H2A30 30 0 0 1 32 2z" fill="#ffc82e"/><path d="M32 32l21 21A30 30 0 0 1 32 62z" fill="#ff6a55"/><circle cx="32" cy="32" r="30" fill="none" stroke="#1d1633" stroke-width="4"/><circle cx="32" cy="32" r="7" fill="#fff" stroke="#1d1633" stroke-width="3"/></svg>
@@ -173,7 +170,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <main class="layout">
     <section class="stage" id="wheelArea">
-      <h1 id="stageTitle" class="stage-title"></h1>
+      <h1 id="stageTitle" class="stage-title">Custom Picker Wheel</h1>
       <p id="stageDesc" class="stage-desc" hidden></p>
       <div class="fab-col top">
         <button id="fabEdit" class="fab dark" type="button" title="Edit entries" aria-label="Edit entries">✎</button>
@@ -282,12 +279,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <section><h2>1. What Is This Spin the Wheel Generator?</h2><p>This is a free spin the wheel generator for any list you can think of. Type or paste your options, spin, and the wheel picks one at random. Because it is a custom wheel, you decide everything: the entries, their order, their colors and images, and how likely each one is to win. It runs in your browser, so there is no sign-up and nothing to install.</p>
     <p>Need a ready-made list? Try the <a href="random-name-picker.html">name wheel</a>, the <a href="random-number-generator.html">number wheel</a>, the <a href="random-food-picker.html">food wheel</a> or the <a href="random-color-generator.html">color wheel</a>, then edit it to fit.</p></section>
     <hr>
-    <section><h2>2. How to Make Your Custom Wheel</h2><p>Add one entry per line in the list or text view, or paste a whole list at once. Press Spin, click the wheel or hit the space bar, and the pointer shows the winning slice with a pop-up. To customize the wheel:</p><ul><li><b>Weights:</b> give an entry a higher number to make it more likely.</li><li><b>Colors and images:</b> change an entry's color or add a picture to its slice, and pick a palette in Settings.</li><li><b>Elimination:</b> remove each winner so nothing repeats.</li><li><b>Accumulation:</b> keep score of how often each entry wins.</li><li><b>Import and export:</b> load a list from a CSV, TXT or JSON file and save your results as a CSV.</li><li><b>Share:</b> copy a link to your custom wheel to send to others.</li></ul>
+    <section><h2>2. How to Make Your Custom Wheel</h2><p>Add one entry per line in the list or text view, or paste a whole list at once. Press Spin, hit the space bar or click the hub at the centre of the wheel, and the pointer shows the winning slice with a pop-up. To customize the wheel:</p><ul><li><b>Weights:</b> give an entry a higher number to make it more likely.</li><li><b>Colors and images:</b> change an entry's color or add a picture to its slice, and pick a palette in Settings.</li><li><b>Elimination:</b> hide each winner from the result so nothing repeats.</li><li><b>Accumulation:</b> keep score of how often each entry wins.</li><li><b>Import and export:</b> load a list from a CSV, TXT or JSON file and save your results as a CSV.</li><li><b>Share:</b> copy a link to your custom wheel to send to others.</li></ul>
     <p>If the list is the problem, <a href="post-build-a-better-shortlist.html">how to build a shortlist the wheel can decide</a> covers the six rules to set before you spin.</p></section>
     <hr>
     <section><h2>3. Ways to Use It</h2><ul class="pills"><li>Pick a winner</li><li>Choose a restaurant</li><li>Assign tasks</li><li>Run a class draw</li><li>Pick a movie</li></ul><p>Want a different kind of wheel? See all our <a href="tools.html">tools</a> or read tips on the <a href="blog.html">blog</a>.</p></section>
     <hr>
-    <section><h2>4. Frequently Asked Questions</h2><details><summary>How many entries can I add?</summary><p>Add as many as you like. The wheel gets crowded past a few dozen entries, so shorter lists are easier to read.</p></details><details><summary>Is my wheel saved?</summary><p>Yes. Your entries and settings are kept in your browser on this device, so they are there when you come back.</p></details><details><summary>Is this spin the wheel generator really free?</summary><p>Yes. It is free to use, with no account, no sign-up and no limit on spins.</p></details><details><summary>Can I make a custom wheel with my own entries?</summary><p>Yes. Type or paste your own options, then customize colors, weights and images. Your wheel is saved in your browser on this device.</p></details><details><summary>Is it free?</summary><p>Yes. It is free to use and needs no account.</p></details></section>
+    <section><h2>4. Frequently Asked Questions</h2><details><summary>How many entries can I add?</summary><p>Up to 500. The wheel gets crowded past a few dozen entries, so shorter lists are easier to read.</p></details><details><summary>Is my wheel saved?</summary><p>Yes. Your entries and settings are kept in your browser on this device, so they are there when you come back.</p></details><details><summary>Is this spin the wheel generator really free?</summary><p>Yes. It is free to use, with no account, no sign-up and no limit on spins.</p></details><details><summary>Can I make a custom wheel with my own entries?</summary><p>Yes. Type or paste your own options, then customize colors, weights and images. Your wheel is saved in your browser on this device.</p></details><details><summary>Is it free?</summary><p>Yes. It is free to use and needs no account.</p></details></section>
   </div>
 
 <footer class="sitefoot"><div class="cols">
